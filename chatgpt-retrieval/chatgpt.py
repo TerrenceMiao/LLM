@@ -21,12 +21,17 @@ from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 from langchain.llms import OpenAI, HuggingFaceHub, HuggingFacePipeline, GPT4All
 from langchain.vectorstores import Chroma, FAISS
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.docstore.document import Document
+from langchain.text_splitter import CharacterTextSplitter
+
+from PyPDF2 import PdfReader
 
 import constants
 
 os.environ["OPENAI_API_KEY"] = constants.OPENAI_API_KEY
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = constants.HUGGINGFACEHUB_API_TOKEN
 
+#
 OPENAI = False
 
 # Enable to save to disk & reuse the model (for repeated queries on the same data)
@@ -71,20 +76,22 @@ else:
         # default vectorstore_cls is Chroma
         vectorstore_index = VectorstoreIndexCreator().from_loaders([loader])
 
+st.session_state.vectorstore_index = vectorstore_index
+
 if OPENAI:
     llm = ChatOpenAI(model_name="gpt-3.5-turbo")
 else:
-    llm = HuggingFaceHub(
-        # dimension 1536
-        repo_id="google/flan-t5-xxl",
-        model_kwargs={"temperature": 0.5, "max_length": 512},
-    )
-    # local LLM
-    # llm = HuggingFacePipeline.from_model_id(
-    #     model_id="google/flan-t5-xxl",
-    #     task="text2text-generation",
-    #     model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
+    # llm = HuggingFaceHub(
+    #     # dimension 1536
+    #     repo_id="google/flan-t5-xxl",
+    #     model_kwargs={"temperature": 0.5, "max_length": 512},
     # )
+    # local LLM
+    llm = HuggingFacePipeline.from_model_id(
+        model_id="google/flan-t5-xxl",
+        task="text2text-generation",
+        model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
+    )
 
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
@@ -98,12 +105,16 @@ conversation_chain = ConversationalRetrievalChain.from_llm(
 
 st.session_state.conversation = conversation_chain
 
+
 def clear_text():
     st.session_state.question = st.session_state.query
     st.session_state.query = ""
 
+
 def get_answer():
-    result = st.session_state.conversation({"question": st.session_state.question, "chat_history": []})
+    result = st.session_state.conversation(
+        {"question": st.session_state.question, "chat_history": []}
+    )
 
     st.session_state.chat_history.append((st.session_state.question, result["answer"]))
     st.session_state.question = None
@@ -112,11 +123,33 @@ def get_answer():
         st.write(user_template.replace("{{MSG}}", query), unsafe_allow_html=True)
         st.write(bot_template.replace("{{MSG}}", answer), unsafe_allow_html=True)
 
+
+def get_pdf_text(pdf_files):
+    text = ""
+
+    for pdf_file in pdf_files:
+        reader = PdfReader(pdf_file)
+        for page in reader.pages:
+            text += page.extract_text()
+
+    return text
+
+
+def get_chunk_text(text):
+    text_splitter = CharacterTextSplitter(
+        separator="\n", chunk_size=500, chunk_overlap=200, length_function=len
+    )
+
+    chunks = text_splitter.split_text(text)
+
+    return chunks
+
+
 # query = None
 # chat_history = []
 
 # if len(sys.argv) > 1:
-    # query = sys.argv[1]
+#     query = sys.argv[1]
 
 # while True:
 #     if not query:
@@ -130,16 +163,41 @@ def get_answer():
 #     query = None
 
 #
-st.set_page_config(page_title="Chat with your own GPT", page_icon=":books:")
-
-st.write(css, unsafe_allow_html=True)
-
+if "vectorstore_index" not in st.session_state:
+    st.session_state.vectorstore_index = None
 if "conversation" not in st.session_state:
     st.session_state.conversation = None
 if "question" not in st.session_state:
     st.session_state.question = None
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+
+st.set_page_config(page_title="Chat with your own GPT", page_icon=":books:")
+
+st.write(css, unsafe_allow_html=True)
+
+with st.sidebar:
+    st.subheader("Upload your documents here: ")
+    pdf_files = st.file_uploader(
+        "Choose your PDF file and press OK", type=["pdf"], accept_multiple_files=True
+    )
+
+    if st.button("OK"):
+        with st.spinner("Processing your PDFs..."):
+            new_docs = []
+            for chunk in get_chunk_text(get_pdf_text(pdf_files)):
+                new_doc = Document(
+                    page_content=chunk,
+                    metadata={
+                        "source": "added pdf chunks",
+                    },
+                )
+                new_docs.append(new_doc)
+
+            st.session_state.vectorstore_index.vectorstore.add_documents(
+                new_docs,
+            )
+            st.write("DONE")
 
 st.header("Chat with your own GPT :books:")
 st.text_input("Ask anything to your own GPT: ", key="query", on_change=clear_text)

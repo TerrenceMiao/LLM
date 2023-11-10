@@ -8,3 +8,4 @@ sentence_transformers
 tiktoken
 faiss-cpu
 gpt4all
+PyPDF2

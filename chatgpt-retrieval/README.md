@@ -6,12 +6,18 @@ Here's the [YouTube Video](https://youtu.be/9AXP7tCI9PI).
 
 ## Installation
 
-Install [Langchain](https://github.com/hwchase17/langchain) and other required packages.
+Install [Langchain](https://github.com/hwchase17/langchain) and other required packages:
 
 ```
 $ pip install -r requirements.txt
 ```
 
+Install other dependent packages:
+
+```
+$ pip install streamlit
+$ pip install watchdog
+```
 Install `poppler` and `tesseract` on Mac:
 
 ```
@@ -35,6 +41,12 @@ Test reading `data/cat.pdf` file.
 ```
 $ python chatgpt.py "what is my cat's name"
 Your cat's name is Muffy.
+```
+
+Or GUI:
+
+```
+$ streamlit run chatgpt.py
 ```
 
 ## References

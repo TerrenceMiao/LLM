@@ -1,6 +1,10 @@
 import os
 import sys
 
+import streamlit as st
+
+from htmlTemplates import bot_template, user_template, css
+
 import openai
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain, RetrievalQA
@@ -28,11 +32,6 @@ OPENAI = False
 # Enable to save to disk & reuse the model (for repeated queries on the same data)
 PERSIST = True
 
-query = None
-
-if len(sys.argv) > 1:
-    query = sys.argv[1]
-
 if PERSIST and os.path.exists("persist"):
     print("Reusing index...\n")
     if OPENAI:
@@ -49,7 +48,9 @@ if PERSIST and os.path.exists("persist"):
         # AssertionError
         # embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
         # embeddings = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-large-en-v1.5")
-        embeddings = HuggingFaceEmbeddings(model_name="sangmini/msmarco-cotmae-MiniLM-L12_en-ko-ja")
+        embeddings = HuggingFaceEmbeddings(
+            model_name="sangmini/msmarco-cotmae-MiniLM-L12_en-ko-ja"
+        )
     vectorstore = Chroma(persist_directory="persist", embedding_function=embeddings)
     # vectorstore = FAISS.load_local("persist", embeddings)
     vectorstore_index = VectorStoreIndexWrapper(vectorstore=vectorstore)
@@ -73,37 +74,76 @@ else:
 if OPENAI:
     llm = ChatOpenAI(model_name="gpt-3.5-turbo")
 else:
-    # llm = HuggingFaceHub(
-    #     # dimension 1536
-    #     repo_id="google/flan-t5-xxl",
-    #     model_kwargs={"temperature": 0.5, "max_length": 512},
-    # )
-    # local LLM
-    llm = HuggingFacePipeline.from_model_id(
-        model_id="google/flan-t5-xxl",
-        task="text2text-generation",
-        model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
+    llm = HuggingFaceHub(
+        # dimension 1536
+        repo_id="google/flan-t5-xxl",
+        model_kwargs={"temperature": 0.5, "max_length": 512},
     )
+    # local LLM
+    # llm = HuggingFacePipeline.from_model_id(
+    #     model_id="google/flan-t5-xxl",
+    #     task="text2text-generation",
+    #     model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
+    # )
 
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
 conversation_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=vectorstore_index.vectorstore.as_retriever(
-        search_kwargs={"k": 7}, # send MORE the vectors to LLM, than original value 1
+        search_kwargs={"k": 7},  # send MORE the vectors to LLM, than original value 1
         memory=memory,
     ),
 )
 
-chat_history = []
+st.session_state.conversation = conversation_chain
+
+def clear_text():
+    st.session_state.question = st.session_state.query
+    st.session_state.query = ""
+
+def get_answer():
+    result = st.session_state.conversation({"question": st.session_state.question, "chat_history": []})
+
+    st.session_state.chat_history.append((st.session_state.question, result["answer"]))
+    st.session_state.question = None
+
+    for query, answer in st.session_state.chat_history:
+        st.write(user_template.replace("{{MSG}}", query), unsafe_allow_html=True)
+        st.write(bot_template.replace("{{MSG}}", answer), unsafe_allow_html=True)
+
+# query = None
+# chat_history = []
+
+# if len(sys.argv) > 1:
+    # query = sys.argv[1]
+
+# while True:
+#     if not query:
+#         query = input("Prompt: ")
+#     if query in ["exit", "quit", "q"]:
+#         sys.exit()
+#     result = conversation_chain({"question": query, "chat_history": chat_history})
+#     print(result["answer"])
+
+#     chat_history.append((query, result["answer"]))
+#     query = None
+
+#
+st.set_page_config(page_title="Chat with your own GPT", page_icon=":books:")
+
+st.write(css, unsafe_allow_html=True)
+
+if "conversation" not in st.session_state:
+    st.session_state.conversation = None
+if "question" not in st.session_state:
+    st.session_state.question = None
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+st.header("Chat with your own GPT :books:")
+st.text_input("Ask anything to your own GPT: ", key="query", on_change=clear_text)
 
 while True:
-    if not query:
-        query = input("Prompt: ")
-    if query in ["exit", "quit", "q"]:
-        sys.exit()
-    result = conversation_chain({"question": query, "chat_history": chat_history})
-    print(result["answer"])
-
-    chat_history.append((query, result["answer"]))
-    query = None
+    if st.session_state.question:
+        get_answer()

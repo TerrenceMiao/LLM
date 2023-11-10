@@ -1,0 +1,11 @@
+openai
+langchain
+chromadb
+chromadb
+unstructured
+unstructured[pdf]
+InstructorEmbedding
+sentence_transformers
+tiktoken
+faiss-cpu
+gpt4all

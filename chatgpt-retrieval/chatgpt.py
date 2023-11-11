@@ -32,6 +32,8 @@ import constants
 os.environ["OPENAI_API_KEY"] = constants.OPENAI_API_KEY
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = constants.HUGGINGFACEHUB_API_TOKEN
 
+DATA_PATH = "data/"
+
 #
 OPENAI = False
 
@@ -62,7 +64,7 @@ if PERSIST and os.path.exists("persist"):
     vectorstore_index = VectorStoreIndexWrapper(vectorstore=vectorstore)
 else:
     # loader = TextLoader("data/data.txt") # if only need data.txt file
-    loader = DirectoryLoader("data/")  # if loading from directory
+    loader = DirectoryLoader(DATA_PATH)  # if loading from directory
     if PERSIST:
         print("Creating local index...\n")
         # default vectorstore_cls is Chroma
@@ -133,6 +135,9 @@ def get_pdf_text(pdf_files):
         reader = PdfReader(pdf_file)
         for page in reader.pages:
             text += page.extract_text()
+        # Saving file
+        with open(os.path.join(DATA_PATH, pdf_file.name), "wb") as f:
+            f.write(pdf_file.getbuffer())
 
     return text
 

@@ -2,6 +2,7 @@ import os
 import sys
 
 import streamlit as st
+import time
 
 from htmlTemplates import bot_template, user_template, css
 
@@ -88,7 +89,8 @@ else:
     # )
     # local LLM
     llm = HuggingFacePipeline.from_model_id(
-        model_id="google/flan-t5-xxl",
+        # model_id="google/flan-t5-xxl",
+        model_id="google/flan-t5-base",
         task="text2text-generation",
         model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
     )
@@ -197,7 +199,11 @@ with st.sidebar:
             st.session_state.vectorstore_index.vectorstore.add_documents(
                 new_docs,
             )
-            st.write("DONE")
+
+            done = st.info("DONE")
+
+        time.sleep(10)
+        done.empty()
 
 st.header("Chat with your own GPT :books:")
 st.text_input("Ask anything to your own GPT: ", key="query", on_change=clear_text)

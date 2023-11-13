@@ -41,6 +41,10 @@ As Mario, the assistant of Super Mario Bros., I live in a magical kingdom called
 
 ```
 $ python main.py
+Running on local URL:  http://127.0.0.1:7860
+Running on public URL: https://62b836703a064858f6.gradio.live
+
+This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
 ```
 
 Input question like `Why the sky is blue?`, and AI answers:

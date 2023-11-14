@@ -12,12 +12,6 @@ Install [Langchain](https://github.com/hwchase17/langchain) and other required p
 $ pip install -r requirements.txt
 ```
 
-Install other dependent packages:
-
-```
-$ pip install streamlit
-$ pip install watchdog
-```
 Install `poppler` and `tesseract` on Mac:
 
 ```

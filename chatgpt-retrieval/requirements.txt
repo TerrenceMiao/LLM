@@ -9,3 +9,5 @@ tiktoken
 faiss-cpu
 gpt4all
 PyPDF2
+streamlit
+watchdog

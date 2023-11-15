@@ -82,7 +82,6 @@ else:
         # default vectorstore_cls is Chroma
         vectorstore_index = VectorstoreIndexCreator().from_loaders([loader])
 
-st.session_state.vectorstore_index = vectorstore_index
 
 if OPENAI:
     llm = ChatOpenAI(model_name="gpt-3.5-turbo")
@@ -97,8 +96,8 @@ else:
         # model_id="google/flan-t5-xxl",
         model_id="google/flan-t5-base",
         task="text2text-generation",
-        device_map="auto", # use the accelerate library
-        batch_size=2, # adjust as needed based on GPU map and model size
+        device_map="auto",  # use the accelerate library
+        batch_size=2,  # adjust as needed based on GPU map and model size
         model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
     )
 
@@ -111,8 +110,6 @@ conversation_chain = ConversationalRetrievalChain.from_llm(
         memory=memory,
     ),
 )
-
-st.session_state.conversation = conversation_chain
 
 
 def clear_text():
@@ -183,6 +180,9 @@ else:
         st.session_state.question = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
+
+    st.session_state.vectorstore_index = vectorstore_index
+    st.session_state.conversation = conversation_chain
 
     st.set_page_config(page_title="Chat with your own GPT", page_icon=":books:")
 

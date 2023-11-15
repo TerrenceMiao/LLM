@@ -35,6 +35,9 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] = constants.HUGGINGFACEHUB_API_TOKEN
 DATA_PATH = "data/"
 
 #
+CLI = False
+
+#
 OPENAI = False
 
 # Enable to save to disk & reuse the model (for repeated queries on the same data)
@@ -94,6 +97,8 @@ else:
         # model_id="google/flan-t5-xxl",
         model_id="google/flan-t5-base",
         task="text2text-generation",
+        device_map="auto", # use the accelerate library
+        batch_size=2, # adjust as needed based on GPU map and model size
         model_kwargs={"do_sample": True, "temperature": 0.5, "max_length": 512},
     )
 
@@ -152,67 +157,69 @@ def get_chunk_text(text):
     return chunks
 
 
-# query = None
-# chat_history = []
+if CLI:
+    query = None
+    chat_history = []
 
-# if len(sys.argv) > 1:
-#     query = sys.argv[1]
+    if len(sys.argv) > 1:
+        query = sys.argv[1]
 
-# while True:
-#     if not query:
-#         query = input("Prompt: ")
-#     if query in ["exit", "quit", "q"]:
-#         sys.exit()
-#     result = conversation_chain({"question": query, "chat_history": chat_history})
-#     print(result["answer"])
+    while True:
+        if not query:
+            query = input("Prompt: ")
+        if query in ["exit", "quit", "q"]:
+            sys.exit()
+        result = conversation_chain({"question": query, "chat_history": chat_history})
+        print(result["answer"])
 
-#     chat_history.append((query, result["answer"]))
-#     query = None
+        chat_history.append((query, result["answer"]))
+        query = None
+else:
+    if "vectorstore_index" not in st.session_state:
+        st.session_state.vectorstore_index = None
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    if "question" not in st.session_state:
+        st.session_state.question = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []
 
-#
-if "vectorstore_index" not in st.session_state:
-    st.session_state.vectorstore_index = None
-if "conversation" not in st.session_state:
-    st.session_state.conversation = None
-if "question" not in st.session_state:
-    st.session_state.question = None
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
+    st.set_page_config(page_title="Chat with your own GPT", page_icon=":books:")
 
-st.set_page_config(page_title="Chat with your own GPT", page_icon=":books:")
+    st.write(css, unsafe_allow_html=True)
 
-st.write(css, unsafe_allow_html=True)
+    with st.sidebar:
+        st.subheader("Upload your documents here: ")
+        pdf_files = st.file_uploader(
+            "Choose your PDF file and press OK",
+            type=["pdf"],
+            accept_multiple_files=True,
+        )
 
-with st.sidebar:
-    st.subheader("Upload your documents here: ")
-    pdf_files = st.file_uploader(
-        "Choose your PDF file and press OK", type=["pdf"], accept_multiple_files=True
-    )
+        if st.button("OK"):
+            with st.spinner("Processing your PDFs..."):
+                new_docs = []
+                for chunk in get_chunk_text(get_pdf_text(pdf_files)):
+                    new_doc = Document(
+                        page_content=chunk,
+                        metadata={
+                            "source": "added pdf chunks",
+                        },
+                    )
+                    new_docs.append(new_doc)
 
-    if st.button("OK"):
-        with st.spinner("Processing your PDFs..."):
-            new_docs = []
-            for chunk in get_chunk_text(get_pdf_text(pdf_files)):
-                new_doc = Document(
-                    page_content=chunk,
-                    metadata={
-                        "source": "added pdf chunks",
-                    },
+                st.session_state.vectorstore_index.vectorstore.add_documents(
+                    new_docs,
                 )
-                new_docs.append(new_doc)
 
-            st.session_state.vectorstore_index.vectorstore.add_documents(
-                new_docs,
-            )
+                done = st.info("DONE")
 
-            done = st.info("DONE")
+            time.sleep(10)
+            done.empty()
 
-        time.sleep(10)
-        done.empty()
+    st.header("Chat with your own GPT :books:")
+    st.text_input("Ask anything to your own GPT: ", key="query", on_change=clear_text)
 
-st.header("Chat with your own GPT :books:")
-st.text_input("Ask anything to your own GPT: ", key="query", on_change=clear_text)
-
-while True:
-    if st.session_state.question:
-        get_answer()
+    while True:
+        if st.session_state.question:
+            get_answer()

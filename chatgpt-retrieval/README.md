@@ -46,3 +46,4 @@ $ streamlit run chatgpt.py
 - [Langchain Chatbot for Multiple PDFs: Harnessing GPT and Free Huggingface LLM Alternatives](https://medium.com/@abdullahw72/langchain-chatbot-for-multiple-pdfs-harnessing-gpt-and-free-huggingface-llm-alternatives-9a106c239975)
 - [Leverage pgvector and Amazon Aurora PostgreSQL for Natural Language Processing, Chatbots and Sentiment Analysis](https://aws.amazon.com/blogs/database/leverage-pgvector-and-amazon-aurora-postgresql-for-natural-language-processing-chatbots-and-sentiment-analysis/)
 - [How to Get the Right Vector Embeddings](https://thenewstack.io/how-to-get-the-right-vector-embeddings/)
+- [What is a Vector Database & How Does it Work? Use Cases + Examples](https://www.pinecone.io/learn/vector-database/)

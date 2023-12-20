@@ -88,3 +88,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## References
+
+- Recreating the experience of the staged Gemini demo, but for real — using GPT4 Vision and Whisper, _https://jidefr.medium.com/recreating-the-experience-of-the-staged-gemini-demo-but-for-real-using-gpt4-vision-and-whisper-fc559c38bd24_
+- GPT Video - Reproducing the Gemini demo using GPT 4 Vision, _https://github.com/jide/gpt-video_

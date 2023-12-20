@@ -426,6 +426,8 @@ export default function Chat() {
               className="object-contain w-full border border-gray-500"
               alt="Grid"
               src={imagesGridUrl || transparentPixel}
+              width={1280}
+              height={960}
             />
           </div>
         </div>

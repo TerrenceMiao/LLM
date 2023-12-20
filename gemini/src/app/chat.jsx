@@ -5,6 +5,7 @@ import { useChat } from "ai/react";
 import useSilenceAwareRecorder from "silence-aware-recorder/react";
 import useMediaRecorder from "@wmik/use-media-recorder";
 import mergeImages from "merge-images";
+import Image from "next/image";
 import { useLocalStorage } from "../lib/use-local-storage";
 
 const INTERVAL = 250;
@@ -421,7 +422,7 @@ export default function Chat() {
           </div>
           <div className="space-y-2">
             <div className="font-semibold opacity-50">Captures:</div>
-            <img
+            <Image
               className="object-contain w-full border border-gray-500"
               alt="Grid"
               src={imagesGridUrl || transparentPixel}

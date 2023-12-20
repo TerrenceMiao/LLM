@@ -2,7 +2,7 @@ import fs from "fs";
 import { temporaryFile } from "tempy";
 import { v4 as uuidv4 } from "uuid";
 
-export async function POST(req: any) {
+export async function POST(req: Request) {
   const formData = await req.formData();
   const imageBase64 = formData.get("image") as string;
 

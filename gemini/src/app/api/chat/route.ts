@@ -19,7 +19,7 @@ const systemMessage = (
 9. If the user gives instructions, follow them precisely.
 ${lang ? `10. Assistant must speak in this language : "${lang}".` : ""}`;
 
-export async function POST(req: any) {
+export async function POST(req: Request) {
   const json = await req.json();
   const { messages, token, lang } = json;
 

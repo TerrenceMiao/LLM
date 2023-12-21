@@ -1,5 +1,5 @@
-import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
+import OpenAI from "openai";
 
 export const runtime = "edge";
 
@@ -37,10 +37,10 @@ export async function POST(req: Request) {
     model: "gpt-4-vision-preview",
     stream: true,
     temperature: 0.5,
-    // @ts-ignore
-    messages: [{ role: "system", content: systemMessage(lang) }].concat(
-      messages
-    ),
+    messages: [
+      { role: "system", content: systemMessage(lang || "en") },
+      ...messages,
+    ],
     max_tokens: 2000,
   });
 

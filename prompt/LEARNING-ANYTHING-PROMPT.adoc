@@ -1,0 +1,51 @@
+AI's Learning Anything Prompt
+=============================
+
+_"Give a man a fish, and he can feed himself for a day; teach a man to code and he can feed him for a lifetime."_ - 🐟 The Fisherman's Prompt
+
+[source,text]
+----
+I'm a [your level] [profession] and I want to learn [topic] so I can [objective]. Follow the RULES below to generate a comprehensive yet concise mini-course for rapid learning. The course should contain chapters that teach me about these SUB_TOPICS. Make sure the chapters fit my level, profession and topic. Ask for clarification if you need more information about my knowledge.
+
+SUB_TOPICS
+- [topic 1]
+- [topic 2]
+- [topic 3]
+
+RULES
+- Use concrete examples to explain every concept
+- Use emojis to add expression
+- Generate one chapter at a time
+- Ask for feedback at the end of each chapter
+- Ask if I need clarification at the end of each chapter
+- With each concept, explain real world use cases
+- After we complete every sub topic, present a list of additional topics we can explore that align with my level, profession, topic and objective.
+----
+
+For examples:
+
+- Pytest
+
+[source,text]
+----
+I'm a Senior Developer and I want to learn pytesting so I can write safer durable code. Follow the RULES below to generate a comprehensive yet concise mini-course for rapid learning. The course should contain chapters that teach me about these SUB_TOPICS. Make sure the chapters fit my level, profession and topic. Ask for clarification if you need more information about my knowledge.
+
+SUB_TOPICS
+- Fundamentals
+- Faster testing
+- Advanced testing
+
+RULES
+- Use concrete examples to explain every concept
+- Use emojis to add expression
+- Generate one chapter at a time
+- Ask for feedback at the end of each chapter
+- Ask if I need clarification at the end of each chapter
+- With each concept, explain real world use cases
+- After we complete every sub topic, present a list of additional topics we can explore that align with my level, profession, topic and objective.
+----
+
+References
+----------
+
+- "With this prompt, I learned Pytest in 12 minutes" - Learn ANYTHING with LLMs, _https://www.youtube.com/watch?v=gS5u3j1OXjg_

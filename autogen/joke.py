@@ -8,7 +8,7 @@ $ python joke.py
 import autogen
 
 llm_config = {"config_list": [{
-    "model": "gpt-3.5-turbo-mm",
+    "model": "gpt-3.5-turbo",
 }]}
 
 llm_config_local = {"config_list": [{

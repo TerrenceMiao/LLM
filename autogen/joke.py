@@ -3,6 +3,10 @@
 
 $ rm -rf .cache
 $ python joke.py
+
+References
+
+- AutoGen Fully Local ... And Without Coding https://www.ai-for-devs.com/products/autogen-fully-local-and-without-coding
 """
 
 import autogen

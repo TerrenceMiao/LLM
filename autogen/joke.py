@@ -1,9 +1,9 @@
-'''
-"Tell a joke" by using AutoGen with local LLM - TheBloke/Llama-2-7B-Chat-GGUF, llama-2-7b-chat.Q4_K_M.gguf. To run:
+"""
+"Tell a joke" by using AutoGen with local LLM - TheBloke/Llama-2-7B-Chat-GGUF, llama-2-7b-chat.Q4_K_M.gguf. Run:
 
 $ rm -rf .cache
 $ python joke.py
-'''
+"""
 
 import autogen
 

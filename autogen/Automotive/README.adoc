@@ -1,0 +1,9 @@
+Real World Project: Developing an AI Team for a Garage
+======================================================
+
+
+References
+----------
+
+- Real World Project: Developing an AI Team for a Garage, _https://www.ai-for-devs.com/products/real-world-project-developing-an-ai-team-for-a-garage_
+- mailtrap, _https://mailtrap.io/_

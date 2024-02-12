@@ -28,7 +28,7 @@ local_llm = OpenAI(
 
 ollama_llm = Ollama(model="qwen:14b")
 
-default_llm = openai_llm
+default_llm = ollama_llm
 
 bob = Agent(
     role = "Bob",

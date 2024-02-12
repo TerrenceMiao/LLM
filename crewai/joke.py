@@ -9,11 +9,16 @@ References
 """
 
 from crewai import Agent, Task, Crew, Process
-from langchain_openai import OpenAI
+from langchain_openai import OpenAI, ChatOpenAI
 from langchain_community.llms import Ollama
 from dotenv import load_dotenv
 
 load_dotenv() # take environment variables from .env.
+
+openai_llm = ChatOpenAI(
+    model_name = "gpt-3.5-turbo",
+    temperature = 0
+)
 
 local_llm = OpenAI(
     base_url = "http://localhost:1234/v1",
@@ -23,7 +28,7 @@ local_llm = OpenAI(
 
 ollama_llm = Ollama(model="qwen:14b")
 
-default_llm = ollama_llm
+default_llm = openai_llm
 
 bob = Agent(
     role = "Bob",

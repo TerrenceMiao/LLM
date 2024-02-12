@@ -16,6 +16,7 @@ import os
 import constants
 
 os.environ["OPENAI_API_KEY"] = constants.OPENAI_API_KEY
+os.environ["MODEL_NAME"] = "gpt-3.5-turbo"
 
 local_llm = OpenAI(
     base_url = "http://localhost:1234/v1",
@@ -23,7 +24,7 @@ local_llm = OpenAI(
     temperature = 0,
 )
 
-ollama_llm = Ollama(model="openhermes")
+ollama_llm = Ollama(model="qwen:14b")
 
 default_llm = ollama_llm
 
@@ -37,7 +38,7 @@ bob = Agent(
 
 alice = Agent(
     role = "Alice",
-    goal = "Criticizing the joke",
+    goal = "Criticizing a joke",
     backstory = "You love criticizing jokes.",
     llm = default_llm,
     verbose = True,

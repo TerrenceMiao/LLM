@@ -11,12 +11,9 @@ References
 from crewai import Agent, Task, Crew, Process
 from langchain_openai import OpenAI
 from langchain_community.llms import Ollama
+from dotenv import load_dotenv
 
-import os
-import constants
-
-os.environ["OPENAI_API_KEY"] = constants.OPENAI_API_KEY
-os.environ["MODEL_NAME"] = "gpt-3.5-turbo"
+load_dotenv() # take environment variables from .env.
 
 local_llm = OpenAI(
     base_url = "http://localhost:1234/v1",

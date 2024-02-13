@@ -11,13 +11,15 @@ References
 
 import autogen
 
+## OpenAI
 llm_config = {"config_list": [{
     "model": "gpt-3.5-turbo",
 }]}
 
+## Ollama
 llm_config_local = {"config_list": [{
-    "model": "llama2",
-    "base_url": "http://localhost:1234/v1",
+    "model": "qwen:14b",
+    "base_url": "http://localhost:11434/v1",
 }]}
 
 bob = autogen.AssistantAgent(

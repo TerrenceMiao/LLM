@@ -2,13 +2,19 @@ import os
 import openai
 
 from crewai import Agent, Task, Crew, Process
+from langchain_community.llms import Ollama
 from langchain_community.tools import DuckDuckGoSearchRun
 
-# LM Studio
-os.environ["OPENAI_API_BASE"] = "http://localhost:1234/v1"
-os.environ["OPENAI_API_KEY"] = "sk-"
+## Ollama
+ollama_llm = Ollama(model="qwen:14b")
+
+## LM Studio
+# os.environ["OPENAI_API_BASE"] = "http://localhost:1234/v1"
+# os.environ["OPENAI_API_KEY"] = "sk-"
 ## OpenHermes-2.5-Mistral-7B-GGUF / openhermes-2.5-mistral-7b.Q4_K_M could generate the best result
-#os.environ["OPENAI_MODEL_NAME"] = "openhermes"
+# os.environ["OPENAI_MODEL_NAME"] = "openhermes"
+
+default_llm = ollama_llm
 
 search_tool = DuckDuckGoSearchRun()
 
@@ -19,6 +25,7 @@ researcher = Agent(
     Your expertise lies in identifying emerging trends and technologies in AI and
     data science. You have a knack for dissecting complex data and presenting
     actionable insights.""",
+    llm = default_llm,
     verbose=True,
     allow_delegation=False,
     tools=[search_tool],
@@ -30,6 +37,7 @@ writer = Agent(
     backstory="""You are a renowned Tech Content Strategist, known for your insightful
     and engaging articles on technology and innovation. With a deep understanding of
     the tech industry, you transform complex concepts into compelling narratives.""",
+    llm = default_llm,
     verbose=True,
     allow_delegation=False,
 )

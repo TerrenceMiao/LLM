@@ -15,11 +15,13 @@ from dotenv import load_dotenv
 
 load_dotenv() # take environment variables from .env.
 
+## OpenAI
 openai_llm = ChatOpenAI(
     model_name = "gpt-3.5-turbo",
     temperature = 0
 )
 
+## Ollama
 ollama_llm = Ollama(model="qwen:14b")
 
 # LM Studio

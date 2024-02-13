@@ -7,6 +7,7 @@ from langchain_community.tools import DuckDuckGoSearchRun
 # LM Studio
 os.environ["OPENAI_API_BASE"] = "http://localhost:1234/v1"
 os.environ["OPENAI_API_KEY"] = "sk-"
+## OpenHermes-2.5-Mistral-7B-GGUF / openhermes-2.5-mistral-7b.Q4_K_M could generate the best result
 #os.environ["OPENAI_MODEL_NAME"] = "openhermes"
 
 search_tool = DuckDuckGoSearchRun()

@@ -20,13 +20,15 @@ openai_llm = ChatOpenAI(
     temperature = 0
 )
 
+ollama_llm = Ollama(model="qwen:14b")
+
+# LM Studio
+# Better with model Mixtral-8x7B-Instruct-v0.1-GGUF / mixtral-8x7b-instruct-v0.1.Q5_K_M
 local_llm = OpenAI(
     base_url = "http://localhost:1234/v1",
     api_key = "null",
     temperature = 0,
 )
-
-ollama_llm = Ollama(model="qwen:14b")
 
 default_llm = ollama_llm
 
@@ -52,7 +54,7 @@ tell_joke = Task(
 )
 
 criticize_joke = Task(
-    description = "Criticize joke bob tells",
+    description = "Criticize joke Bob tells",
     agent = alice,
 )
 

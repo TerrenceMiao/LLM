@@ -2,6 +2,7 @@ import os
 import openai
 
 from crewai import Agent, Task, Crew, Process
+from langchain_openai import OpenAI
 from langchain_community.llms import Ollama
 from langchain_community.tools import DuckDuckGoSearchRun
 
@@ -9,10 +10,12 @@ from langchain_community.tools import DuckDuckGoSearchRun
 ollama_llm = Ollama(model="qwen:14b")
 
 ## LM Studio
-# os.environ["OPENAI_API_BASE"] = "http://localhost:1234/v1"
-# os.environ["OPENAI_API_KEY"] = "sk-"
 ## OpenHermes-2.5-Mistral-7B-GGUF / openhermes-2.5-mistral-7b.Q4_K_M could generate the best result
-# os.environ["OPENAI_MODEL_NAME"] = "openhermes"
+local_llm = OpenAI(
+    base_url = "http://localhost:1234/v1",
+    api_key = "null",
+    temperature = 0,
+)
 
 default_llm = ollama_llm
 

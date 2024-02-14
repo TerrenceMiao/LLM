@@ -2,9 +2,17 @@ import os
 import openai
 
 from crewai import Agent, Task, Crew, Process
-from langchain_openai import OpenAI
+from langchain_openai import OpenAI, ChatOpenAI
 from langchain_community.llms import Ollama
 from langchain_community.tools import DuckDuckGoSearchRun
+from dotenv import load_dotenv
+
+load_dotenv() # take environment variables from .env.
+
+## OpenAI
+openai_llm = ChatOpenAI(
+    temperature = 0,
+)
 
 ## Ollama
 ollama_llm = Ollama(model="qwen:14b")

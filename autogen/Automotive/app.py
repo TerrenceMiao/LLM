@@ -7,10 +7,6 @@ from inventory import get_inventory, get_inventory_declaration
 from mail_sender import send_mail, send_email_declaration
 from flask import Flask, request, render_template
 
-## Test Images
-# https://teslamotorsclub.com/tmc/attachments/camphoto_1144747756-jpg.650059/
-# https://cdn.motor1.com/images/mgl/o6rkL/s1/tesla-model-3-broken-screen.webp
-
 app = Flask(__name__)
 
 config_list = autogen.config_list_from_json("OAI_CONFIG_LIST")
@@ -21,8 +17,6 @@ config_list_4v = autogen.config_list_from_json(
         "model": ["gpt-4-vision-preview"],
     },
 )
-
-llm_config = {"config_list": config_list}
 
 use_docker = False
 
@@ -61,14 +55,14 @@ customer_support_agent = autogen.AssistantAgent(
 )
 
 groupchat = autogen.GroupChat(
-    agents=[user_proxy, damage_analyst, inventory_manager, customer_support_agent],
+    agents=[user_proxy, inventory_manager, customer_support_agent, damage_analyst],
     messages=[],
 )
 
 manager = autogen.GroupChatManager(
     groupchat=groupchat,
     code_execution_config={"use_docker": use_docker},
-    llm_config=llm_config,
+    llm_config={"config_list": config_list},
 )
 
 
@@ -97,8 +91,8 @@ def initiate_chat(image_url, message, customer_email):
                 Step 3: Customer Support Agent composes and sends a response email to the customer.
 
                 Customer's Message: '{message}'
+                Email of the customer: '{customer_email}'
                 Image Reference: '{image_url}'
-                Customers Email: '{customer_email}'
             """,
     )
 

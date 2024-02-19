@@ -1,7 +1,7 @@
 Real World Project: Developing an AI Team for a Garage
 ======================================================
 
-To run, setup OPENAI_API_KEY in both runtime environment and `OAI_CONFIG_LIST` file. Then:
+To run, setup **OPENAI_API_KEY** in both runtime environment and `OAI_CONFIG_LIST` file. And **SMTP_PASSWORD** to access https://mailtrap.io, then:
 
 ```
 $ rm -rf .cache/ __pycache__/

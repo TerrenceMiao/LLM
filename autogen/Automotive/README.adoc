@@ -9,7 +9,13 @@ $ rm -rf .cache/ __pycache__/
 $ python app.py
 ```
 
-Goto http://127.0.0.1:5000/, input contact email e.g. `test@test.com`, a message e.g. `It's broken`, and damaged vehicle's photo e.g. https://teslamotorsclub.com/tmc/attachments/camphoto_1144747756-jpg.650059/ or https://cdn.motor1.com/images/mgl/o6rkL/s1/tesla-model-3-broken-screen.webp, click **Submit** button, the output in debugging window:
+image::Car Service.png[Car Service]
+
+Goto http://127.0.0.1:5000/, input contact email e.g. `test@test.com`, a message e.g. `It's broken`, and damaged vehicle's photo e.g. https://teslamotorsclub.com/tmc/attachments/camphoto_1144747756-jpg.650059/ or https://cdn.motor1.com/images/mgl/o6rkL/s1/tesla-model-3-broken-screen.webp, click **Submit** button.
+
+image::Damaged Car.png[Damaged Car]
+
+The output in debugging window:
 
 ```
 Mail: test@test.com
@@ -86,7 +92,11 @@ customer_support_agent (to chat_manager):
 TERMINATE
 ```
 
+image::Inventory Database.png[Inventory Database]
+
 Customer will receive an email, read as:
+
+image::Customer Email.png[Customer Email]
 
 ```
 Dear Customer,

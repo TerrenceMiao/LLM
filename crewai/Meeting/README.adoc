@@ -1,0 +1,9 @@
+Creating The Ultimate Ai Dream Team For Meetings
+================================================
+
+
+References
+----------
+
+- Creating The Ultimate Ai Dream Team For Meetings: Crewai Part 1, _https://www.youtube.com/watch?v=2ZsG3PV91cg_
+- CrewAIMeetingPrep, _https://github.com/AI-FOR-DEVS/CrewAIMeetingPrep_

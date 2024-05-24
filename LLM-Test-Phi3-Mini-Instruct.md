@@ -166,32 +166,118 @@ Here is a question in Spanish: "¿Cuáles son los beneficios de la meditación?"
 Calculate the derivative of the function f(x) = 3x³ — 5x + 4.
 ----
 
-To calculate the derivative of the given function, we will apply basic differentiation rules:
+To calculate the derivative of the given function, we will apply basic differentiation rules: $f(x) = 3x³ — 5x + 4$
 
-$$
-f(x) = 3x³ — 5x + 4
-$$
-
-Using the power rule for derivatives $$d/dx [x^n] = n * x^(n-1)$$, and recognizing that the derivative of a constant
+Using the power rule for derivatives $d/dx [x^n] = n * x^(n-1)$, and recognizing that the derivative of a constant
 is zero, we can differentiate each term separately:
 
-The derivative of 3x³ with respect to x:
+The derivative of $3x³$ with respect to $x$: $d/dx (3x³) = 3 * d/dx(x³) = 3 * 3x^(3-1) = 9x²$
 
-$$d/dx (3x³) = 3 * d/dx(x³) = 3 * 3x^(3-1) = 9x²$$
+The derivative of $-5x$ with respect to x: Written in standard mathematical notation, this would be: $d/dx (-5x) = -5$. The derivative of a constant like $+4$ is zero: $d/dx (4) = 0$
 
-The derivative of -5x with respect to x: Written in standard mathematical notation, this would be:
+Combining these results gives us the derivative of the function f(x): $f'(x) = 9x² — 5$. So the derivative of $f(x)$ with respect to $x$ is: $9x² − 5$
 
-$$d/dx (-5x) = -5$$
 
-The derivative of a constant like +4 is zero:
+Solve for $x$: $(− \frac{1}{3})(−4 - 3x) = \frac{1}{2}$
+---
 
-$$d/dx (4) = 0$$
+Options:
 
-Combining these results gives us the derivative of the function f(x):
+A. $− \frac{5}{6}$
+B. $\frac{7}{6}$
+C. $\frac{5}{3}$
+D. $\frac{1}{6}$
 
-$$f'(x) = 9x² — 5$$
 
-So, the derivative of f(x) with respect to x is $$9x² − 5$$.
+What is the complexity of Chess? Write it in big O notation.
+---
+
+The complexity of chess cannot be precisely encapsulated by Big O notation, as traditional computational complexity
+analysis applies to algorithms rather than games. However, if we attempt to conceptualize the problem space and
+decision tree complexity for a game like chess from an algorithmic perspective, it's extraordinarily high due to its
+combinatorial nature.
+
+The number of possible board configurations in chess is extremely vast (approximately $10^{43}$), and even with
+constraints that eliminate illegal moves based on the current state of play, determining a winning strategy involves
+evaluating an enormous search space. To put it into context using Big O notation, if we were to naively consider
+each possible board position as a single "state," analyzing every possible game from start to finish (which is not
+practical), you would be looking at the complexity of all reachable states in chess being on the order of $10^{43}$.
+This number grows even more for considering the best move sequences, making it an NP-hard problem.
+
+However, this does not translate directly into Big O notation as used in algorithmic analysis because such a model
+doesn't account for practical methods like alpha-beta pruning (used in computer chess programs) that drastically
+reduce the number of nodes evaluated by cutting off branches of less promising moves early. Nonetheless, to give an
+idea in terms of complexity:
+
+The search space reduction through strategies and heuristics used in chess algorithms typically results in a more
+manageable computational model for computerized play, rather than analyzing every possible game outcome
+exhaustively. Therefore, the "complexity" or effective evaluation time for modern chess engines varies greatly
+depending on their specific strategy but isn't directly comparable to Big O notation used for algorithmic
+complexities like $O(n^2)$ or $O(\log n)$.
+
+In conclusion, while you cannot assign a precise Big O complexity to the game of chess itself, its combinatorial
+nature and vast search space make analyzing it through computational lenses challenging.
+
+
+What is the complexity of Go? Write it in big O notation.
+---
+
+Go, like many programming languages, doesn't have a direct "complexity" measure in Big O notation as this concept
+primarily applies to algorithms or data structures within the language rather than the language itself. However,
+when analyzing algorithm efficiency in Go (or any language), you would express time complexity and space complexity
+using Big O notation.
+
+Here are examples of how complexities for common operations might be described in Big O terms:
+
+1. **Array Access**: Constant time or $O(1)$.
+2. **Searching a Sorted Array (Binary Search)**: Logarithmic time, $O(\log n)$.
+3. **Insertion/Deletion from an Array (with Shifting)**: Linear time, $O(n)$.
+4. **Hash Table Lookup**: Average case is constant time, $O(1)$ assuming a good hash function with no collisions;
+worst case can be linear if many elements collide to the same bucket, $O(n)$.
+5. **Bubble Sort/Insertion Sort**: Quadratic time, $O(n^2)$.
+6. **Quicksort or Mergesort**: Logarithmic average and worst case, $O(n \log n)$, though Quicksort has a potential
+worst-case of linear time if the pivot selection isn't optimal.
+7. **Linear Search in an Unsorted Array**: Linear time, $O(n)$.
+
+Keep in mind that Go itself doesn't dictate these complexities; rather, it offers standard library data structures
+and language features which developers use to implement algorithms with various performance characteristics
+described by Big O notation.
+
+
+Where was the most famous site of the mystery cults in Greece?
+---
+
+Options:
+
+A. Ephesus
+B. Corinth
+C. Athens
+D. Eleusis
+
+The most famous site associated with the mystery cults in ancient Greece is D. Eleusis. The Eleusinian Mysteries were religious rites held annually in honor of the goddess Demeter and her daughter Persephone at Eleusis, near Athens. These mysteries are considered to be among the most important secretive rituals from antiquity, attracting participants from across Greece and beyond.
+
+While Ephesus (A) was indeed an influential city in ancient times with its own religious significance, especially related to the cult of Artemis and later Christianity, it is not as renowned for mystery cults specifically. Corinth (B) was another significant city-state known for various cultural developments but again did not hold a primary place among the famous Greek mystery cult sites. Athens (C), while home to many religious practices and festivals like the Panathenaic Festival, is not renowned for its association with mystery cults compared to Eleusis.
+
+
+Which of the following is the body cavity that contains the pituitary gland?
+---
+
+Options:
+
+A. Abdominal
+B. Cranial
+C. Pleural
+D. Spinal
+
+The correct answer to which body cavity contains the pituitary gland is B. Cranial. The cranial cavity, also known as the dorsal cranial fossa of the skull, houses the brain and associated structures such as the pituitary gland. Specifically, the pituitary gland resides in a depression of the sphenoid bone called the sella turcica (Saddle-shaped cavity).
+
+The other options do not contain the pituitary gland:
+
+A. The abdominal cavity contains many vital organs like the stomach, intestines, liver, and others but does not house the brain or the pituitary gland.
+
+C. The pleural cavities surround each lung with a thin layer of fluid, providing lubrication for lung movement during respiration.
+
+D. The spinal cavity contains the central nervous system structures within the vertebral column but does not include the pituitary gland as it is part of the cranial cavity and located above the spine.
 
 
 References

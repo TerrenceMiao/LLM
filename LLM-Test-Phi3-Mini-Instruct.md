@@ -190,7 +190,6 @@ D. $\frac{1}{6}$
 
 To solve the equation $(- \frac{1}{3})(-4 - 3x) = \frac{1}{2}$, we'll first distribute $-\frac{1}{3}$ to both terms in the parentheses:
 
-
 $$-\frac{1}{3} \cdot (-4) - \frac{1}{3} \cdot (-3x) = \frac{1}{2}$$
 $$\Rightarrow \frac{4}{3} + x = \frac{1}{2}$$
 

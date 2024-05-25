@@ -188,6 +188,20 @@ B. $\frac{7}{6}$
 C. $\frac{5}{3}$
 D. $\frac{1}{6}$
 
+To solve the equation $(- \frac{1}{3})(-4 - 3x) = \frac{1}{2}$, we'll first distribute $-\frac{1}{3}$ to both terms in the parentheses:
+
+
+$$-\frac{1}{3} \cdot (-4) - \frac{1}{3} \cdot (-3x) = \frac{1}{2}$$
+$$\Rightarrow \frac{4}{3} + x = \frac{1}{2}$$
+
+Next, we'll isolate $x$ by moving the fraction $\frac{4}{3}$ to the other side of the equation:
+
+$$\Rightarrow x = \frac{1}{2} - \frac{4}{3}$$
+$$ \left(\frac{3}{6}\right) - \left(\frac{8}{6}\right)$$
+$$ -\frac{5}{6}$$
+
+So, the solution is $x = -\frac{5}{6}$.
+
 
 What is the complexity of Chess? Write it in big O notation.
 ---

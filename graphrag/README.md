@@ -708,7 +708,7 @@ Artificial Intelligence in Healthcare
 2024-07-20 19:46:03,428 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 ```
 
-Start up Open WebUI:
+Start up `Open WebUI`:
 
 ```
 $ open-webui serve
@@ -734,7 +734,11 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 ```
 
-![GraphRAG](knowledge-graph.png "GraphRAG")
+Configure `Open WebUI`:
+
+![Open WebUI Configuration](Open%20WebUI%20Configuration.png "Open WebUI Configuration")
+
+![GraphRAG](GraphRAG.png "GraphRAG")
 
 - Show Knowledge Graph
 

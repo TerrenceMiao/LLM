@@ -11,7 +11,7 @@ llm:
   # max_tokens: 4000
   # request_timeout: 180.0
   # api_base: https://<instance>.openai.azure.com
-  # api_base: http://127.0.0.1:11434/v1
+  api_base: http://127.0.0.1:11434/v1
   # api_version: 2024-02-15-preview
   # organization: <organization_id>
   # deployment_name: <azure_model_deployment_name>

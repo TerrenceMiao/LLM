@@ -254,7 +254,7 @@ def main():
             打印图的统计信息
             调用可视化函数
     """
-    directory = './ragtest/artifacts'  # 替换为实际的目录路径
+    directory = './artifacts'  # 替换为实际的目录路径
     df = read_parquet_files(directory)
 
     if df.empty:

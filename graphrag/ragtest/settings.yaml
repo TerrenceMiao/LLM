@@ -2,17 +2,16 @@
 encoding_model: cl100k_base
 skip_workflows: []
 llm:
-  api_key: ${GRAPHRAG_API_KEY}
-  # api_key: ollama
+  # api_key: ${GRAPHRAG_API_KEY}
+  api_key: ollama
   type: openai_chat # or azure_openai_chat
-  model: gpt-4-turbo-preview
-  # model: gemma2
+  # model: gpt-4-turbo-preview
+  model: gemma2
   model_supports_json: true # recommended if this is available for your model.
   # max_tokens: 4000
   # request_timeout: 180.0
   # api_base: https://<instance>.openai.azure.com
   # api_base: http://127.0.0.1:11434/v1
-  # api_base: http://localhost:3040/v1
   # api_version: 2024-02-15-preview
   # organization: <organization_id>
   # deployment_name: <azure_model_deployment_name>
@@ -33,14 +32,13 @@ embeddings:
   ## parallelization: override the global parallelization settings for embeddings
   async_mode: threaded # or asyncio
   llm:
-    api_key: ${GRAPHRAG_API_KEY}
-    # api_key: lm-studio
+    # api_key: ${GRAPHRAG_API_KEY}
+    api_key: lm-studio
     type: openai_embedding # or azure_openai_embedding
-    model: text-embedding-3-small
-    # model: nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.f16.gguf
+    # model: text-embedding-3-small
+    model: nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.f16.gguf
     # api_base: https://<instance>.openai.azure.com
-    # api_base: http://127.0.0.1:1234/v1
-    # api_base: http://localhost:3040/v1
+    api_base: http://127.0.0.1:1234/v1
     # api_version: 2024-02-15-preview
     # organization: <organization_id>
     # deployment_name: <azure_model_deployment_name>

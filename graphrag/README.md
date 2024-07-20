@@ -1,5 +1,14 @@
+GraphRAG and Knowledge Graph
+============================
+
+**GraphRAG** (Graph Retrieval-Augmented Generation) is an advanced approach in natural language processing (NLP) that combines the strengths of graph-based knowledge retrieval with large language models (LLMs) such as GPT-4.
+
+GraphRAG is a structured, hierarchical approach to Retrieval-Augmented Generation (RAG), as opposed to naive semantic-search approaches using plain text snippets. The GraphRAG process involves extracting a knowledge graph out of raw text, building a community hierarchy, generating summaries for these communities, and then leveraging these structures when performing RAG-based tasks.
+
+This technique is particularly useful for reasoning about complex information and private datasets that the LLM has never seen before, such as an enterprise’s proprietary research, business documents, or communications. By using LLM-generated knowledge graphs, GraphRAG provides substantial improvements in question-and-answer performance when conducting document analysis of complex information.
+
 GraphRAG
-========
+--------
 
 Running GraphRAG with local LLM.
 
@@ -57,4 +66,22 @@ ZeroDivisionError: Weights sum to zero, can't be normalized
 $ python knowledge-graph.py
 ```
 
-![Knowledge Graph](knowledge-graph.png "nowledge Graph")
+![Knowledge Graph](knowledge-graph.png "Knowledge Graph")
+
+neo4j
+-----
+
+![neo4j query](neo4j-query.png "neo4j query")
+
+![neo4j graph](neo4j-graph.png "neo4j graph")
+
+![neo4j llm](neo4j-llm.png "neo4j llm")
+
+References
+----------
+
+- Understanding GraphRAG: A Comparison with RAG, _https://www.capestart.com/resources/blog/what-is-graphrag-is-it-better-than-rag/_
+- Welcome to GraphRAG, _https://microsoft.github.io/graphrag/_
+- GraphRAG: Unlocking LLM discovery on narrative private data, _https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/_
+- Project GraphRAG - Microsoft Research: Overview, _https://www.microsoft.com/en-us/research/project/graphrag/overview/_
+- GitHub - microsoft/graphrag: A modular graph-based Retrieval-Augmented, _https://github.com/microsoft/graphrag_

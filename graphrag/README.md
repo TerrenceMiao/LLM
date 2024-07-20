@@ -472,6 +472,270 @@ $ python -m graphrag.query --root ./ragtest --method local "Show me some prompts
 ZeroDivisionError: Weights sum to zero, can't be normalized
 ```
 
+- Run
+
+Start up GraphRAG emulating OpenAI API:
+
+```
+$ python graphrag-openai-api.py
+2024-07-20 19:25:22,702 - __main__ - INFO - Starting server on port 8012
+INFO:     Started server process [90708]
+INFO:     Waiting for application startup.
+2024-07-20 19:25:22,718 - __main__ - INFO - Initializing search engines and question generator...
+2024-07-20 19:25:22,718 - __main__ - INFO - Setting up LLM and embedder
+2024-07-20 19:25:22,851 - __main__ - INFO - LLM and embedder setup complete
+2024-07-20 19:25:22,851 - __main__ - INFO - Loading context data
+2024-07-20 19:25:22,902 - __main__ - INFO - Number of claim records: 37
+2024-07-20 19:25:22,902 - __main__ - INFO - Context data loading complete
+2024-07-20 19:25:22,902 - __main__ - INFO - Setting up search engines
+2024-07-20 19:25:22,902 - __main__ - INFO - Search engines setup complete
+2024-07-20 19:25:22,902 - __main__ - INFO - Initialization complete.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8012 (Press CTRL+C to quit)
+2024-07-20 19:25:44,187 - __main__ - INFO - Received model list request
+2024-07-20 19:25:44,187 - __main__ - INFO - Sending model list: {'object': 'list', 'data': [{'id': 'graphrag-local-search:latest', 'object': 'model', 'created': 1721367544, 'owned_by': 'graphrag'}, {'id': 'graphrag-global-search:latest', 'object': 'model', 'created': 1721372544, 'owned_by': 'graphrag'}, {'id': 'tavily-search:latest', 'object': 'model', 'created': 1721382544, 'owned_by': 'tavily'}, {'id': 'full-model:latest', 'object': 'model', 'created': 1721387544, 'owned_by': 'combined'}]}
+INFO:     127.0.0.1:63331 - "GET /v1/models HTTP/1.1" 200 OK
+2024-07-20 19:44:53,739 - __main__ - INFO - Received chat completion request: model='full-model:latest' messages=[Message(role='user', content='What are the topic themes in this story?')] temperature=1.0 top_p=1.0 n=1 stream=True stop=None max_tokens=None presence_penalty=0 frequency_penalty=0 logit_bias=None user=None
+2024-07-20 19:44:53,739 - __main__ - INFO - Processing prompt: What are the topic themes in this story?
+2024-07-20 19:44:54,119 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-07-20 19:44:54,235 - graphrag.query.structured_search.local_search.search - INFO - GENERATE ANSWER: 1721468693.7394. QUERY: What are the topic themes in this story?
+2024-07-20 19:44:55,905 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-20 19:45:07,123 - graphrag.query.context_builder.community_context - INFO - Computing community weights...
+2024-07-20 19:45:18,673 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-20 19:45:18,678 - graphrag.query.structured_search.global_search.search - INFO - Map response: {
+    "points": [
+        {
+            "description": "The interconnected roles of ChatGPT and Curriculum Learning in AI development, focusing on their impact on tasks like text generation, sentiment analysis, and machine learning [Data: Reports (4)]",
+            "score": 95
+        },
+        {
+            "description": "The significance of Sentiment Analysis in NLP and its application in analyzing customer and product reviews, as well as tweets, to improve customer engagement [Data: Reports (1)]",
+            "score": 90
+        },
+        {
+            "description": "Advancements in AI text generation and learning techniques, highlighting the role of reinforcement learning and controlled generation prompts in enhancing text generation and language translation [Data: Reports (3)]",
+            "score": 90
+        },
+        {
+            "description": "The role of Text Classification in organizing and analyzing textual data across various applications, including news articles, emails, and text generation prompts [Data: Reports (2)]",
+            "score": 85
+        },
+        {
+            "description": "The use of Summarization and Question-Answering Prompts in ChatGPT for efficient information processing and generation of human-like text tailored to specific tasks [Data: Reports (0)]",
+            "score": 85
+        }
+    ]
+}
+2024-07-20 19:45:19,357 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-20 19:45:41,291 - __main__ - INFO - Formatted search result: # 🔥🔥🔥Comprehensive Search Results
+
+## 🔥🔥🔥Local Retrieval Results
+The data provided does not contain a specific story but rather discusses various techniques and applications related to artificial intelligence, text generation, and classification.
+However, we can infer several overarching themes from the information presented across the different sections:
+
+### Advancements in AI Techniques
+The reports highlight significant advancements in AI, particularly in text generation and learning techniques.
+Reinforcement learning, controlled generation prompts, and interpretable soft prompts are emphasized as pivotal in enhancing AI's capabilities in text generation, language translation, and question answering [Data: Advancements in AI Text Generation and Learning Techniques].
+
+### Text Classification and Its Applications
+Another key theme revolves around the role of text classification in organizing and analyzing textual data.
+This includes its application to news articles, emails, and the generation of text through prompts.
+The versatility and indispensability of text classification in processing digital communication and information are underscored [Data: Text Classification and Its Applications].
+
+### Integration of AI in Digital Communication
+The integration of AI, particularly models like ChatGPT, in digital communication and information processing is a recurring theme.
+ChatGPT's application in news article clustering and its ability to handle diverse tasks such as story writing, language translation, and text completion highlight the evolving nature of text analysis and the significant role AI plays in enhancing text classification capabilities [Data: Text Classification and Its Applications; Advancements in AI Text Generation and Learning Techniques].
+
+### Prompt Engineering
+Prompt engineering emerges as a crucial technique across the discussions, showcasing how carefully crafted prompts can guide AI models like ChatGPT to generate text that meets specific needs and requirements.
+This includes a variety of prompts for different tasks such as adversarial prompts, summarization prompts, and reinforcement learning prompts, illustrating the depth and breadth of applications for prompt engineering in AI [Data: Sources (16, 23, 5, 7, +more)].
+
+In summary, while the data does not describe a narrative story, it presents a comprehensive overview of current themes in AI research and application, focusing on text generation, classification, and the innovative use of AI in digital communication.
+These themes reflect the broader trends in AI development, emphasizing the importance of advanced learning techniques, the versatility of AI in processing and generating text, and the critical role of prompt engineering in refining AI's capabilities.
+
+## 🔥🔥🔥Global Retrieval Results
+The dataset and its analysis reveal several key themes in the development and application of artificial intelligence (AI), particularly in natural language processing (NLP).
+These themes not only highlight the current state of AI technology but also point towards future directions in AI research and development.
+Below, we delve into these themes, synthesizing insights from the provided data.
+
+### ChatGPT and Curriculum Learning in AI Development
+
+One of the most significant themes is the interconnected roles of ChatGPT and curriculum learning in AI development.
+ChatGPT, as a tool, has been pivotal in advancing tasks such as text generation, sentiment analysis, and machine learning.
+Curriculum learning, which involves progressively training models on increasingly difficult tasks, has been instrumental in enhancing the capabilities of AI systems like ChatGPT.
+This approach has led to improvements in how AI understands and generates human-like text, making it more effective in various applications [Data: Reports (4)].
+
+### Sentiment Analysis in NLP
+
+Another critical theme is the significance of sentiment analysis within NLP.
+Sentiment analysis is crucial for interpreting customer and product reviews, tweets, and other forms of feedback.
+By analyzing the sentiment behind texts, AI can provide more nuanced insights into customer engagement and preferences.
+This capability is essential for businesses looking to understand and improve their customer interactions [Data: Reports (1)].
+
+### Advancements in AI Text Generation
+
+The advancements in AI text generation and learning techniques, particularly through reinforcement learning and controlled generation prompts, represent a major theme.
+These techniques have significantly improved the quality and relevance of text generated by AI, facilitating better language translation and content creation.
+The use of controlled prompts, for example, allows for more precise and contextually appropriate outputs [Data: Reports (3)].
+
+### Text Classification Across Applications
+
+Text classification plays a vital role in organizing and analyzing textual data.
+This theme encompasses the use of AI to categorize and process various types of text, from news articles to emails.
+By efficiently classifying text, AI systems can streamline information retrieval and content management, making it easier to derive insights from large datasets [Data: Reports (2)].
+
+### Summarization and Question-Answering
+
+Lastly, the use of summarization and question-answering prompts in ChatGPT underscores the theme of efficient information processing.
+These capabilities enable ChatGPT to generate concise summaries and respond to queries with human-like accuracy.
+Such features are crucial for applications requiring quick and reliable information processing, from customer service to research [Data: Reports (0)].
+
+In summary, these themes illustrate the breadth of AI's impact on NLP and beyond.
+From enhancing text generation to improving customer engagement through sentiment analysis, AI continues to evolve, offering new tools and techniques for tackling complex tasks.
+
+## 🔥🔥🔥Tavily Search Results
+# Search Results
+
+## [200 Common Themes in Literature - ProWritingAid](https://prowritingaid.com/themes-in-literature)
+
+Here’s a full list of themes you can use in your writing:
+Abuse of power
+Adultery
+...
+Wealth
+Willpower
+Winning and losing
+Wisdom
+Work
+Working class struggles
+Xenophobia
+Youth
+Theme Examples in Popular Novels
+If you’ve decided on a literary theme but you’re not sure how to present it in your novel, it’s a good idea to check out how other writers have incorporated it into their novels. Here are some more universal literary themes:
+Human nature
+Free will
+Self-awareness
+Coming of age
+Hope
+Jealousy
+Justice
+Fear
+Freedom
+Friendship
+Bravery
+Happiness
+Passion
+Kindness
+Trust
+War
+Love writing? 200 Common Themes in Literature
+Sarah Oakley
+The theme of a novel is the main point of the story and what it’s really about. We experience the themes of the novel through the eyes of the narrator, Nick Carraway, who gradually loses his optimism for the American dream as the narrative progresses.
+ Here’s our list of common themes in literature:
+Love: the theme of love appears in novels within many genres, as it can discuss the love of people, pets, objects, and life.
+
+## [Story themes list: 100+ ideas to explore in your novel](https://michaelbjorkwrites.com/2019/09/26/story-themes-list-ideas-for-your-novel/)
+
+How to use the list. Before you jump in, there's something I want to point out. The themes I included below are subjects and not messages.I explain the difference in my post that answered what is the theme of a story, but to quickly summarize, a subject is the broad topic you explore, while the message is what you're trying to say about that subject.
+
+## [What is Theme? A Look at 20 Common Themes in Literature](https://writers.com/common-themes-in-literature)
+
+His leadership brings about purges, rule changes, and the return of inequality among the livestock, while Napoleon himself starts to look more and more like a human—in other words, he resembles the demagoguery of Mr. Jones and the abuse that preceded the Animalist revolution.
+ The older waiter doesn’t have the privilege of turning away: like the old man, he has a house but not a home to return to, and he knows that someone may need the comfort of “a clean and pleasant cafe.”
+ Since the Russian Revolution was a rejection of the Russian monarchy, equating Stalin to the monarchy reinforces the corrupting influence of power, and the need to elect moral individuals to posts of national leadership.
+ We analyze the following:
+Theme Examples: Power and Corruption in the Novel Animal Farm
+At its simplest, the novel Animal Farm by George Orwell is an allegory that represents the rise and moral decline of Communism in Russia. There’s “plot,” which refers to the literal events in the book, and there’s “character,” which refers to the people in the book and the struggles they overcome.
+
+## [The 25 Most Common Themes in Literature and Why They Matter](https://thewritepractice.com/common-themes-in-literature/)
+
+It takes a little practice, but try this technique and see if it doesn't help.
+Types of Story: a shortcut to finding theme in a story
+As a part of his book The Write Structure, Joe has identified several types of story that help writers plan and execute their books. Here are a number of ways you could frame the theme with specific support from the story:
+As you can see, the theme is what the story suggests about the story value.
+ The Catcher in the Rye by J.D. Salinger (1951)
+summary: An expelled prep school student, Holden Caulfield, has a number of coming-of-age misadventures on his way home for the holiday break.
+theme: Innocence can only be protected from the risks of growing up for so long.
+ In this case, I could look at the children who are willing to participate, the contrast of the summer day and the dark deed, the insistence that the stoning will keep them prosperous, even though there is no evidence of such.
+ How do you identify theme in a story?
+Types of story: a shortcut to theme
+Common themes in literature with examples
+Why theme matters for writers
+Practice
+
+## [Theme of a Story | Meaning, Common Themes & Examples](https://www.papertrue.com/blog/theme-of-a-story/)
+
+The theme of a story is the central element of its narrative. It is the underlying message that the author wants to convey to the reader. Serving as the backbone of a story, the theme of a story ties together all of its elements. A theme also works as a catalyst to bring together different narratives in one plot.
+
+INFO:     127.0.0.1:64452 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+2024-07-20 19:45:59,088 - __main__ - INFO - Received chat completion request: model='full-model:latest' messages=[Message(role='user', content='Here is the query:\nWhat are the topic themes in this story?\n\nCreate a concise, 3-5 word phrase with an emoji as a title for the previous query. Suitable Emojis for the summary can be used to enhance understanding but avoid quotation marks or special formatting. RESPOND ONLY WITH THE TITLE TEXT.\n\nExamples of titles:\n📉 Stock Market Trends\n🍪 Perfect Chocolate Chip Recipe\nEvolution of Music Streaming\nRemote Work Productivity Tips\nArtificial Intelligence in Healthcare\n🎮 Video Game Development Insights')] temperature=1.0 top_p=1.0 n=1 stream=False stop=None max_tokens=50 presence_penalty=0 frequency_penalty=0 logit_bias=None user=None
+2024-07-20 19:45:59,088 - __main__ - INFO - Processing prompt: Here is the query:
+What are the topic themes in this story?
+
+Create a concise, 3-5 word phrase with an emoji as a title for the previous query. Suitable Emojis for the summary can be used to enhance understanding but avoid quotation marks or special formatting. RESPOND ONLY WITH THE TITLE TEXT.
+
+Examples of titles:
+📉 Stock Market Trends
+🍪 Perfect Chocolate Chip Recipe
+Evolution of Music Streaming
+Remote Work Productivity Tips
+Artificial Intelligence in Healthcare
+🎮 Video Game Development Insights
+2024-07-20 19:45:59,409 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-07-20 19:45:59,505 - graphrag.query.structured_search.local_search.search - INFO - GENERATE ANSWER: 1721468759.088682. QUERY: Here is the query:
+What are the topic themes in this story?
+
+Create a concise, 3-5 word phrase with an emoji as a title for the previous query. Suitable Emojis for the summary can be used to enhance understanding but avoid quotation marks or special formatting. RESPOND ONLY WITH THE TITLE TEXT.
+
+Examples of titles:
+📉 Stock Market Trends
+🍪 Perfect Chocolate Chip Recipe
+Evolution of Music Streaming
+Remote Work Productivity Tips
+Artificial Intelligence in Healthcare
+🎮 Video Game Development Insights
+2024-07-20 19:46:01,070 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-20 19:46:02,765 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-20 19:46:02,768 - graphrag.query.structured_search.global_search.search - INFO - Map response:
+    {
+        "points": [
+            {
+                "description": "🔍 AI Development Insights",
+                "score": 95
+            }
+        ]
+    }
+2024-07-20 19:46:03,428 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+```
+
+Start up Open WebUI:
+
+```
+$ open-webui serve
+Loading WEBUI_SECRET_KEY from file, not provided as an environment variable.
+Loading WEBUI_SECRET_KEY from /Users/terrence/Projects/LLM/graphrag/.webui_secret_key
+/usr/local/anaconda3/envs/graphrag/lib/python3.11
+
+  ___                    __        __   _     _   _ ___
+ / _ \ _ __   ___ _ __   \ \      / /__| |__ | | | |_ _|
+| | | | '_ \ / _ \ '_ \   \ \ /\ / / _ \ '_ \| | | || |
+| |_| | |_) |  __/ | | |   \ V  V /  __/ |_) | |_| || |
+ \___/| .__/ \___|_| |_|    \_/\_/ \___|_.__/ \___/|___|
+      |_|
+
+
+v0.3.10 - building the best open-source AI user interface.
+
+https://github.com/open-webui/open-webui
+
+INFO:     Started server process [87335]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+```
+
+![GraphRAG](knowledge-graph.png "GraphRAG")
+
 - Show Knowledge Graph
 
 ```

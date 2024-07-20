@@ -447,29 +447,80 @@ without passing `errors` and catch exceptions explicitly instead
 
 - Test
 
-Global query:
+GraphRAG global query, with `OpenAI`:
 
 ```
 $ python -m graphrag.query --root ./ragtest --method global "What are the topic themes in this story?"
 
 INFO: Reading settings from ragtest/settings.yaml
-creating llm client with {'api_key': 'REDACTED,len=6', 'type': "openai_chat", 'model': 'gemma2', 'max_tokens': 4000, 'request_timeout': 180.0, 'api_base': 'http://127.0.0.1:11434/v1', 'api_version': None, 'organization': None, 'proxy': None, 'cognitive_services_endpoint': None, 'deployment_name': None, 'model_supports_json': True, 'tokens_per_minute': 0, 'requests_per_minute': 0, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25}
+creating llm client with {'api_key': 'REDACTED,len=56', 'type': "openai_chat", 'model': 'gpt-4-turbo-preview', 'max_tokens': 4000, 'request_timeout': 180.0, 'api_base': None, 'api_version': None, 'organization': None, 'proxy': None, 'cognitive_services_endpoint': None, 'deployment_name': None, 'model_supports_json': True, 'tokens_per_minute': 0, 'requests_per_minute': 0, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25}
 
-SUCCESS: Global Search Response: The dataset appears to center around two primary communities of interest:
+SUCCESS: Global Search Response: The dataset analysis reveals several key themes in the development and application of artificial intelligence (AI), particularly in natural language processing (NLP) and machine learning. These themes not only highlight the current state of AI technologies but also point towards their future direction and potential impact on various sectors.
 
-* **ChatGPT Prompt Engineering:** This community focuses on crafting effective prompts for the ChatGPT language model, likely exploring techniques to elicit desired responses and maximize its capabilities. [Data: Reports (1, 0)]
+### ChatGPT and Curriculum Learning in AI Development
 
-* **Instructions Prompt Technique:**  This community investigates the "Instructions Prompt Technique," a specific method of prompting ChatGPT that involves providing clear instructions for the desired task or outcome. The dataset may contain examples of this technique in action and analyses of its effectiveness. [Data: Reports (1, 0)]
+A significant theme is the interconnected roles of ChatGPT and curriculum learning in AI development, emphasizing their influence on tasks such as text generation, sentiment analysis, and machine learning. ChatGPT, with its advanced capabilities in generating human-like text, and curriculum learning, which focuses on the incremental learning process, together play a crucial role in enhancing AI's understanding and generation of natural language [Data: Reports (4)].
 
-These communities highlight the growing interest in leveraging large language models like ChatGPT for various applications, with a particular emphasis on refining prompting strategies to achieve specific goals.
+### Sentiment Analysis in NLP
+
+Another prominent theme is the significance of sentiment analysis within NLP. This involves analyzing customer and product reviews, tweets, and other forms of textual data to gauge sentiments, which can be pivotal for improving customer engagement and understanding market trends. Sentiment analysis stands out as a critical tool for businesses and researchers alike, aiming to extract valuable insights from vast amounts of unstructured text data [Data: Reports (1)].
+
+### Advancements in AI Text Generation
+
+The advancements in AI text generation and learning techniques, particularly through reinforcement learning and controlled generation prompts, represent a key theme. These advancements are enhancing the quality and applicability of text generation and language translation, making AI systems more versatile and effective in handling complex language tasks [Data: Reports (3)].
+
+### Text Classification
+
+Text classification's role in organizing and analyzing textual data across various applications, including news articles, emails, and text generation prompts, is another significant theme. This process is essential for managing and making sense of the ever-growing digital textual content, enabling more efficient information retrieval and content management [Data: Reports (2)].
+
+### Summarization and Question-Answering Prompts in ChatGPT
+
+Lastly, the use of summarization and question-answering prompts in ChatGPT for efficient information processing and the generation of human-like text tailored to specific tasks is highlighted. This theme underscores the potential of ChatGPT in transforming how we interact with information, making it more accessible and understandable through concise summaries and direct answers to queries [Data: Reports (0)].
+
+These themes collectively illustrate the dynamic and rapidly evolving landscape of AI and NLP technologies. They underscore the importance of continuous innovation and the integration of advanced learning techniques to further enhance the capabilities and applications of AI systems in various domains.
 ```
 
-Local query:
+GraphRAG local query, with `OpenAI`:
 
 ```
 $ python -m graphrag.query --root ./ragtest --method local "Show me some prompts about Knowledge Generation."
-...
-ZeroDivisionError: Weights sum to zero, can't be normalized
+
+INFO: Reading settings from ragtest/settings.yaml
+creating llm client with {'api_key': 'REDACTED,len=56', 'type': "openai_chat", 'model': 'gpt-4-turbo-preview', 'max_tokens': 4000, 'request_timeout': 180.0, 'api_base': None, 'api_version': None, 'organization': None, 'proxy': None, 'cognitive_services_endpoint': None, 'deployment_name': None, 'model_supports_json': True, 'tokens_per_minute': 0, 'requests_per_minute': 0, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25}
+creating embedding llm client with {'api_key': 'REDACTED,len=56', 'type': "openai_embedding", 'model': 'text-embedding-3-small', 'max_tokens': 4000, 'request_timeout': 180.0, 'api_base': None, 'api_version': None, 'organization': None, 'proxy': None, 'cognitive_services_endpoint': None, 'deployment_name': None, 'model_supports_json': None, 'tokens_per_minute': 0, 'requests_per_minute': 0, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25}
+
+SUCCESS: Local Search Response: Knowledge Generation is a crucial aspect of leveraging AI models like ChatGPT for creating or discovering new information. While the data tables provided do not directly list specific prompts labeled under "Knowledge Generation," we can infer and construct related prompts based on the principles of prompt engineering techniques discussed in the sources. Here are some prompts inspired by the techniques and applications mentioned in the data:
+
+### Knowledge Generation Prompts
+
+#### 1. Generating New Insights from Data
+**Task:** Analyze a dataset to uncover new trends or patterns.
+**Instructions:** The model should examine the dataset provided, identify any significant trends or patterns, and generate insights that were not explicitly stated.
+**Prompt Formula:** "Given the following dataset [insert dataset], identify and describe any significant trends or patterns that emerge from the data."
+
+#### 2. Creating Novel Solutions to Problems
+**Task:** Generate innovative solutions to a specified problem.
+**Instructions:** The model should use its understanding of various domains to propose novel solutions to the problem described, considering constraints and objectives.
+**Prompt Formula:** "Given the problem [insert problem], propose innovative solutions that meet the following criteria: [insert criteria]."
+
+#### 3. Developing New Concepts
+**Task:** Develop a new concept or theory based on provided information.
+**Instructions:** The model should synthesize the information provided to develop a new concept or theory that offers fresh insights or perspectives.
+**Prompt Formula:** "Based on the following information [insert information], develop a new concept or theory that explains or encompasses these details."
+
+#### 4. Predicting Future Trends
+**Task:** Predict future trends in a specific field based on current data.
+**Instructions:** The model should analyze current data and trends to make predictions about future developments in the specified field.
+**Prompt Formula:** "Using the current data and trends in [insert field], predict future developments and describe the potential impact on the field."
+
+#### 5. Exploring Hypothetical Scenarios
+**Task:** Explore the outcomes of a hypothetical scenario.
+**Instructions:** The model should consider a hypothetical scenario provided and explore possible outcomes, implications, and considerations.
+**Prompt Formula:** "Given the hypothetical scenario [insert scenario], explore possible outcomes and their implications for [insert context]."
+
+These prompts are designed to leverage the capabilities of AI models like ChatGPT for Knowledge Generation, encouraging the creation or discovery of new information across various domains. While the specific technique of "Knowledge Generation" is not directly mentioned in the provided data, the principles underlying these prompts are consistent with the advanced prompt engineering techniques discussed, such as controlled generation prompts, interpretable soft prompts, and reinforcement learning prompts [Data: Sources (24, 35, 19); Relationships (34, 26, 12)].
+
+By carefully crafting prompts that guide the AI in specific directions, users can harness the power of ChatGPT to generate knowledge, innovate, and predict, thereby expanding the boundaries of understanding and creativity in their respective fields.
 ```
 
 - Run

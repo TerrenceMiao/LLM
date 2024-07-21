@@ -523,6 +523,37 @@ These prompts are designed to leverage the capabilities of AI models like ChatGP
 By carefully crafting prompts that guide the AI in specific directions, users can harness the power of ChatGPT to generate knowledge, innovate, and predict, thereby expanding the boundaries of understanding and creativity in their respective fields.
 ```
 
+```
+$ python -m graphrag.query --root ./ragtest --method local "Who is Scrooge, and what are his main relationships?"
+
+INFO: Reading settings from ragtest/settings.yaml
+[2024-07-21T02:26:12Z WARN  lance::dataset] No existing dataset at /Users/terrence/Projects/LLM/graphrag/lancedb/description_embedding.lance, it will be created
+creating llm client with {'api_key': 'REDACTED,len=56', 'type': "openai_chat", 'model': 'gpt-4o', 'max_tokens': 4000, 'request_timeout': 180.0, 'api_base': 'https://api.openai.com/v1', 'api_version': None, 'organization': None, 'proxy': None, 'cognitive_services_endpoint': None, 'deployment_name': None, 'model_supports_json': True, 'tokens_per_minute': 0, 'requests_per_minute': 0, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25}
+creating embedding llm client with {'api_key': 'REDACTED,len=56', 'type': "openai_embedding", 'model': 'text-embedding-ada-002', 'max_tokens': 4000, 'request_timeout': 180.0, 'api_base': 'https://api.openai.com/v1', 'api_version': None, 'organization': None, 'proxy': None, 'cognitive_services_endpoint': None, 'deployment_name': None, 'model_supports_json': None, 'tokens_per_minute': 0, 'requests_per_minute': 0, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25}
+
+SUCCESS: Local Search Response: I don't have information on a specific entity named "Scrooge" in the provided data tables. However, I can provide some general information about the character Ebenezer Scrooge from Charles Dickens' classic novella "A Christmas Carol," which might be what you're referring to.
+
+### Ebenezer Scrooge: Character Overview
+
+Ebenezer Scrooge is the main character in Charles Dickens' "A Christmas Carol." He is depicted as a miserly, cold-hearted old man who despises Christmas and everything associated with it. Scrooge is known for his catchphrase, "Bah! Humbug!" which he uses to express his disdain for Christmas cheer and festivities.
+
+### Main Relationships
+
+1. **Jacob Marley**: Scrooge's former business partner, who appears as a ghost to warn Scrooge about the consequences of his miserly ways. Marley's ghost is burdened with heavy chains, symbolizing the greed and selfishness he exhibited in life.
+
+2. **Bob Cratchit**: Scrooge's underpaid and overworked clerk. Despite Scrooge's harsh treatment, Cratchit remains kind-hearted and optimistic. His family, particularly his ill son Tiny Tim, plays a crucial role in Scrooge's transformation.
+
+3. **Fred**: Scrooge's cheerful and warm-hearted nephew, who consistently invites Scrooge to Christmas dinner despite being repeatedly rebuffed. Fred represents the joy and generosity of the Christmas spirit.
+
+4. **The Ghosts of Christmas Past, Present, and Yet to Come**: These three spirits visit Scrooge on Christmas Eve to show him the impact of his actions on himself and others. The Ghost of Christmas Past reveals Scrooge's own history, the Ghost of Christmas Present shows him the current joy and suffering around him, and the Ghost of Christmas Yet to Come presents a grim future if he does not change his ways.
+
+### Scrooge's Transformation
+
+Throughout the novella, Scrooge undergoes a significant transformation. Initially, he is a symbol of greed and selfishness, but by the end of the story, he becomes generous and caring, embodying the true spirit of Christmas. This change is primarily driven by the insights and warnings provided by the ghosts and the realization of the impact of his actions on others, particularly the Cratchit family.
+
+If you were referring to a different "Scrooge" or need information from the provided data tables, please provide more context or specify the dataset.
+```
+
 - Run
 
 Start up GraphRAG emulating OpenAI API:

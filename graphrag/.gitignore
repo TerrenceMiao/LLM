@@ -1,6 +1,7 @@
 .env
 __pycache__
 
+ragtest/cache
 ragtest/output
 artifacts
 artifacts*/entity_description_embeddings.lance

@@ -46,7 +46,36 @@ This translation attempts to capture the essence of the original English idiom. 
 
 The last part is an idiomatic translation of "warmed-up cow." In Chinese, there isn't a direct equivalent to this English expression, so I've translated it to convey the meaning of something unexciting or ordinary.
 
-_by **claude-3-5-sonnet-20240620**_
+_by **Claude 3.5 Sonnet**_
+
+9.9 and 9.11, which one is bigger?
+---
+
+Let's compare these two numbers step by step:
+
+1. Both numbers have the same whole number part (9), so we need to look at the decimal part to determine which is larger.
+
+2. For 9.9:
+   - The decimal part is 0.9
+   - This can be written as 0.90 in expanded form
+
+3. For 9.11:
+   - The decimal part is 0.11
+
+4. When comparing decimals, we can compare each decimal place from left to right:
+   - In the tenths place (first decimal place):
+     9.9 has 9
+     9.11 has 1
+   - 9 is greater than 1
+
+5. Since the tenths place of 9.9 is greater than the tenths place of 9.11, we don't need to look any further.
+
+Conclusion: 9.9 is bigger than 9.11.
+
+This might seem counterintuitive at first because we're used to thinking that 11 is greater than 9. However, in decimal notation, the position of the digits is crucial. In this case, 0.9 represents nine-tenths, which is greater than 0.11, which represents eleven-hundredths.
+
+_by **Claude 3.5 Sonnet**_
+
 
 References
 ----------

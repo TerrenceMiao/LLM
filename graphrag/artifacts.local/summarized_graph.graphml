@@ -1,0 +1,534 @@
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d6" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d5" for="edge" attr.name="description" attr.type="string" />
+  <key id="d4" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d3" for="node" attr.name="entity_type" attr.type="string" />
+  <key id="d2" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="type" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="&quot;IBRAHIM JOHN&quot;">
+      <data key="d0">"PERSON"</data>
+      <data key="d1">"Ibrahim John is the author of the book 'The Art of Asking ChatGPT for High-Quality Answers'."</data>
+      <data key="d2">cf9db84499f9aaa75d58fe4ce8030081</data>
+    </node>
+    <node id="&quot;NZUNDA TECHNOLOGIES LIMITED&quot;">
+      <data key="d0">"ORGANIZATION"</data>
+      <data key="d1">Nzunda Technologies Limited is a company founded by Ibrahim, and it is also the publisher of a book. 
+</data>
+      <data key="d2">cf9db84499f9aaa75d58fe4ce8030081,d0c7e350d2c1544dc17c19f7ea33793e</data>
+    </node>
+    <node id="&quot;CHATGPT&quot;">
+      <data key="d0">"TECHNOLOGY"</data>
+      <data key="d1">ChatGPT is a large language model that can generate text based on prompts or instructions. It is capable of producing human-like text and is considered state-of-the-art in its field.  The AI language model has been utilized as a tool for generating text within a book, demonstrating its versatility and practical applications. 
+</data>
+      <data key="d2">13f920b58a5dfdd13b8d109c7ce20fa8,258b1635b1269969561b9e95aaaff370,41186a60fddae7fc713c03a659b487b8,4ede7847c2d336763a2bc385da50e2a6,57026a3a2ef4aeb0fc9c017468b2b683,91e6b0e202a0a81a81592f0c00b6f9b9,cf9db84499f9aaa75d58fe4ce8030081</data>
+    </node>
+    <node id="&quot;THE ART OF ASKING CHATGPT FOR HIGH-QUALITY ANSWERS&quot;">
+      <data key="d0">"BOOK"</data>
+      <data key="d1">"This is the title of the book written by Ibrahim John."</data>
+      <data key="d2">cf9db84499f9aaa75d58fe4ce8030081</data>
+    </node>
+    <node id="&quot;CHAPTER 3: ROLE PROMPTING&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 3: Role Prompting is a section in the book that discusses role prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 4: STANDARD PROMPTS&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 4: Standard Prompts is a section in the book that discusses standard prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 5: ZERO, ONE AND FEW SHOT PROMPTING&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 5: Zero, One and Few Shot Prompting is a section in the book that discusses zero, one, and few shot prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 6: &#8220;LET&#8217;S THINK ABOUT THIS&#8221; PROMPT&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 6: &#8220;Let&#8217;s think about this&#8221; prompt is a section in the book that discusses a specific type of prompt."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 7: SELF-CONSISTENCY PROMPT&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 7: Self-Consistency Prompt is a section in the book that discusses self-consistency prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 8: SEED-WORD PROMPT&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 8: Seed-word Prompt is a section in the book that discusses seed-word prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 9: KNOWLEDGE GENERATION PROMPT&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 9: Knowledge Generation prompt is a section in the book that discusses knowledge generation prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;CHAPTER 10: KNOWLEDGE INTEGRATION PROMPTS&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 10: Knowledge Integration prompts is a section in the book that discusses knowledge integration prompting techniques."</data>
+      <data key="d2">5b9e0ad6aff46a679c6ce33a347aae1c</data>
+    </node>
+    <node id="&quot;THE ART OF ASKING CHATGPT FOR HIGH-QUALITY ANSWERS: A COMPLETE GUIDE TO PROMPT ENGINEERING TECHNIQUES&quot;">
+      <data key="d0">"BOOK"</data>
+      <data key="d1">"This book is a comprehensive guide to understanding and utilizing various prompt techniques used to generate high-quality answers from ChatGPT."</data>
+      <data key="d2">91e6b0e202a0a81a81592f0c00b6f9b9</data>
+    </node>
+    <node id="&quot;PROMPT ENGINEERING TECHNIQUES&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5,91e6b0e202a0a81a81592f0c00b6f9b9</data>
+    </node>
+    <node id="&quot;PERSON&quot;">
+      <data key="d0">"AUTHOR"</data>
+      <data key="d1">**PERSON** is the author of the book "The Art of Asking ChatGPT for High-Quality Answers: A complete Guide to Prompt Engineering Techniques".  The book focuses on the subject of prompt engineering. 
+
+
+</data>
+      <data key="d2">91e6b0e202a0a81a81592f0c00b6f9b9,d298f622f1b5ef1bd6d53bb5afc6e4ac</data>
+    </node>
+    <node id="&quot;TRANSFORMER ARCHITECTURE&quot;">
+      <data key="d0">"TECHNOLOGY"</data>
+      <data key="d1">"The Transformer Architecture allows ChatGPT to handle large amounts of data and generate high-quality text."</data>
+      <data key="d2">13f920b58a5dfdd13b8d109c7ce20fa8</data>
+    </node>
+    <node id="&quot;PROMPT ENGINEERING&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Prompt engineering is the process of creating prompts or instructions that guide the output of a language model like ChatGPT."</data>
+      <data key="d2">13f920b58a5dfdd13b8d109c7ce20fa8</data>
+    </node>
+    <node id="&quot;INSTRUCTIONS PROMPT TECHNIQUE&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"The Instructions Prompt Technique is a method for guiding ChatGPT's output by providing specific instructions."</data>
+      <data key="d2">57026a3a2ef4aeb0fc9c017468b2b683</data>
+    </node>
+    <node id="&quot;CUSTOMER SERVICE RESPONSES&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Generating customer service responses is an example task for using the Instructions Prompt Technique."</data>
+      <data key="d2">4ede7847c2d336763a2bc385da50e2a6</data>
+    </node>
+    <node id="&quot;LEGAL DOCUMENT&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Generating a legal document is another example task for using the Instructions Prompt Technique."</data>
+      <data key="d2">4ede7847c2d336763a2bc385da50e2a6</data>
+    </node>
+    <node id="&quot;GPT&quot;">
+      <data key="d0">"TECHNOLOGY"</data>
+      <data key="d1">"GPT is likely a reference to the GPT family of language models, including ChatGPT."</data>
+      <data key="d2">4ede7847c2d336763a2bc385da50e2a6</data>
+    </node>
+    <node id="&quot;ZERO-SHOT PROMPTING&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">Zero-Shot Prompting is a technique where a general task is provided to a model, such as ChatGPT, without giving it any specific examples to learn from.  
+</data>
+      <data key="d2">258b1635b1269969561b9e95aaaff370,41186a60fddae7fc713c03a659b487b8</data>
+    </node>
+    <node id="&quot;ONE-SHOT PROMPTING&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"One-shot prompting involves providing ChatGPT with a single example to learn from."</data>
+      <data key="d2">41186a60fddae7fc713c03a659b487b8</data>
+    </node>
+    <node id="&quot;FEW-SHOT PROMPTING&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">Few-Shot Prompting is a technique that involves providing the model, such as ChatGPT, with a limited number of examples to learn from and guide its response.  These few examples help the model understand the desired format and content of the output. 
+
+
+</data>
+      <data key="d2">258b1635b1269969561b9e95aaaff370,41186a60fddae7fc713c03a659b487b8</data>
+    </node>
+    <node id="&quot;INTERPRETABLE SOFT PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">Interpretable Soft Prompts are techniques used in prompt engineering that aim to control text generation while allowing flexibility.  
+</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5,626c12e1138dc7d71160325227d54085</data>
+    </node>
+    <node id="&quot;CONTROLLED GENERATION PROMPTS&quot;">
+      <data key="d0" />
+      <data key="d1">Controlled generation prompts are techniques used in prompt engineering for generating text with high control over the output.  
+</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5,626c12e1138dc7d71160325227d54085</data>
+      <data key="d3">"CONCEPT"</data>
+    </node>
+    <node id="&quot;TEMPLATE&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">626c12e1138dc7d71160325227d54085</data>
+    </node>
+    <node id="&quot;SPECIFIC VOCABULARY&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">626c12e1138dc7d71160325227d54085</data>
+    </node>
+    <node id="&quot;CONSTRAINTS&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">626c12e1138dc7d71160325227d54085</data>
+    </node>
+    <node id="&quot;CERN&quot;">
+      <data key="d0">"ORGANIZATION"</data>
+      <data key="d1">"CERN is a research organization focused on particle physics."</data>
+      <data key="d2">3e70de7b58a0cc5631a367e8e590de9b</data>
+    </node>
+    <node id="&quot;LARGE HADRON COLLIDER&quot;">
+      <data key="d0">"TECHNOLOGY"</data>
+      <data key="d1">"The Large Hadron Collider is a tool used by CERN to investigate dark matter."</data>
+      <data key="d2">3e70de7b58a0cc5631a367e8e590de9b</data>
+    </node>
+    <node id="&quot;CURRICULUM LEARNING&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Curriculum learning is a technique used to train models by gradually increasing the complexity of the data."</data>
+      <data key="d2">763dd94aeb3464e38a05409a3932066c</data>
+    </node>
+    <node id="&quot;TEXT TRANSLATION&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">763dd94aeb3464e38a05409a3932066c</data>
+    </node>
+    <node id="&quot;QUESTION ANSWERING&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">763dd94aeb3464e38a05409a3932066c</data>
+    </node>
+    <node id="&quot;SENTIMENT ANALYSIS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Sentiment analysis is a technique used to determine the emotional tone or attitude of a piece of text."</data>
+      <data key="d2">763dd94aeb3464e38a05409a3932066c</data>
+    </node>
+    <node id="&quot;CUSTOMER REVIEWS&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">763dd94aeb3464e38a05409a3932066c</data>
+    </node>
+    <node id="&quot;TWEETS&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">763dd94aeb3464e38a05409a3932066c</data>
+    </node>
+    <node id="&quot;BOOK&quot;">
+      <data key="d0">"TEXT GENERATION"</data>
+      <data key="d1">"The book is titled 'Text Generation' and covers the topic of prompt engineering."</data>
+      <data key="d2">d298f622f1b5ef1bd6d53bb5afc6e4ac</data>
+    </node>
+    <node id="&quot;LANGUAGE MODELS&quot;">
+      <data key="d0">"TECHNOLOGY"</data>
+      <data key="d1">"Language models are AI systems capable of understanding and generating human-like text."</data>
+      <data key="d2">258b1635b1269969561b9e95aaaff370</data>
+    </node>
+    <node id="&quot;KNOWLEDGE INTEGRATION PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">Knowledge Integration Prompts are techniques used in prompt engineering that leverage external knowledge sources to enhance responses.  
+</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5,258b1635b1269969561b9e95aaaff370</data>
+    </node>
+    <node id="&quot;ZERO, ONE AND FEW SHOT PROMPTING&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Zero, One and Few Shot Prompting are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;SELF-CONSISTENCY&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Self-Consistency is a technique used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;SEED-WORD PROMPT&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Seed-word Prompt is a technique used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;KNOWLEDGE GENERATION PROMPT&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Knowledge Generation prompt is a technique used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;MULTIPLE CHOICE PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Multiple Choice prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;QUESTION-ANSWERING PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Question-answering prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;SUMMARIZATION PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Summarization prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;DIALOGUE PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Dialogue prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;ADVERSARIAL PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Adversarial prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;CLUSTERING PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Clustering prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;REINFORCEMENT LEARNING PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Reinforcement learning prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;CURRICULUM LEARNING PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Curriculum learning prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;SENTIMENT ANALYSIS PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Sentiment analysis prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;NAMED ENTITY RECOGNITION PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Named entity recognition prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;TEXT CLASSIFICATION PROMPTS&quot;">
+      <data key="d0">"CONCEPT"</data>
+      <data key="d1">"Text classification prompts are techniques used in prompt engineering."</data>
+      <data key="d2">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </node>
+    <node id="&quot;KINGBEST COMPANYE LIMITED&quot;">
+      <data key="d0">"ORGANIZATION"</data>
+      <data key="d1">"Kingbest Companye Limited is one of the three successful companies founded by Ibrahim."</data>
+      <data key="d2">d0c7e350d2c1544dc17c19f7ea33793e</data>
+    </node>
+    <node id="&quot;AGRASA AGRICULTURE LIMITED&quot;">
+      <data key="d0">"ORGANIZATION"</data>
+      <data key="d1">"Agrasa Agriculture Limited is one of the three successful companies founded by Ibrahim."</data>
+      <data key="d2">d0c7e350d2c1544dc17c19f7ea33793e</data>
+    </node>
+    <node id="&quot;CHAPTER 9&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 9 focuses on Knowledge Generation."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 10&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 10 delves into Knowledge Integration."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 11&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 11 explores Multiple Choice prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 12&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 12 introduces Interpretable Soft Prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 13&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 13 focuses on Controlled Generation prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 14&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 14 explores Question-answering prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 15&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 15 delves into Summarization prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 16&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 16 introduces Dialogue prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 17&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 17 explores Adversarial prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 18&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 18 focuses on Clustering prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 19&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 19 delves into Reinforcement learning prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 20&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 20 explores Curriculum learning prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 21&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 21 focuses on Sentiment analysis prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 22&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 22 delves into Named entity recognition prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 23&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 23 explores Text classification prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CHAPTER 24&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Chapter 24 focuses on Text generation prompts."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <node id="&quot;CONCLUSION&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"The Conclusion summarizes the key points discussed."</data>
+      <data key="d2">13000cfbbf21e01a32d3a24275d6c077</data>
+    </node>
+    <edge source="&quot;CHATGPT&quot;" target="&quot;PROMPT ENGINEERING TECHNIQUES&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"ChatGPT can be controlled and utilized through various prompt engineering techniques to generate desired outputs."</data>
+      <data key="d6">91e6b0e202a0a81a81592f0c00b6f9b9</data>
+    </edge>
+    <edge source="&quot;CHATGPT&quot;" target="&quot;PROMPT ENGINEERING&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Prompt engineering is used to control the output of ChatGPT and generate text tailored to specific needs."</data>
+      <data key="d6">13f920b58a5dfdd13b8d109c7ce20fa8</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;ZERO, ONE AND FEW SHOT PROMPTING&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Zero, One and Few Shot Prompting is a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;SELF-CONSISTENCY&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Self-Consistency is a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;SEED-WORD PROMPT&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Seed-word Prompt is a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;KNOWLEDGE GENERATION PROMPT&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Knowledge Generation prompt is a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;KNOWLEDGE INTEGRATION PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Knowledge Integration prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;MULTIPLE CHOICE PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Multiple Choice prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;INTERPRETABLE SOFT PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Interpretable Soft Prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;CONTROLLED GENERATION PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Controlled generation prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;QUESTION-ANSWERING PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Question-answering prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;SUMMARIZATION PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Summarization prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;DIALOGUE PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Dialogue prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;ADVERSARIAL PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Adversarial prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;CLUSTERING PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Clustering prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;REINFORCEMENT LEARNING PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Reinforcement learning prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;CURRICULUM LEARNING PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Curriculum learning prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;SENTIMENT ANALYSIS PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Sentiment analysis prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;NAMED ENTITY RECOGNITION PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Named entity recognition prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;PROMPT ENGINEERING TECHNIQUES&quot;" target="&quot;TEXT CLASSIFICATION PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Text classification prompts are a category of Prompt Engineering Techniques."</data>
+      <data key="d6">209bc758203f8f305ed7a45ebfeb0da5</data>
+    </edge>
+    <edge source="&quot;INTERPRETABLE SOFT PROMPTS&quot;" target="&quot;CONTROLLED GENERATION PROMPTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Interpretable soft prompts are a type of controlled generation prompt, focusing on interpretability and control over generated text."</data>
+      <data key="d6">626c12e1138dc7d71160325227d54085</data>
+    </edge>
+    <edge source="&quot;CONTROLLED GENERATION PROMPTS&quot;" target="&quot;TEMPLATE&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Controlled generation prompts can utilize templates to guide the generation process."</data>
+      <data key="d6">626c12e1138dc7d71160325227d54085</data>
+    </edge>
+    <edge source="&quot;CONTROLLED GENERATION PROMPTS&quot;" target="&quot;SPECIFIC VOCABULARY&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Controlled generation prompts can use specific vocabularies to restrict the generated text."</data>
+      <data key="d6">626c12e1138dc7d71160325227d54085</data>
+    </edge>
+    <edge source="&quot;CONTROLLED GENERATION PROMPTS&quot;" target="&quot;CONSTRAINTS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Controlled generation prompts can incorporate constraints to further guide the generation process."</data>
+      <data key="d6">626c12e1138dc7d71160325227d54085</data>
+    </edge>
+    <edge source="&quot;CURRICULUM LEARNING&quot;" target="&quot;TEXT TRANSLATION&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Curriculum learning is used to translate text from different languages in a specific order."</data>
+      <data key="d6">763dd94aeb3464e38a05409a3932066c</data>
+    </edge>
+    <edge source="&quot;CURRICULUM LEARNING&quot;" target="&quot;QUESTION ANSWERING&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Curriculum learning is used to train models for question answering by starting with simpler questions and progressing to more complex ones."</data>
+      <data key="d6">763dd94aeb3464e38a05409a3932066c</data>
+    </edge>
+    <edge source="&quot;SENTIMENT ANALYSIS&quot;" target="&quot;CUSTOMER REVIEWS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Sentiment analysis can be applied to customer reviews to classify them as positive, negative, or neutral."</data>
+      <data key="d6">763dd94aeb3464e38a05409a3932066c</data>
+    </edge>
+    <edge source="&quot;SENTIMENT ANALYSIS&quot;" target="&quot;TWEETS&quot;">
+      <data key="d4">1.0</data>
+      <data key="d5">"Sentiment analysis can be used to determine the sentiment expressed in tweets."</data>
+      <data key="d6">763dd94aeb3464e38a05409a3932066c</data>
+    </edge>
+  </graph>
+</graphml>

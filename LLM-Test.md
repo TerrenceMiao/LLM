@@ -76,7 +76,15 @@ This might seem counterintuitive at first because we're used to thinking that 11
 
 _by **Claude 3.5 Sonnet**_
 
+Question asked by Yann LeCun
+---
+
+Imagine standing at the North Pole of the Earth. Walk in any direction, in a straight line, for 1km. Now turn 90 degrees to the left. Walk for as long as it takes to pass your starting point. Have you walked:
+
+1. More than 2xPi km
+2. Exactly 2xPi km
+3. Less than 2xPi km
+4. I never came close to my starting point
 
 References
 ----------
-

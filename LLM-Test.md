@@ -121,6 +121,16 @@ Therefore, $( r^2 = \dfrac{657}{64} )$, and the sum $( p + q = 657 + 64 = \boxed
 
 $(\boxed{721})$
 
+### Comments:
+
+According to Generalized Mean Inequality 均值不等式
+
+$\frac{n}{\frac{1}{a_1}+\frac{1}{a_2}+\ldots+\frac{1}{a_n}} \leq \sqrt[n]{a_1 a_2 \ldots a_n} \leq \frac{a_1+a_2+\ldots+a_n}{n} \leq \sqrt{\frac{a_1^2+a_2^2+\ldots+a_n^2}{n}}$
+
+- Harmonic mean 调和平均数
+- Geometric mean 几何平均数
+- Arithmetic mean 算术平均数
+- Quadratic mean (a.k.a. Root mean square) 平方平均数（均方根）
 
 References
 ----------

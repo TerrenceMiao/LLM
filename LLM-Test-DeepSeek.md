@@ -154,7 +154,7 @@ To solve the puzzle of combining the numbers 3, 6, 25, 50, 75, and 100 using eac
 
 **Final Equation:**
 
-$ (75 ÷ (25 ÷ 3)) × 100 + 50 + (6 ÷ 3) = 952 $
+$$ (75 ÷ (25 ÷ 3)) × 100 + 50 + (6 ÷ 3) = 952 $$
 
 **Verification:**
 
@@ -167,10 +167,23 @@ $ (75 ÷ (25 ÷ 3)) × 100 + 50 + (6 ÷ 3) = 952 $
 
 Each number (3, 6, 25, 50, 75, 100) is used exactly once, and all operations are valid.
 
-Another solution: $ ((100 + 6) × 3 × 75 - 50) ÷ 25 = 952 $
+Alternative Solution:
+
+$$ ((100 + 6) × 3 × 75 - 50) ÷ 25 = 952 $$
+
+
+Solve this puzzle step by step. Combine numbers 1, 2, 25, 50, 75 and 100 to create an equation that equals 940, by using the four basic arithmetric operators. Each number can only be used at most once.
+---
+
+Despite exhaustive trials, the precise valid combination ensuring each number's single use remains elusive, suggesting a potential puzzle error or a highly non-intuitive operator application.
+
+Solution:
+
+$$ ((75 × 25 + 1) × 50 ÷ 100 + 2 = 940 $$
 
 References
 ----------
 
 - DeepSeek Chat _https://chat.deepseek.com/_
 - Countdown - The Most Extraordinary Numbers Game Ever? _https://www.youtube.com/watch?v=pfa3MHLLSWI_
+- The best numbers game on Countdown 27.10.14 _https://www.youtube.com/watch?v=0q6PT4ad6BY_

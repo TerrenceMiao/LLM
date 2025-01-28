@@ -55,7 +55,122 @@ $ 55 + 36 = 91 → 91 − 19 = 72 → 72 − 7 = 65 $
 
 All numbers (19, 36, 55, 7) are used exactly once with only addition and subtraction.
 
+
+Solve this puzzle step by step. Combine numbers 3, 6, 25, 50, 75 and 100 to create an equation that equals 952, by using the four basic arithmetric operators. Each number can only be used at most once.
+---
+
+<think>
+Okay, let me try to figure out how to combine the numbers 3, 6, 25, 50, 75, and 100 using each at most once with basic arithmetic operations to get 952. Hmm, this seems challenging, but let's break it down step by step.
+
+First, I need to recall that the four basic operations are addition, subtraction, multiplication, and division. The target is 952, which is a pretty large number. Let me see which combinations of these numbers could get close to that.
+
+Looking at the numbers provided: 3, 6, 25, 50, 75, 100. The largest numbers here are 75 and 100. Maybe if I multiply some of the larger numbers together and then adjust with the smaller ones. Let's see:
+
+If I take 75 and 100, multiplying them gives 7500, which is way too big. That's way over 952. So maybe not multiplication of the two largest numbers. Maybe addition? 75 + 100 = 175. Still too small. Maybe 75 * something else?
+
+Wait, 100 is a big number. If I can use 100 in a way that gets close. Let me think. Maybe 100 multiplied by something. Let's see: 100 * 9 = 900. 952 - 900 = 52. So if I can get 9 from some numbers and 52 from others, but the remaining numbers are 3, 6, 25, 50, 75. Wait, but we have to use each number at most once. Hmm.
+
+Alternatively, maybe 75 * 12 = 900, similar idea. Then 75 * 12 + 52 = 952. But how to get 12 and 52 from the remaining numbers? Let me see. The remaining numbers would be 3, 6, 25, 50, 100. Wait, 100 is already used if we use 75 * 12? No, maybe I need to structure it differently.
+
+Alternatively, maybe start with 50 and 75. 50 + 75 = 125. 125 * something. Let's see 125 * 7 = 875. Then 952 - 875 = 77. But how to get 77 from the remaining numbers 3, 6, 25, 100? Not sure. 100 - 25 = 75, plus 3 and 6? 75 + 3 + 6 = 84. Not 77.
+
+Alternatively, 100 * 9 = 900, as before. Then 952 - 900 = 52. To get 52, perhaps 25 + 25 + 2, but we don't have two 25s. Wait, the numbers are 3, 6, 25, 50, 75, 100. Each can be used once. So maybe 50 + (6/3) = 50 + 2 = 52. Then 100 * 9 + 50 + 2 = 952. But how to get 9? 9 could be 75 divided by something? Wait, 75 divided by (something) to get 9? 75/8.333, which is 9. But 8.333 is 25/3. Hmm, maybe that's possible. So 75 divided by (25/3) equals 75 * 3/25 = 9. So 75 / (25 / 3) = 9. Then 100 * 9 = 900. Then add 50 + (6/3) = 52. So total is 900 + 52 = 952. Let's check that.
+
+So breaking it down:
+
+First, take 25 and 3: 25 / 3 ≈ 8.333...
+
+Then, 75 divided by that: 75 / (25/3) = 75 * 3 / 25 = 9. That works.
+
+Then multiply by 100: 100 * 9 = 900.
+
+Then take 6 divided by 3 = 2.
+
+Add that to 50: 50 + 2 = 52.
+
+Add 900 + 52 = 952.
+
+So the equation would be: (75 / (25 / 3)) * 100 + 50 + (6 / 3) = 952.
+
+Wait, but let's check each number is used once. 75, 25, 3, 100, 50, 6. Yes, each number is used exactly once. So that works. Let me verify the calculations step by step:
+
+First part: 25 / 3 = approximately 8.3333...
+
+Then 75 divided by that: 75 / 8.3333 = 9. Correct.
+
+Multiply by 100: 9 * 100 = 900.
+
+Then 6 / 3 = 2.
+
+Add 50 + 2 = 52.
+
+Add 900 + 52 = 952. Perfect!
+
+So that seems to work. Let me just make sure all operations are allowed. We have division, multiplication, addition. Parentheses to ensure order. Each number used exactly once: 3, 6, 25, 50, 75, 100. Yes. So the equation is:
+
+(75 ÷ (25 ÷ 3)) × 100 + 50 + (6 ÷ 3) = 952.
+
+Alternatively, written with parentheses for clarity:
+
+((75 / (25 / 3)) * 100) + 50 + (6 / 3) = 952.
+
+Let me check again:
+
+25 / 3 = 25/3 ≈ 8.333...
+
+75 divided by that: 75 / (25/3) = 75 * 3 /25 = (75/25)*3 = 3*3=9. So that's 9.
+
+9 * 100 = 900.
+
+6 /3 = 2.
+
+50 + 2 = 52.
+
+900 +52=952. Perfect. So that works.
+
+I think that's a valid solution. Let me see if there's another way, but this seems to check out.
+</think>
+
+To solve the puzzle of combining the numbers 3, 6, 25, 50, 75, and 100 using each at most once with basic arithmetic operations to reach 952, follow these steps:
+
+**1. Generate 9 using 75, 25, and 3:**
+
+- Divide 25 by 3: $ 25 ÷ 3 ≈ 8.3 $
+- Divide 75 by the result: $ 75 ÷ 8.3 = 9 $
+- Simplified: $ 75 ÷ (25 ÷ 3) = 9 $
+
+**2. Multiply by 100 to reach 900:**
+
+- $ 9 × 100 = 900 $
+
+**3. Create 52 using 50, 6, and 3:**
+
+- Divide 6 by 3: $ 6 ÷ 3 = 2 $
+- Add to 50: $ 50 + 2 = 52 $
+
+**4. Combine the results:**
+
+- Add 900 and 52: $ 900 + 52 = 952 $
+
+**Final Equation:**
+
+$ (75 ÷ (25 ÷ 3)) × 100 + 50 + (6 ÷ 3) = 952 $
+
+**Verification:**
+
+- $ 25 ÷ 3 = \frac{25}{3} $
+- $ 75 ÷ \frac{25}{3} = 9 $
+- $ 9 × 100 = 900 $
+- $ 6 ÷ 3 = 2 $
+- $ 50 + 2 = 52 $
+- $ 900 + 52 = 952 $
+
+Each number (3, 6, 25, 50, 75, 100) is used exactly once, and all operations are valid.
+
+Another solution: $ ((100 + 6) × 3 × 75 - 50) ÷ 25 = 952 $
+
 References
 ----------
 
 - DeepSeek Chat _https://chat.deepseek.com/_
+- Countdown - The Most Extraordinary Numbers Game Ever? _https://www.youtube.com/watch?v=pfa3MHLLSWI_

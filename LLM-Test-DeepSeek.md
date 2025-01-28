@@ -181,9 +181,21 @@ Solution:
 
 $$ ((75 × 25 + 1) × 50 ÷ 100 + 2 = 940 $$
 
+
+Solve this puzzle step by step. Combine numbers 1, 10, 25, 50, 75 and 100 to create an equation that equals 813, by using the four basic arithmetric operators. Each number can only be used at most once.
+---
+
+Though the step-by-step arithmetic initially seems inconsistent, the correct application of operations as per order yields 813. This confirms the solution despite intermediate steps appearing off, likely due to operation precedence.
+
+Solution:
+
+$$ ((75 - 10) × 25 + 1) × 50 ÷ 100 = 813 $$
+
+
 References
 ----------
 
 - DeepSeek Chat _https://chat.deepseek.com/_
 - Countdown - The Most Extraordinary Numbers Game Ever? _https://www.youtube.com/watch?v=pfa3MHLLSWI_
 - The best numbers game on Countdown 27.10.14 _https://www.youtube.com/watch?v=0q6PT4ad6BY_
+- Countdown Amazing Calculation 813 - Carol Vorderman _https://www.youtube.com/watch?v=_JQYYz92-Uk_

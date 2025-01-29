@@ -196,6 +196,9 @@ References
 ----------
 
 - DeepSeek Chat _https://chat.deepseek.com/_
+
+- Stratechery - DeepSeek FAQ _https://stratechery.com/2025/deepseek-faq/_
+
 - Countdown - The Most Extraordinary Numbers Game Ever? _https://www.youtube.com/watch?v=pfa3MHLLSWI_
 - The best numbers game on Countdown 27.10.14 _https://www.youtube.com/watch?v=0q6PT4ad6BY_
 - Countdown Amazing Calculation 813 - Carol Vorderman _https://www.youtube.com/watch?v=_JQYYz92-Uk_

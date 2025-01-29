@@ -6,7 +6,7 @@ LLM Qwen Test
 _Date: **Jan 30th, 2025**_
 
 
-Solve this puzzle step by step. Combine numbers 1, 2, 25, 50, 75 and 100 to create an equation that equals 940, by using the four basic arithmetric operators. Each number can only be used at most once.
+Solve this puzzle step by step. Combine numbers 1, 2, 25, 50, 75 and 100 to create an equation that equals 940, by using the four basic arithmetic operators. Each number can only be used at most once.
 ---
 
 Let’s solve this step by step to create an equation that equals **940** using the numbers **1, 2, 25, 50, 75, and 100**, with each number used at most once.
@@ -70,7 +70,7 @@ $$
 $$
 
 
-Solve this puzzle step by step. Combine numbers 1, 10, 25, 50, 75 and 100 to create an equation that equals 813, by using the four basic arithmetric operators. Each number can only be used at most once.
+Solve this puzzle step by step. Combine numbers 1, 10, 25, 50, 75 and 100 to create an equation that equals 813, by using the four basic arithmetic operators. Each number can only be used at most once.
 ---
 
 To solve this puzzle, we need to combine the numbers 1, 10, 25, 50, 75, and 100 using addition, subtraction, multiplication, and division to create an equation that equals 813. Each number can only be used once.

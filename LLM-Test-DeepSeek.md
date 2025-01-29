@@ -56,7 +56,7 @@ $ 55 + 36 = 91 → 91 − 19 = 72 → 72 − 7 = 65 $
 All numbers (19, 36, 55, 7) are used exactly once with only addition and subtraction.
 
 
-Solve this puzzle step by step. Combine numbers 3, 6, 25, 50, 75 and 100 to create an equation that equals 952, by using the four basic arithmetric operators. Each number can only be used at most once.
+Solve this puzzle step by step. Combine numbers 3, 6, 25, 50, 75 and 100 to create an equation that equals 952, by using the four basic arithmetic operators. Each number can only be used at most once.
 ---
 
 <think>
@@ -172,7 +172,7 @@ Alternative Solution:
 $$ ((100 + 6) × 3 × 75 - 50) ÷ 25 = 952 $$
 
 
-Solve this puzzle step by step. Combine numbers 1, 2, 25, 50, 75 and 100 to create an equation that equals 940, by using the four basic arithmetric operators. Each number can only be used at most once.
+Solve this puzzle step by step. Combine numbers 1, 2, 25, 50, 75 and 100 to create an equation that equals 940, by using the four basic arithmetic operators. Each number can only be used at most once.
 ---
 
 Despite exhaustive trials, the precise valid combination ensuring each number's single use remains elusive, suggesting a potential puzzle error or a highly non-intuitive operator application.
@@ -182,7 +182,7 @@ Solution:
 $$ ((75 × 25 + 1) × 50 ÷ 100 + 2 = 940 $$
 
 
-Solve this puzzle step by step. Combine numbers 1, 10, 25, 50, 75 and 100 to create an equation that equals 813, by using the four basic arithmetric operators. Each number can only be used at most once.
+Solve this puzzle step by step. Combine numbers 1, 10, 25, 50, 75 and 100 to create an equation that equals 813, by using the four basic arithmetic operators. Each number can only be used at most once.
 ---
 
 Though the step-by-step arithmetic initially seems inconsistent, the correct application of operations as per order yields 813. This confirms the solution despite intermediate steps appearing off, likely due to operation precedence.

@@ -172,6 +172,44 @@ Alternative Solution:
 $$ ((100 + 6) × 3 × 75 - 50) ÷ 25 = 952 $$
 
 
+Solve this puzzle step by step. Combine numbers 1, 2, 7, 8, 8 and 50 to create an equation that equals 869, by using the four basic arithmetic operators. Each number can only be used at most once.
+---
+
+**Step-by-Step Solution:**
+
+1. **Combine 50 and one 8:**
+
+    $50 + 8 = 58$
+
+2. **Combine 7 and the other 8:**
+
+    $7 + 8 = 15$
+
+3. **Multiply the results of steps 1 and 2:**
+
+    $58 \times 15 = 870$
+
+4. **Use the remaining numbers (2 and 1) to subtract 1:**
+
+    $870 - (2 - 1) = 870 - 1 = 869$
+
+**Final Equation:**
+
+$$ (50 + 8) \times (7 + 8) - (2 - 1) = 869 $$
+
+**Verification:**
+
+- Numbers used: \(50, 8, 8, 7, 2, 1\) (all used exactly once).
+- Operators: Addition ($+$), multiplication ($\times$), subtraction ($-$).
+- Result: $58 \times 15 = 870$; $870 - 1 = 869$.
+
+This satisfies all constraints and successfully reaches the target of **869**.
+
+Alternative Solution:
+
+$$ ((50 + 8) × 2 + 8) × 7 + 1 = 869 $$
+
+
 Solve this puzzle step by step. Combine numbers 1, 2, 25, 50, 75 and 100 to create an equation that equals 940, by using the four basic arithmetic operators. Each number can only be used at most once.
 ---
 
@@ -244,3 +282,4 @@ References
 - Countdown - The Most Extraordinary Numbers Game Ever? _https://www.youtube.com/watch?v=pfa3MHLLSWI_
 - The best numbers game on Countdown 27.10.14 _https://www.youtube.com/watch?v=0q6PT4ad6BY_
 - Countdown Amazing Calculation 813 - Carol Vorderman _https://www.youtube.com/watch?v=_JQYYz92-Uk_
+- Countdown numbers game Rachel Riley "cursed" both players _https://www.youtube.com/watch?v=c8a1ij_RDZY_

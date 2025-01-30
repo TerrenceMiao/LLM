@@ -192,7 +192,7 @@ Solution:
 $$ ((75 - 10) × 25 + 1) × 50 ÷ 100 = 813 $$
 
 
-Solve a nine-letter word anagram using the letters "T" "I" "N" "Y" "T" "I" "G" "E" "R"
+Solve a nine-letter word anagram using the letters T I N Y T I G E R
 ---
 
 <think>
@@ -214,7 +214,7 @@ The nine-letter word anagram formed by rearranging the letters T, I, N, Y, T, I,
 - **Integrity** means adherence to moral principles or honesty, fitting the letter constraints perfectly.
 
 
-Solve a nine-letter word anagram using the letters "I" "D" "E" "A" "L" "P" "U" "T" "T"
+Solve a nine-letter word anagram using the letters I D E A L P U T T
 ---
 
 <think>

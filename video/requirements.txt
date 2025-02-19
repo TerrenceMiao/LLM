@@ -1,0 +1,6 @@
+python-dotenv
+youtube-transcript-api
+openai-whisper
+groq
+pytubefix
+openai

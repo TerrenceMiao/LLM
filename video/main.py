@@ -96,6 +96,7 @@ def get_api_key():
     from google.colab import userdata
     api_key = userdata.get('api_key')
   except ImportError:
+    load_dotenv('.env.local')
     load_dotenv()
     api_key = os.getenv('api_key')
 
@@ -109,6 +110,7 @@ def get_groq_api_key():
     from google.colab import userdata
     groq_api_key = userdata.get('api_key_groq')
   except ImportError:
+    load_dotenv('.env.local')
     load_dotenv()
     groq_api_key = os.getenv('api_key_groq')
 

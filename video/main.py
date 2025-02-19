@@ -1,28 +1,27 @@
-# @markdown ## 🔗 **Source Configuration**
+## 🔗 Source Configuration
 
-# @markdown **Source Type**
-Type_of_source = "YouTube Video"  # @param ["YouTube Video", "Google Drive Video Link", "Dropbox Video Link", "Local File"]
+# Source Type
+# @param ["YouTube Video", "Google Drive Video Link", "Dropbox Video Link", "Local File"]
+Type_of_source = "YouTube Video"
 
-# @markdown **Source URL or Path**
-Source = "https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship"  # @param {type:"string"}
+# Source URL or Path
+# @param {type:"string"}
+Source = "https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship"
 
 # Set variables based on user input
 Type = Type_of_source
 URL = Source
 
-# @markdown **Use YouTube Captions**
+# Use YouTube Captions
+# If source is a Youtube video, it's recommended to use the available YouTube captions to save on transcription time and API usage.
+# @param {type:"boolean"}
+use_Youtube_captions = True
 
-# @markdown If source is a Youtube video, it's recommended to use the available YouTube captions to save on transcription time and API usage.
-
-use_Youtube_captions = True  # @param {type:"boolean"}
-
-# @markdown ---
-# @markdown ## 🌐 **API Configuration**
-
-# @markdown The summarization process uses the API key specified in `api_key` variable.
-# @markdown Ensure you have set the required environment variables or Colab secrets for your API keys.
-
-api_endpoint = "Groq"  # @param ["Groq", "OpenAI", "Custom"]
+## 🌐 API Configuration
+# The summarization process uses the API key specified in `api_key` variable.
+# Ensure you have set the required environment variables or Colab secrets for your API keys.
+# @param ["Groq", "OpenAI", "Custom"]
+api_endpoint = "Groq"
 
 # Define endpoints and models based on the selected API
 endpoints = {
@@ -39,24 +38,23 @@ model = {
   "Custom": "custom-model-id"  # Placeholder for any custom model
 }.get(api_endpoint)
 
-# @markdown ---
-# @markdown ## 🎤 **Transcription Settings**
-# @markdown The transcription settings are applied only if you want to use Whisper transcription and not Youtube Captions.
+## 🎤 Transcription Settings
+# The transcription settings are applied only if you want to use Whisper transcription and not Youtube Captions.
+# If you plan to use Whisper API endpoint (only Groq endpoint is supported for now) you have to specify your Groq API key in `api_key_groq`.
+# Why use `api_key_groq` and `api_key`? So that you can use a different API for summarization (e.g., OpenAI), specify the corresponding API key in `api_key`.
+# If using locally Whisper: remember to switch the runtime type in Google Colab to a GPU instance (e.g., T4). Go to Runtime > Change runtime type and select GPU as the hardware accelerator.
 
-# @markdown If you plan to use Whisper API endpoint (only **Groq** endpoint is supported for now) you have to specify your Groq API key in `api_key_groq`.
+# Transcription Method
+# @param ["Cloud Whisper", "Local Whisper"]
+transcription_method = "Cloud Whisper"
 
-# @markdown Why use `api_key_groq` and `api_key` ? So that you can use a different API for summarization (e.g., OpenAI), specify the corresponding API key in `api_key`.
+# Language (ISO-639-1 code, e.g., "en" for English)
+# @param {type:"string"}
+language = "en"
 
-# @markdown If using locally Whisper: remember to switch the runtime type in Google Colab to a GPU instance (e.g., T4). Go to **Runtime** > **Change runtime type** and select **GPU** as the hardware accelerator.
-
-# @markdown **Transcription Method**
-transcription_method = "Cloud Whisper"  # @param ["Cloud Whisper", "Local Whisper"]
-
-# @markdown **Language** (ISO-639-1 code, e.g., "en" for English)
-language = "en"  # @param {type:"string"}
-
-# @markdown **Initial Prompt for Whisper** (Optional)
-initial_prompt = ""  # @param {type:"string"}
+# Initial Prompt for Whisper (Optional)
+# @param {type:"string"}
+initial_prompt = ""
 
 transcript_file_name = ""
 
@@ -65,9 +63,8 @@ regex = r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e
 import re
 video_id = re.search(regex, URL).group(1)
 
-
-# @markdown ## Libraries and helper functions
-# @markdown Re-run if you change settings in the previous cell
+## Libraries and helper functions
+# Re-run if you change settings in the previous cell
 
 import subprocess
 import os
@@ -135,9 +132,8 @@ def process_audio_file(input_path, output_path):
 import openai
 client = openai.OpenAI(api_key = get_api_key(), base_url=base_url)
 
-
-# @markdown ## Video fetching
-# @markdown Re-run cell if you change the source URL
+## Video fetching
+# Re-run cell if you change the source URL
 skip_transcription=False
 transcription_text = ""
 textTimestamps = ""
@@ -219,9 +215,8 @@ elif Type == "Local File":
   process_audio_file(video_path_local, processed_audio_path)
   video_path_local = processed_audio_path  # Update to the processed file path
 
-
-# @markdown ### Transcription
-# @markdown Re-run cell if you change transcription settings
+### Transcription
+# Re-run cell if you change transcription settings
 if not skip_transcription:
   transcription_text = ""
 
@@ -275,25 +270,29 @@ if not skip_transcription:
 else:
   transcript_file_name = f"{video_id}_captions.md"
 
-
-prompt_type = "Questions and answers"  # @param ['Summarization', 'Only grammar correction with highlights','Distill Wisdom', 'Questions and answers']
+# @param ['Summarization', 'Only grammar correction with highlights','Distill Wisdom', 'Questions and answers']
+prompt_type = "Questions and answers"
 # Fetch prompts using curl
 prompts = json.loads(subprocess.check_output(['curl', '-s', 'https://raw.githubusercontent.com/martinopiaggi/summarize/refs/heads/main/prompts.json']))
 summary_prompt = prompts[prompt_type]
 
-# @markdown Parallel API calls (mind rate limits)
-parallel_api_calls = 30 # @param
+# Parallel API calls (mind rate limits)
+# @param
+parallel_api_calls = 30
 
-# @markdown Chunk size (tokens) (mind model context length). Higher = less granular summary.
-# @markdown Rule of thumb: 28k for 3h, 10k for 1h, 5k for 30min, 4k for shorter.
-chunk_size = 10000 # @param
+# Chunk size (tokens) (mind model context length). Higher = less granular summary.
+# Rule of thumb: 28k for 3h, 10k for 1h, 5k for 30min, 4k for shorter.
+# @param
+chunk_size = 10000
 
-# @markdown Overlap (tokens) between chunks
-overlap_size = 20 # @param
+# Overlap (tokens) between chunks
+# @param
+overlap_size = 20
 
-# @markdown Max output tokens of each chunk (mind model limits). Higher = less granular summary.
-# @markdown Rule of thumb: 4k, 2k or 1k depending on content density.
-max_output_tokens = 4096 # @param
+# Max output tokens of each chunk (mind model limits). Higher = less granular summary.
+# Rule of thumb: 4k, 2k or 1k depending on content density.
+# @param
+max_output_tokens = 4096
 
 final_summary = ""
 
@@ -328,8 +327,8 @@ def summarize(prompt):
   completion = client.chat.completions.create(
     model=model,
     messages=[
-    {"role": "system", "content": summary_prompt},
-    {"role": "user", "content": prompt}
+      {"role": "system", "content": summary_prompt},
+      {"role": "user", "content": prompt}
     ],
     max_tokens=max_output_tokens
   )

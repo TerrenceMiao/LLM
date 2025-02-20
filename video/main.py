@@ -15,7 +15,7 @@ URL = Source
 # Use YouTube Captions
 # If source is a Youtube video, it's recommended to use the available YouTube captions to save on transcription time and API usage.
 # @param {type:"boolean"}
-use_Youtube_captions = True
+# use_Youtube_captions = True
 
 # 🌐 API Configuration
 # The summarization process uses the API key specified in `api_key` variable.
@@ -73,14 +73,12 @@ import json
 
 from dotenv import load_dotenv
 
-if use_Youtube_captions:
-    from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api import YouTubeTranscriptApi
 
-if (not Type == "YouTube Video") or (not use_Youtube_captions):
-    if transcription_method == "Local Whisper":
-        import whisper
-    else:
-        from groq import Groq
+if transcription_method == "Local Whisper":
+    import whisper
+else:
+    from groq import Groq
 
 if Type == "YouTube Video":
     from pytubefix import YouTube
@@ -172,8 +170,11 @@ def download_youtube_audio_only(url):
 
 
 def download_youtube_captions(url):
-    print("Video URL = ", url, " with video_id = ", video_id)
-    transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+    print("Video URL =", url)
+    try:
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+    except:
+        return "", ""
 
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[language])
@@ -199,8 +200,8 @@ def download_youtube_captions(url):
 if Type == "YouTube Video":
     # Clean YouTube url from timestamp
     URL = re.sub("\&t=\d+s?", "", URL)
-    if use_Youtube_captions:
-        transcription_text, transcript_file_name = download_youtube_captions(URL)
+    transcription_text, transcript_file_name = download_youtube_captions(URL)
+    if transcription_text:
         skip_transcription = True
     else:
         video_path_local = download_youtube_audio_only(URL)

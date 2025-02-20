@@ -1,4 +1,4 @@
-## 🔗 Source Configuration
+# 🔗 Source Configuration
 
 # Source Type
 # @param ["YouTube Video", "Google Drive Video Link", "Dropbox Video Link", "Local File"]
@@ -17,7 +17,7 @@ URL = Source
 # @param {type:"boolean"}
 use_Youtube_captions = True
 
-## 🌐 API Configuration
+# 🌐 API Configuration
 # The summarization process uses the API key specified in `api_key` variable.
 # Ensure you have set the required environment variables or Colab secrets for your API keys.
 # @param ["Groq", "OpenAI", "Custom"]
@@ -38,7 +38,7 @@ model = {
     "Custom": "custom-model-id",  # Placeholder for any custom model
 }.get(api_endpoint)
 
-## 🎤 Transcription Settings
+# 🎤 Transcription Settings
 # The transcription settings are applied only if you want to use Whisper transcription and not Youtube Captions.
 # If you plan to use Whisper API endpoint (only Groq endpoint is supported for now) you have to specify your Groq API key in `api_key_groq`.
 # Why use `api_key_groq` and `api_key`? So that you can use a different API for summarization (e.g., OpenAI), specify the corresponding API key in `api_key`.
@@ -64,7 +64,7 @@ import re
 
 video_id = re.search(regex, URL).group(1)
 
-## Libraries and helper functions
+# Libraries and helper functions
 # Re-run if you change settings in the previous cell
 
 import subprocess
@@ -151,7 +151,7 @@ import openai
 
 client = openai.OpenAI(api_key=get_api_key(), base_url=base_url)
 
-## Video fetching
+# Video fetching
 # Re-run cell if you change the source URL
 skip_transcription = False
 transcription_text = ""
@@ -197,7 +197,7 @@ def download_youtube_captions(url):
 
 
 if Type == "YouTube Video":
-    # Clean youtube url from timestamp
+    # Clean YouTube url from timestamp
     URL = re.sub("\&t=\d+s?", "", URL)
     if use_Youtube_captions:
         transcription_text, transcript_file_name = download_youtube_captions(URL)
@@ -283,7 +283,7 @@ elif Type == "Local File":
     process_audio_file(video_path_local, processed_audio_path)
     video_path_local = processed_audio_path  # Update to the processed file path
 
-## Transcription
+# Transcription
 # Re-run cell if you change transcription settings
 if not skip_transcription:
     transcription_text = ""
@@ -343,7 +343,7 @@ else:
     transcript_file_name = f"{video_id}_captions.md"
 
 # @param ['Summarization', 'Only grammar correction with highlights','Distill Wisdom', 'Questions and answers']
-prompt_type = "Questions and answers"
+prompt_type = "Custom Summarisation"
 # Fetch prompts using curl
 # prompts = json.loads(subprocess.check_output(['curl', '-s', 'https://raw.githubusercontent.com/martinopiaggi/summarize/refs/heads/main/prompts.json']))
 # Load prompts from local JSON file
@@ -384,12 +384,12 @@ def extract_and_clean_timestamps(text_chunks):
                 chunk = chunk.replace(timestamp, "")
             timestamp_ranges.append(
                 timestamps[0]
-            )  # Assuming you want the first timestamp per chunk
+            ) # Assuming you want the first timestamp per chunk
         else:
             timestamp_ranges.append("")
         cleaned_texts.append(
             chunk.strip()
-        )  # Strip to remove any leading/trailing whitespace
+        ) # Strip to remove any leading/trailing whitespace
     return cleaned_texts, timestamp_ranges
 
 
@@ -430,7 +430,7 @@ def process_and_summarize(text):
     ) as executor:
         future_to_chunk = {
             executor.submit(summarize, text_chunk): idx
-            for idx, text_chunk in enumerate(cleaned_texts)
+            for idx, text_chunk in enumerate(texts)
         }
         for future in concurrent.futures.as_completed(future_to_chunk):
             idx = future_to_chunk[future]
@@ -448,7 +448,7 @@ def process_and_summarize(text):
                 time.sleep(10)
                 future_to_chunk[executor.submit(summarize, texts[idx])] = idx
 
-    summaries.sort()  # Ensure summaries are in the correct order
+    summaries.sort() # Ensure summaries are in the correct order
     final_summary = "\n\n".join([summary for _, summary in summaries])
 
     # Save the final summary

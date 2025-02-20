@@ -217,7 +217,7 @@ elif Type == "Local File":
   process_audio_file(video_path_local, processed_audio_path)
   video_path_local = processed_audio_path  # Update to the processed file path
 
-### Transcription
+## Transcription
 # Re-run cell if you change transcription settings
 if not skip_transcription:
   transcription_text = ""
@@ -275,7 +275,10 @@ else:
 # @param ['Summarization', 'Only grammar correction with highlights','Distill Wisdom', 'Questions and answers']
 prompt_type = "Questions and answers"
 # Fetch prompts using curl
-prompts = json.loads(subprocess.check_output(['curl', '-s', 'https://raw.githubusercontent.com/martinopiaggi/summarize/refs/heads/main/prompts.json']))
+# prompts = json.loads(subprocess.check_output(['curl', '-s', 'https://raw.githubusercontent.com/martinopiaggi/summarize/refs/heads/main/prompts.json']))
+# Load prompts from local JSON file
+with open('prompts.json', 'r') as file:
+  prompts = json.loads(file.read())
 summary_prompt = prompts[prompt_type]
 
 # Parallel API calls (mind rate limits)
@@ -308,10 +311,10 @@ def extract_and_clean_timestamps(text_chunks):
       for timestamp in timestamps:
         # Remove each found timestamp from the chunk
         chunk = chunk.replace(timestamp, "")
-      timestamp_ranges.append(timestamps[0])  # Assuming you want the first timestamp per chunk
+      timestamp_ranges.append(timestamps[0]) # Assuming you want the first timestamp per chunk
     else:
       timestamp_ranges.append("")
-    cleaned_texts.append(chunk.strip())  # Strip to remove any leading/trailing whitespace
+    cleaned_texts.append(chunk.strip()) # Strip to remove any leading/trailing whitespace
   return cleaned_texts, timestamp_ranges
 
 def format_timestamp_link(timestamp):
@@ -355,7 +358,7 @@ def process_and_summarize(text):
         time.sleep(10)
         future_to_chunk[executor.submit(summarize, texts[idx])] = idx
 
-  summaries.sort()  # Ensure summaries are in the correct order
+  summaries.sort() # Ensure summaries are in the correct order
   final_summary = "\n\n".join([summary for _, summary in summaries])
 
   # Save the final summary

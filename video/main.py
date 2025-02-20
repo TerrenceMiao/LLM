@@ -167,7 +167,7 @@ def seconds_to_time_format(seconds):
 def download_youtube_audio_only(url):
     yt = YouTube(url)
     audio_stream = yt.streams.get_audio_only()
-    saved_path = audio_stream.download(mp3=True, output_path=".", skip_existing=True)
+    saved_path = audio_stream.download(output_path=".", skip_existing=True)
     return saved_path
 
 

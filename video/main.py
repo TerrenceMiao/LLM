@@ -176,11 +176,11 @@ def download_youtube_captions(url):
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
 
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=["en"])
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[language])
     except:
         for available_transcript in transcript_list:
             if available_transcript.is_translatable:
-                transcript = available_transcript.translate("en").fetch()
+                transcript = available_transcript.translate(language).fetch()
                 break
 
     transcription_text = ""

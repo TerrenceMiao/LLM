@@ -10,8 +10,9 @@ $ conda activate video
 $ pip install -r requirements.txt
 ```
 
-Here's the [YouTube Video](https://www.youtube.com/watch?v=b0XI-cbel1U).
+Here's the YouTube Video:
 
+[![Is Elon's Grok 3 the new AI king?](https://img.youtube.com/vi/b0XI-cbel1U/0.jpg)](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship)
 
 References
 ----------

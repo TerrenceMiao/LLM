@@ -333,7 +333,7 @@ if not skip_transcription:
                 start_time = seconds_to_time_format(segment["start"])
                 transcription_text += f"{start_time} {segment['text'].strip()} "
 else:
-    print("Using YouTube captions for transcription.")
+    print("Using YouTube captions, or Groq's Cloud Whisper if captions are unavailable, for transcription.")
 
 # Save the transcription
 if not skip_transcription:
@@ -344,13 +344,14 @@ else:
     transcript_file_name = f"{video_id}_captions.md"
 
 # @param ['Summarization', 'Only grammar correction with highlights','Distill Wisdom', 'Questions and answers']
-prompt_type = "Custom Summarisation"
+prompt_type = "Summarization"
 # Fetch prompts using curl
 # prompts = json.loads(subprocess.check_output(['curl', '-s', 'https://raw.githubusercontent.com/martinopiaggi/summarize/refs/heads/main/prompts.json']))
 # Load prompts from local JSON file
 with open("prompts.json", "r") as file:
     prompts = json.loads(file.read())
-summary_prompt = prompts[prompt_type]
+# summary_prompt = prompts[prompt_type]
+summary_prompt = "Summarize the video transcript with timestamp. Timestamp format is YouTube link " + URL + " at specified timestamp. Each paragraph should begin with markdown bold notation on one line and end with the timestamp in markdown italic on a new line. Here is the transcript: "
 
 # Parallel API calls (mind rate limits)
 # @param
@@ -398,7 +399,8 @@ def format_timestamp_link(timestamp):
     if Type == "YouTube Video":
         hours, minutes, seconds = map(int, timestamp.split(":"))
         total_seconds = hours * 3600 + minutes * 60 + seconds
-        return f"{timestamp} - {URL}&t={total_seconds}"
+        # return f"{timestamp} - {URL}&t={total_seconds}"
+        return f""
     else:
         return f"{timestamp}"
 

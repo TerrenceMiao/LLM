@@ -1,24 +1,21 @@
-00:00:00 - https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=0
 
-Here is a summarized version of the transcript with timestamps:
 
-**Introduction to Grock 3 (00:00:00 - 00:00:41)**
-A new large language model called Grock 3 has been released, which is based on Elon's technology and has reached the top spot on the LM Marina leaderboard. It has a deep thinking mode and can generate text-to-video content.
+**Introduction to Grock 3**
+The video discusses the latest development in the AI world, with the introduction of Grock 3, a large language model that has surpassed existing benchmarks and reached the top spot on the LM Marina leaderboard. Grock 3 is notable for its uncensored nature, allowing it to generate content that may be considered offensive or illegal in some parts of the world. The model has a deep thinking mode and can perform tasks such as text-to-video generation. 
+*Coveted number one spot on the LM Marina leaderboard at https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=7s*
 
-**Background on AI Development (00:00:42 - 00:01:14)**
-The AI development space is highly competitive, with companies like Open AI and Meta vying for dominance. Elon attempted to buy out Open AI, but the offer was rejected. Mark Zuckerberg's company was also involved in a controversy surrounding the use of pirated books to train their AI models.
+**Training and Capabilities of Grock 3**
+Grock 3 has been trained on a massive dataset, including access to the "firehose" of data from Twitter and xAI, which has been optimized for maximum truth-seeking. This allows the model to generate content that may be considered taboo or offensive, such as generating images of celebrities or writing profanity-laced poems about racial stereotypes. The model's capabilities are demonstrated through various tests, including generating valid code and helping to build a game. 
+*Grock 3's training data at https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=1m16s*
 
-**Grock 3's Unique Features (00:01:14 - 00:02:25)**
-Grock 3 has direct access to Twitter and XAI data, which allows it to generate more truthful responses, even if they are not politically correct. It can also generate images of celebrities and write profanity-laced poems about racial stereotypes.
+**Benchmarks and Comparison to Other Models**
+Grock 3 is currently sitting at the top of the LM Marina leaderboard, which is a blind taste test where humans compare different language models side by side. The model has also been benchmarked against other models, including Gemini, Claude, DeepSeek, and GP4, where it performs well in math, science, and coding tasks. However, the benchmarks are not comprehensive, and the model's performance may vary in different areas. 
+*Grock 3's benchmark performance at https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=1m55s*
 
-**Benchmarks and Performance (00:02:25 - 00:03:08)**
-Grock 3 is currently at the top of the LM Marina leaderboard and has performed well in other benchmarks, such as math, science, and coding. However, it is missing from some other benchmarks, and its performance may not be as strong when compared to other models like Open AI 03.
+**Training Details and Future Plans**
+The video also provides details on how Grock 3 was trained, including the use of the Colossus supercomputer in Memphis, Tennessee, which is currently the largest AI supercomputer in the world. The facility uses a massive amount of electricity and has plans to expand to 1 million GPUs. The model's creators also plan to release a more powerful version called Super Grock, which is expected to cost $30 per month. 
+*Grock 3's training details at https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=2m49s*
 
-**Training and Hardware (00:02:46 - 00:03:08)**
-Grock 3 was trained on the Colossus supercomputer in Memphis, Tennessee, which is one of the largest AI supercomputers in the world. The facility uses a massive amount of electricity to power its 200,000+ Nvidia H100 GPUs.
-
-**Future Plans and Pricing (00:03:08 - 00:03:16)**
-A new version of Grock 3 called Super Gro is expected to be released, which will cost $30 per month. This is a competitive price compared to other AI models like Chat PT Pro.
-
-**Conclusion and Sponsorship (00:03:16 - 00:04:02)**
-The video concludes by discussing the importance of learning to code from the ground up, rather than relying on AI models. The sponsor, Brilliant, is introduced, which provides interactive lessons and courses on deep learning and computer science.
+**Conclusion and Sponsor**
+The video concludes by noting that while Grock 3 is a powerful model, its capabilities may not be as impressive as they seem, and the model's performance may vary in different areas. The video is sponsored by Brilliant, a platform that provides interactive, hands-on lessons in deep learning and other topics. 
+*Conclusion and sponsor at https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=3m30s*

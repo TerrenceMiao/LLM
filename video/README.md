@@ -18,3 +18,4 @@ References
 ----------
 
 - Video Transcript Summarization with AI, _https://github.com/martinopiaggi/summarize_
+- Groq, Fast AI Inference, _https://console.groq.com/keys_

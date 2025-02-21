@@ -85,6 +85,7 @@ max_output_tokens = 4096
 import re
 import subprocess
 import os
+
 # import json
 
 import concurrent.futures
@@ -130,6 +131,7 @@ def get_api_key():
 
     return api_key
 
+
 def get_groq_api_key():
     try:
         from google.colab import userdata
@@ -146,6 +148,7 @@ def get_groq_api_key():
         )
 
     return groq_api_key
+
 
 # Converts the audio file to MP3 with low sample rate and bitrate to reduce the file size (to stay in audio file API limits)
 def process_audio_file(input_path, output_path):
@@ -177,10 +180,12 @@ def process_audio_file(input_path, output_path):
         print(f"Error processing audio: {e.stderr.decode()}")
         raise
 
+
 def seconds_to_time_format(seconds):
     hours, remainder = divmod(seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
     return f"{int(hours):02d}:{int(minutes):02d}:{int(seconds):02d}"
+
 
 def download_youtube_audio_only(url):
     yt = YouTube(url)
@@ -188,13 +193,16 @@ def download_youtube_audio_only(url):
     saved_path = audio_stream.download(output_path=".", skip_existing=True)
     return saved_path
 
+
 def download_youtube_captions():
     try:
         transcript_list = YouTubeTranscriptApi.list_transcripts(config.video_id)
 
         # Try to get transcript in preferred language first
         try:
-            transcript = YouTubeTranscriptApi.get_transcript(config.video_id, languages=[language])
+            transcript = YouTubeTranscriptApi.get_transcript(
+                config.video_id, languages=[language]
+            )
         except:
             # If preferred language not available, try to get any translatable transcript
             transcript = None
@@ -222,6 +230,7 @@ def download_youtube_captions():
         print(f"No captions found or, error downloading captions")
         return ""
 
+
 def extract_and_clean_timestamps(text_chunks):
     timestamp_pattern = re.compile(r"(\d{2}:\d{2}:\d{2})")
     cleaned_texts = []
@@ -234,13 +243,14 @@ def extract_and_clean_timestamps(text_chunks):
                 chunk = chunk.replace(timestamp, "")
             timestamp_ranges.append(
                 timestamps[0]
-            ) # Assuming you want the first timestamp per chunk
+            )  # Assuming you want the first timestamp per chunk
         else:
             timestamp_ranges.append("")
         cleaned_texts.append(
             chunk.strip()
-        ) # Strip to remove any leading/trailing whitespace
+        )  # Strip to remove any leading/trailing whitespace
     return cleaned_texts, timestamp_ranges
+
 
 def format_timestamp_link(timestamp):
     if Type == "YouTube Video":
@@ -251,10 +261,14 @@ def format_timestamp_link(timestamp):
     else:
         return f"{timestamp}"
 
+
 def summarize(prompt):
-    summary_prompt = ("Summarize the video transcript with timestamp. Timestamp format is YouTube link " + config.URL +
-                      " at specified timestamp. Each paragraph should begin with markdown bold notation on one line, " +
-                      "and end with the timestamp in markdown italic on a new line. Here is the transcript: ")
+    summary_prompt = (
+        "Summarize the video transcript with timestamp. Timestamp format is YouTube link "
+        + config.URL
+        + " at specified timestamp. Each paragraph should begin with markdown bold notation on one line, "
+        + "and end with the timestamp in markdown italic on a new line. Here is the transcript: "
+    )
 
     completion = config.client.chat.completions.create(
         model=model,
@@ -265,6 +279,7 @@ def summarize(prompt):
         max_tokens=max_output_tokens,
     )
     return completion.choices[0].message.content
+
 
 def process_and_summarize(text):
     texts = [
@@ -296,7 +311,7 @@ def process_and_summarize(text):
                 time.sleep(10)
                 future_to_chunk[executor.submit(summarize, texts[idx])] = idx
 
-    summaries.sort() # Ensure summaries are in the correct order
+    summaries.sort()  # Ensure summaries are in the correct order
     final_summary = "\n\n".join([summary for _, summary in summaries])
 
     # Save the final summary
@@ -341,7 +356,9 @@ def video_summary(Link):
         else:
             video_path_local = download_youtube_audio_only(config.URL)
             # Process the audio file to reduce its size
-            processed_audio_path = os.path.splitext(video_path_local)[0] + "_processed.mp3"
+            processed_audio_path = (
+                os.path.splitext(video_path_local)[0] + "_processed.mp3"
+            )
             process_audio_file(video_path_local, processed_audio_path)
             video_path_local = processed_audio_path  # Update to the processed file path
 
@@ -433,7 +450,7 @@ def video_summary(Link):
 
         # Initial Prompt for Whisper (Optional)
         # @param {type:"string"}
-        initial_prompt=""
+        initial_prompt = ""
 
         for audio_file_path in audio_files:
             if transcription_method == "Local Whisper":
@@ -472,7 +489,9 @@ def video_summary(Link):
                     start_time = seconds_to_time_format(segment["start"])
                     transcription_text += f"{start_time} {segment['text'].strip()} "
     else:
-        print("Using YouTube captions, or Groq's Cloud Whisper if captions are unavailable, for transcription.")
+        print(
+            "Using YouTube captions, or Groq's Cloud Whisper if captions are unavailable, for transcription."
+        )
 
     # Save the transcription
     if not skip_transcription:
@@ -484,5 +503,9 @@ def video_summary(Link):
 
 import gradio as gr
 
-iface = gr.Interface(fn=video_summary, inputs=gr.Textbox(placeholder="Enter YouTube URL here ..."), outputs=gr.Markdown(label="Video Summary"))
+iface = gr.Interface(
+    fn=video_summary,
+    inputs=gr.Textbox(placeholder="Enter YouTube URL here ..."),
+    outputs=gr.Markdown(label="Video Summary"),
+)
 iface.launch()

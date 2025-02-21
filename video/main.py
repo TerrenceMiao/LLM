@@ -20,7 +20,7 @@ Type = Type_of_source
 # 🌐 API Configuration
 # The summarization process uses the API key specified in `api_key` variable.
 # Ensure you have set the required environment variables or Colab secrets for your API keys.
-# @param ["Groq", "OpenAI", "Custom"]
+# @param ["Groq", "OpenAI", "Custom", "Local"]
 api_endpoint = "Groq"
 
 # Define endpoints and models based on the selected API
@@ -28,6 +28,7 @@ endpoints = {
     "Groq": "https://api.groq.com/openai/v1",
     "OpenAI": "https://api.openai.com/v1",
     "Custom": "http://localhost:1234/v1",  # Example custom endpoint
+    "Local": "http://localhost:11434/v1",  # Example local endpoint
 }
 base_url = endpoints.get(api_endpoint)
 
@@ -36,6 +37,7 @@ model = {
     "Groq": "llama-3.3-70b-versatile",
     "OpenAI": "gpt-4o-mini",
     "Custom": "custom-model-id",  # Placeholder for any custom model
+    "Local": "llama3.3",  # Placeholder for any local model
 }.get(api_endpoint)
 
 # 🎤 Transcription Settings

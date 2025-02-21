@@ -303,7 +303,7 @@ def video_summary(Link):
     config.video_id = video_id_match.group(1)
 
     config.client = openai.OpenAI(api_key=get_api_key(), base_url=base_url)
-    
+
     # Video fetching
     # Re-run cell if you change the Source URL
     skip_transcription = False
@@ -454,7 +454,7 @@ def video_summary(Link):
 
     # Save the transcription
     if not skip_transcription:
-        with open("transcription.md", "w", encoding="utf-8") as f:
+        with open(f"{config.video_id}_captions.md", "w", encoding="utf-8") as f:
             f.write(transcription_text)
 
     return process_and_summarize(transcription_text)

@@ -290,12 +290,20 @@ def process_and_summarize(text):
 
 
 def video_summary(Link):
-    config.URL = Link
+    if not Link or not Link.strip():
+        return "Please provide a valid URL"
+
+    config.URL = Link.strip()
     print("Video URL =", config.URL)
 
-    config.client = openai.OpenAI(api_key=get_api_key(), base_url=base_url)
-    config.video_id = re.search(regex, config.URL).group(1)
+    video_id_match = re.search(regex, config.URL)
+    if not video_id_match:
+        return "Invalid YouTube URL format"
 
+    config.video_id = video_id_match.group(1)
+
+    config.client = openai.OpenAI(api_key=get_api_key(), base_url=base_url)
+    
     # Video fetching
     # Re-run cell if you change the Source URL
     skip_transcription = False

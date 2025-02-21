@@ -1,6 +1,8 @@
 Video Summary
 =============
 
+![Video Summary](Video%20Summary.png)
+
 - Setup
 
 ```
@@ -8,6 +10,10 @@ $ conda create -n video python=3.11.11
 $ conda activate video
 
 $ pip install -r requirements.txt
+```
+
+```
+$ brew install ffmpeg
 ```
 
 - Run

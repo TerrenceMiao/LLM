@@ -1,25 +1,26 @@
 
 
 **Introduction to Grock 3**
-The transcript introduces Grock 3, a new large language model that has reached the top of the LM Marina leaderboard, surpassing existing benchmarks. It is described as smart, mostly uncensored, and capable of generating content that may be illegal in many parts of the world. The model has a deep thinking mode and can perform tasks like text-to-video generation. The speaker is already paying for Twitter Premium Plus to access Grock 3, and this video will explore what makes Grock 3 special and if it truly is the best LLM in the world.
-*_https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=0s_*
-
+The video discusses the recent release of Grock 3, a large language model that has reached the top spot on the LM Marina leaderboard. Grock 3 is described as "smart as hell" and "mostly uncensored", allowing it to generate content that may be considered offensive or illegal in some parts of the world. The model has a deep thinking mode and can perform tasks such as text-to-video generation. 
+*https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=0s* 
+*_0:04_*
 
 **Training and Capabilities of Grock 3**
-The transcript discusses how Grock 3 was trained and its capabilities. It has direct access to the firehose of data from Twitter and XAI, and its developers have optimized it for maximum truth-seeking, even if that comes at the expense of being politically correct. The model can generate images of celebrities, write profanity-laced poems, and perform other tasks that may be offensive or blocked by other LLMs. The speaker notes that Grock 3's response to a prompt was so offensive that it couldn't be shown on YouTube.
-*_https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=40s_*
+The video explains that Grock 3 was trained on a massive amount of data, including tweets and other online content. The model is optimized for maximum truth-seeking, even if that means being politically incorrect. This allows users to generate content that may be considered provocative or offensive. The video also mentions that Grock 3 has direct access to the "firehose" of data from Twitter and XAI, giving it a unique advantage over other language models. 
+*https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=100s* 
+*_1:40_*
 
+**Benchmarks and Comparison to Other Models**
+The video discusses the benchmarks used to evaluate Grock 3, including the LM Marina leaderboard and other tests. While Grock 3 performs well in some areas, it is missing from other benchmarks, such as the Code Forces and Arc AGI benchmarks. The video also mentions that the model's performance is similar to other state-of-the-art models, such as Open AI 03. 
+*https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=200s* 
+*_2:35_*
 
-**Benchmarks and Limitations of Grock 3**
-The transcript examines the benchmarks and limitations of Grock 3. It is currently sitting on top of the LM Marina leaderboard and has beaten other models like Gemini, Claude, and GP4 in math, science, and coding tasks. However, it is missing some benchmarks, and when Open AI 03 is added, the results paint a different picture. The speaker notes that benchmarks are often cherry-picked and that the only thing that matters is their proprietary Vibe check, which found Grock 3 to be plateauing at the same level as other state-of-the-art models.
-*_https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=2m_*
+**Training Details and Future Plans**
+The video provides details on how Grock 3 was trained, including the use of the Colossus supercomputer in Memphis, Tennessee. The facility is believed to be the world's largest AI supercomputer, with over 200,000 Nvidia H100 GPUs. The video also mentions plans to expand the facility to 1 million GPUs. Additionally, the video discusses the upcoming release of Super Gro, a more powerful version of the model that will be available for $30 per month. 
+*https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=300s* 
+*_3:25_*
 
-
-**Training Details and Super Grock**
-The transcript provides details on how Grock 3 was trained at the Colossus supercomputer in Memphis, Tennessee, which is believed to be the world's largest AI supercomputer. The facility uses a cluster of over 200,000 Nvidia H100 GPUs and plans to expand to 1 million GPUs. The speaker notes that Super Grock, an upcoming version of Grock 3, is expected to cost $30 per month, which is a highly competitive price compared to other models.
-*_https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=3m_*
-
-
-**Conclusion and Sponsor**
-The transcript concludes by noting that a better strategy to learn how to code is to start from the ground up, and the video sponsor, Brilliant, provides interactive hands-on lessons that demystify the complexity of deep learning. The speaker recommends starting with Python and checking out Brilliant's full course on how large language models work.
-*_https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=4m_*
+**Conclusion and Sponsorship**
+The video concludes by summarizing the key points about Grock 3 and its capabilities. The video also mentions the sponsor, Brilliant, which offers interactive lessons and courses on deep learning and other topics. The video ends with a call to action to try out Brilliant's platform for free. 
+*https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=400s* 
+*_4:02_*

@@ -4,4 +4,5 @@ openai-whisper
 groq
 pytubefix
 openai
+whisper
 gradio

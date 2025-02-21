@@ -149,21 +149,33 @@ def get_groq_api_key():
 
 # Converts the audio file to MP3 with low sample rate and bitrate to reduce the file size (to stay in audio file API limits)
 def process_audio_file(input_path, output_path):
-    command_convert = [
-        "ffmpeg",
-        "-y",
-        "-i",
-        input_path,
-        "-ar",
-        str(8000),
-        "-ac",
-        str(1),
-        "-b:a",
-        "16k",
-        output_path,
-    ]
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"Input file not found: {input_path}")
 
-    subprocess.run(command_convert, check=True)
+    try:
+        command_convert = [
+            "ffmpeg",
+            "-y",
+            "-i",
+            input_path,
+            "-ar",
+            str(8000),
+            "-ac",
+            str(1),
+            "-b:a",
+            "16k",
+            output_path,
+        ]
+
+        subprocess.run(command_convert, check=True, capture_output=True)
+
+        # Clean up input file if it's a temporary file
+        if "_processed" not in input_path and input_path != output_path:
+            os.remove(input_path)
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error processing audio: {e.stderr.decode()}")
+        raise
 
 def seconds_to_time_format(seconds):
     hours, remainder = divmod(seconds, 3600)

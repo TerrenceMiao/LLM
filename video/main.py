@@ -454,5 +454,5 @@ def video_summary(Link):
 
 import gradio as gr
 
-iface = gr.Interface(fn=video_summary, inputs=gr.Textbox(placeholder="Enter YouTube URL here ..."), outputs=gr.Textbox(label="Video Summary"))
+iface = gr.Interface(fn=video_summary, inputs=gr.Textbox(placeholder="Enter YouTube URL here ..."), outputs=gr.Markdown(label="Video Summary"))
 iface.launch()

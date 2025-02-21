@@ -191,26 +191,36 @@ def download_youtube_audio_only(url):
 def download_youtube_captions():
     try:
         transcript_list = YouTubeTranscriptApi.list_transcripts(config.video_id)
-    except:
+
+        # Try to get transcript in preferred language first
+        try:
+            transcript = YouTubeTranscriptApi.get_transcript(config.video_id, languages=[language])
+        except:
+            # If preferred language not available, try to get any translatable transcript
+            transcript = None
+            for available_transcript in transcript_list:
+                if available_transcript.is_translatable:
+                    transcript = available_transcript.translate(language).fetch()
+                    break
+
+            if not transcript:
+                return ""
+
+        # Process transcript
+        transcription_text = "\n".join(
+            f"{seconds_to_time_format(entry['start'])} {entry['text'].strip()}"
+            for entry in transcript
+        )
+
+        # Save transcript
+        with open(f"{config.video_id}_captions.md", "w", encoding="utf-8") as f:
+            f.write(transcription_text)
+
+        return transcription_text
+
+    except Exception as e:
+        print(f"No captions found or, error downloading captions")
         return ""
-
-    try:
-        transcript = YouTubeTranscriptApi.get_transcript(config.video_id, languages=[language])
-    except:
-        for available_transcript in transcript_list:
-            if available_transcript.is_translatable:
-                transcript = available_transcript.translate(language).fetch()
-                break
-
-    transcription_text = ""
-    for entry in transcript:
-        start_time = seconds_to_time_format(entry["start"])
-        transcription_text += f"{start_time} {entry['text'].strip()}\n"
-
-    with open(f"{config.video_id}_captions.md", "w", encoding="utf-8") as f:
-        f.write(transcription_text)
-
-    return transcription_text
 
 def extract_and_clean_timestamps(text_chunks):
     timestamp_pattern = re.compile(r"(\d{2}:\d{2}:\d{2})")

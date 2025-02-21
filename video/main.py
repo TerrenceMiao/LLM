@@ -282,49 +282,57 @@ def summarize(prompt):
 
 
 def process_and_summarize(text):
-    texts = [
-        text[i : i + chunk_size] for i in range(0, len(text), chunk_size - overlap_size)
-    ]
-    cleaned_texts, timestamp_ranges = extract_and_clean_timestamps(texts)
-    summaries = []
+    if not text:
+        return "No transcript available to summarize"
 
-    with concurrent.futures.ThreadPoolExecutor(
-        max_workers=parallel_api_calls
-    ) as executor:
-        future_to_chunk = {
-            executor.submit(summarize, text_chunk): idx
-            for idx, text_chunk in enumerate(texts)
-        }
-        for future in concurrent.futures.as_completed(future_to_chunk):
-            idx = future_to_chunk[future]
-            try:
-                summarized_chunk = future.result()
-                summary_piece = (
-                    format_timestamp_link(timestamp_ranges[idx])
-                    + "\n\n"
-                    + summarized_chunk
-                )
-                summary_piece += "\n"
-                summaries.append((idx, summary_piece))
-            except Exception as exc:
-                print(f"Chunk {idx} generated an exception: {exc}")
-                time.sleep(10)
-                future_to_chunk[executor.submit(summarize, texts[idx])] = idx
+    try:
+        # Split text into chunks with overlap
+        texts = [
+            text[i : i + chunk_size] for i in range(0, len(text), chunk_size - overlap_size)
+        ]
+        cleaned_texts, timestamp_ranges = extract_and_clean_timestamps(texts)
+        summaries = []
 
-    summaries.sort()  # Ensure summaries are in the correct order
-    final_summary = "\n\n".join([summary for _, summary in summaries])
+        # Process chunks in parallel with retry logic
+        with concurrent.futures.ThreadPoolExecutor(
+            max_workers=parallel_api_calls
+        ) as executor:
+            future_to_chunk = {
+                executor.submit(summarize, text_chunk): idx
+                for idx, text_chunk in enumerate(texts)
+            }
+            for future in concurrent.futures.as_completed(future_to_chunk):
+                idx = future_to_chunk[future]
+                try:
+                    summarized_chunk = future.result()
+                    summary_piece = (
+                        format_timestamp_link(timestamp_ranges[idx])
+                        + "\n\n"
+                        + summarized_chunk
+                        + "\n"
+                    )
+                    summaries.append((idx, summary_piece))
+                except Exception as exc:
+                    print(f"Chunk {idx} generated an exception: {exc}")
+                    time.sleep(10)
+                    future_to_chunk[executor.submit(summarize, texts[idx])] = idx
 
-    # Save the final summary
-    final_name = (
-        f"{config.video_id}_captions.md".replace(".md", "_FINAL.md")
-        if Type != "Dropbox video link"
-        else "final_dropbox_video.md"
-    )
-    with open(final_name, "w") as f:
-        f.write(final_summary)
+        summaries.sort()  # Ensure summaries are in the correct order
+        final_summary = "\n\n".join([summary for _, summary in summaries])
 
-    return final_summary
+        # Save the final summary
+        final_name = (
+            f"{config.video_id}_captions.md".replace(".md", "_FINAL.md")
+            if Type != "Dropbox video link"
+            else "final_dropbox_video.md"
+        )
+        with open(final_name, "w") as f:
+            f.write(final_summary)
 
+        return final_summary
+
+    except Exception as e:
+        return f"Error during summarization: {str(e)}"
 
 def video_summary(Link):
     if not Link or not Link.strip():

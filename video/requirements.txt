@@ -4,3 +4,4 @@ openai-whisper
 groq
 pytubefix
 openai
+gradio

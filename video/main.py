@@ -58,18 +58,19 @@ initial_prompt = ""
 
 transcript_file_name = ""
 
+video_id = ""
+
 regex = r"(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})"
 
 import re
-
-video_id = re.search(regex, URL).group(1)
-
-# Libraries and helper functions
-# Re-run if you change settings in the previous cell
-
 import subprocess
 import os
 import json
+
+import concurrent.futures
+import time
+
+import openai
 
 from dotenv import load_dotenv
 
@@ -107,7 +108,6 @@ def get_api_key():
 
     return api_key
 
-
 def get_groq_api_key():
     try:
         from google.colab import userdata
@@ -124,7 +124,6 @@ def get_groq_api_key():
         )
 
     return groq_api_key
-
 
 # Converts the audio file to MP3 with low sample rate and bitrate to reduce the file size (to stay in audio file API limits)
 def process_audio_file(input_path, output_path):
@@ -144,30 +143,16 @@ def process_audio_file(input_path, output_path):
 
     subprocess.run(command_convert, check=True)
 
-
-import openai
-
-client = openai.OpenAI(api_key=get_api_key(), base_url=base_url)
-
-# Video fetching
-# Re-run cell if you change the source URL
-skip_transcription = False
-transcription_text = ""
-textTimestamps = ""
-
-
 def seconds_to_time_format(seconds):
     hours, remainder = divmod(seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
     return f"{int(hours):02d}:{int(minutes):02d}:{int(seconds):02d}"
-
 
 def download_youtube_audio_only(url):
     yt = YouTube(url)
     audio_stream = yt.streams.get_audio_only()
     saved_path = audio_stream.download(output_path=".", skip_existing=True)
     return saved_path
-
 
 def download_youtube_captions(url):
     print("Video URL =", url)
@@ -196,6 +181,101 @@ def download_youtube_captions(url):
 
     return transcription_text, transcript_file_name
 
+def extract_and_clean_timestamps(text_chunks):
+    timestamp_pattern = re.compile(r"(\d{2}:\d{2}:\d{2})")
+    cleaned_texts = []
+    timestamp_ranges = []
+    for chunk in text_chunks:
+        timestamps = timestamp_pattern.findall(chunk)
+        if timestamps:
+            for timestamp in timestamps:
+                # Remove each found timestamp from the chunk
+                chunk = chunk.replace(timestamp, "")
+            timestamp_ranges.append(
+                timestamps[0]
+            ) # Assuming you want the first timestamp per chunk
+        else:
+            timestamp_ranges.append("")
+        cleaned_texts.append(
+            chunk.strip()
+        ) # Strip to remove any leading/trailing whitespace
+    return cleaned_texts, timestamp_ranges
+
+def format_timestamp_link(timestamp):
+    if Type == "YouTube Video":
+        hours, minutes, seconds = map(int, timestamp.split(":"))
+        total_seconds = hours * 3600 + minutes * 60 + seconds
+        # return f"{timestamp} - {URL}&t={total_seconds}"
+        return f""
+    else:
+        return f"{timestamp}"
+
+def summarize(prompt):
+    completion = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": summary_prompt},
+            {"role": "user", "content": prompt},
+        ],
+        max_tokens=max_output_tokens,
+    )
+    return completion.choices[0].message.content
+
+def process_and_summarize(text):
+    texts = [
+        text[i : i + chunk_size] for i in range(0, len(text), chunk_size - overlap_size)
+    ]
+    cleaned_texts, timestamp_ranges = extract_and_clean_timestamps(texts)
+    summaries = []
+
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=parallel_api_calls
+    ) as executor:
+        future_to_chunk = {
+            executor.submit(summarize, text_chunk): idx
+            for idx, text_chunk in enumerate(texts)
+        }
+        for future in concurrent.futures.as_completed(future_to_chunk):
+            idx = future_to_chunk[future]
+            try:
+                summarized_chunk = future.result()
+                summary_piece = (
+                    format_timestamp_link(timestamp_ranges[idx])
+                    + "\n\n"
+                    + summarized_chunk
+                )
+                summary_piece += "\n"
+                summaries.append((idx, summary_piece))
+            except Exception as exc:
+                print(f"Chunk {idx} generated an exception: {exc}")
+                time.sleep(10)
+                future_to_chunk[executor.submit(summarize, texts[idx])] = idx
+
+    summaries.sort() # Ensure summaries are in the correct order
+    final_summary = "\n\n".join([summary for _, summary in summaries])
+
+    # Save the final summary
+    final_name = (
+        transcript_file_name.replace(".md", "_FINAL.md")
+        if Type != "Dropbox video link"
+        else "final_dropbox_video.md"
+    )
+    with open(final_name, "w") as f:
+        f.write(final_summary)
+
+    return final_summary
+
+
+video_id = re.search(regex, URL).group(1)
+
+
+client = openai.OpenAI(api_key=get_api_key(), base_url=base_url)
+
+# Video fetching
+# Re-run cell if you change the Source URL
+skip_transcription = False
+transcription_text = ""
+textTimestamps = ""
 
 if Type == "YouTube Video":
     # Clean YouTube url from timestamp
@@ -260,7 +340,7 @@ elif Type == "Dropbox Video Link":
     video_path_local = processed_audio_path  # Update to the processed file path
 
 elif Type == "Local File":
-    local_file_path = Source
+    local_file_path = URL
     subprocess.run(
         [
             "ffmpeg",
@@ -373,94 +453,13 @@ max_output_tokens = 4096
 
 final_summary = ""
 
-
-def extract_and_clean_timestamps(text_chunks):
-    timestamp_pattern = re.compile(r"(\d{2}:\d{2}:\d{2})")
-    cleaned_texts = []
-    timestamp_ranges = []
-    for chunk in text_chunks:
-        timestamps = timestamp_pattern.findall(chunk)
-        if timestamps:
-            for timestamp in timestamps:
-                # Remove each found timestamp from the chunk
-                chunk = chunk.replace(timestamp, "")
-            timestamp_ranges.append(
-                timestamps[0]
-            ) # Assuming you want the first timestamp per chunk
-        else:
-            timestamp_ranges.append("")
-        cleaned_texts.append(
-            chunk.strip()
-        ) # Strip to remove any leading/trailing whitespace
-    return cleaned_texts, timestamp_ranges
-
-
-def format_timestamp_link(timestamp):
-    if Type == "YouTube Video":
-        hours, minutes, seconds = map(int, timestamp.split(":"))
-        total_seconds = hours * 3600 + minutes * 60 + seconds
-        # return f"{timestamp} - {URL}&t={total_seconds}"
-        return f""
-    else:
-        return f"{timestamp}"
-
-
-import concurrent.futures
-import time
-
-
-def summarize(prompt):
-    completion = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": summary_prompt},
-            {"role": "user", "content": prompt},
-        ],
-        max_tokens=max_output_tokens,
-    )
-    return completion.choices[0].message.content
-
-
-def process_and_summarize(text):
-    texts = [
-        text[i : i + chunk_size] for i in range(0, len(text), chunk_size - overlap_size)
-    ]
-    cleaned_texts, timestamp_ranges = extract_and_clean_timestamps(texts)
-    summaries = []
-
-    with concurrent.futures.ThreadPoolExecutor(
-        max_workers=parallel_api_calls
-    ) as executor:
-        future_to_chunk = {
-            executor.submit(summarize, text_chunk): idx
-            for idx, text_chunk in enumerate(texts)
-        }
-        for future in concurrent.futures.as_completed(future_to_chunk):
-            idx = future_to_chunk[future]
-            try:
-                summarized_chunk = future.result()
-                summary_piece = (
-                    format_timestamp_link(timestamp_ranges[idx])
-                    + "\n\n"
-                    + summarized_chunk
-                )
-                summary_piece += "\n"
-                summaries.append((idx, summary_piece))
-            except Exception as exc:
-                print(f"Chunk {idx} generated an exception: {exc}")
-                time.sleep(10)
-                future_to_chunk[executor.submit(summarize, texts[idx])] = idx
-
-    summaries.sort() # Ensure summaries are in the correct order
-    final_summary = "\n\n".join([summary for _, summary in summaries])
-
-    # Save the final summary
-    final_name = (
-        transcript_file_name.replace(".md", "_FINAL.md")
-        if Type != "Dropbox video link"
-        else "final_dropbox_video.md"
-    )
-    with open(final_name, "w") as f:
-        f.write(final_summary)
-
 process_and_summarize(transcription_text)
+
+
+def video_summary(Link):
+    return Link
+
+import gradio as gr
+
+iface = gr.Interface(fn=video_summary, inputs=gr.Textbox(placeholder="Enter YouTube URL here ..."), outputs=gr.Textbox(label="Video Summary"))
+iface.launch()

@@ -4,6 +4,8 @@ Video Summary
 ![Video Summary](Video%20Summary.png)
 
 - Setup
+  - `Mac`
+  - `Ollama` with **llama3.3** model, to run in local environment
 
 ```
 $ conda create -n video python=3.11.11

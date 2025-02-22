@@ -5,4 +5,5 @@ groq
 pytubefix
 openai
 whisper
+mlx-whisper
 gradio

@@ -21,7 +21,7 @@ Type = Type_of_source
 # The summarization process uses the API key specified in `api_key` variable.
 # Ensure you have set the required environment variables or Colab secrets for your API keys.
 # @param ["Groq", "OpenAI", "Custom", "Local"]
-api_endpoint = "Groq"
+api_endpoint = "Local"
 
 # Define endpoints and models based on the selected API
 endpoints = {
@@ -48,7 +48,7 @@ model = {
 
 # Transcription Method
 # @param ["Cloud Whisper", "Local Whisper"]
-transcription_method = "Cloud Whisper"
+transcription_method = "Local Whisper"
 
 # Language (ISO-639-1 code, e.g., "en" for English)
 # @param {type:"string"}
@@ -100,7 +100,7 @@ from dotenv import load_dotenv
 from youtube_transcript_api import YouTubeTranscriptApi
 
 if transcription_method == "Local Whisper":
-    import whisper
+    import mlx_whisper
 else:
     from groq import Groq
 
@@ -336,6 +336,7 @@ def process_and_summarize(text):
     except Exception as e:
         return f"Error during summarization: {str(e)}"
 
+
 def video_summary(Link):
     if not Link or not Link.strip():
         return "Please provide a valid URL"
@@ -465,12 +466,17 @@ def video_summary(Link):
         for audio_file_path in audio_files:
             if transcription_method == "Local Whisper":
                 # Local Whisper transcription
-                transcription = model_whisper.transcribe(
+                # transcription = whisper.transcribe(
+                #     audio_file_path,
+                #     beam_size=5,
+                #     language=None if language == "auto" else language,
+                #     task="translate",
+                #     initial_prompt=initial_prompt or None,
+                # )
+                transcription = mlx_whisper.transcribe(
                     audio_file_path,
-                    beam_size=5,
-                    language=None if language == "auto" else language,
-                    task="translate",
                     initial_prompt=initial_prompt or None,
+                    word_timestamps=True,
                 )
 
                 for segment in transcription["segments"]:

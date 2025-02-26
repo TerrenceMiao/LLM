@@ -89,6 +89,17 @@ $$\int_0^1 x^2 \ln(x) dx = (-\frac{1}{9}) - (0) = -\frac{1}{9}$$
 The value of the definite integral $\int_0^1 x^2 \ln(x) dx$ is $-\frac{1}{9}$.
 
 
+IMO 2024 problem 4 (Geometry)
+---
+
+Let _ABC_ be a triangle with _AB_ < _AC_ < _BC_. Let the incentre and incircle of triangle _ABC_ be _I_ and _ω_, respectively. Let _X_ be the point on line _BC_ different from _C_ such that the line through _X_ parallel to _AC_ is tangent to _ω_. Similarly, let _Y_ be the point on line _BC_ different from _B_ such that the line through _Y_ parallel to _AB_ is tangent to _ω_. Let _AI_ intersect the circumcircle of triangle _ABC_ again at _P_ ≠ _A_. Let _K_ and _L_ be the midpoints of _AC_ and _AB_, respectively.
+
+Prove that _∠KIL_ + _∠YPX_ = 180°.
+
+![IMO 2024 problem 4](IMO%202024%20problem%204.png)
+
+![IMO 2024 problem 4 solved](IMO%202024%20problem%204%20solved.png)
+
 References
 ----------
 

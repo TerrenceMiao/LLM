@@ -8,7 +8,7 @@ Circles in Circles
 
 The radius of the circle C is 3 and all circles are tangent to each other.
 
-If circle C and circle D are congruent and touch at the center of the large circle, what are the radius of circle A, circle B and circle C?
+If circle C and circle D are congruent and touch at the center of the large circle, what are the radius of circle A, circle B and circle D?
 
 
 References

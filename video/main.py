@@ -524,4 +524,45 @@ iface = gr.Interface(
     inputs=gr.Textbox(placeholder="Enter YouTube URL here ..."),
     outputs=gr.Markdown(label="Video Summary", line_breaks=True),
 )
-iface.launch()
+
+
+from flask import Flask, jsonify, request
+
+from threading import Thread
+
+app = Flask(__name__)
+
+@app.route("/")
+def say_hello():
+    return "Hello, Video Summary!"
+
+@app.route('/', methods=['POST'])
+def get_video_summary():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    video_url = data.get('url')
+    if not video_url:
+        return jsonify({"error": "No URL provided"}), 400
+
+    result = video_summary(video_url)
+
+    return jsonify({
+        "url": video_url,
+        "summary": result
+    })
+
+def run_flask():
+    app.run(debug=False)
+
+def run_gradio():
+    iface.launch(share=False)
+
+if __name__ == '__main__':
+    # Start Flask in a separate thread
+    flask_thread = Thread(target=run_flask)
+    flask_thread.start()
+
+    # Run Gradio in the main thread
+    run_gradio()

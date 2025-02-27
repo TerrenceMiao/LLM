@@ -7,3 +7,4 @@ openai
 whisper
 mlx-whisper
 gradio
+Flask

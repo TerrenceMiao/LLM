@@ -100,6 +100,13 @@ Prove that _∠KIL_ + _∠YPX_ = 180°.
 
 ![IMO 2024 problem 4 solved](IMO%202024%20problem%204%20solved.png)
 
+Solved by `Alpha Geometry`:
+
+![IMO 2024 Problem 4 by Alpha Geometry](IMO%202024%20Problem%204%20by%20Alpha%20Geometry%201.png)
+
+![IMO 2024 Problem 4 by Alpha Geometry](IMO%202024%20Problem%204%20by%20Alpha%20Geometry%202.png)
+
+
 References
 ----------
 

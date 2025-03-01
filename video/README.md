@@ -28,11 +28,14 @@ Here's the YouTube Video:
 
 [![Is Elon's Grok 3 the new AI king?](https://img.youtube.com/vi/b0XI-cbel1U/0.jpg)](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship)
 
-Here's the YouTube Video with Summary:
+Here's the YouTube Video with Summary in Chrome Extension:
 
 ![Video Summary in YouTube](Video%20Summary%20in%20YouTube.png)
 
 ![Video Summary Chrome Extension](Video%20Summary%20Chrome%20Extension.png)
+
+Install Video Summary Chrome Extension from `extension\` directory.
+
 
 References
 ----------

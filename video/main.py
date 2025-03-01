@@ -527,10 +527,19 @@ iface = gr.Interface(
 
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS  # Add this import
 
 from threading import Thread
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+# CORS(app, resources={
+#     r"/*": {
+#         "origins": ["chrome-extension://your-extension-id", "http://localhost:3000"],
+#         "methods": ["GET", "POST"],
+#         "allow_headers": ["Content-Type"]
+#     }
+# })
 
 @app.route("/")
 def say_hello():

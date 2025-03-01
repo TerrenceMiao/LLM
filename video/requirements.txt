@@ -8,3 +8,4 @@ whisper
 mlx-whisper
 gradio
 Flask
+flask_cors

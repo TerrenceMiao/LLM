@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Hello Chrome Extension",
+  "name": "Video Summary",
   "version": "1.0",
-  "description": "A simple Chrome Extension example",
+  "description": "A YouTube Video Summary Chrome Extension",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -11,5 +11,24 @@
       "128": "images/icon128.png"
     }
   },
-  "permissions": ["activeTab"]
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "marked.min.js",
+        "page.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
 }

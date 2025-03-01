@@ -269,7 +269,7 @@ def summarize(prompt):
         "Summarize the video transcript with timestamp. Timestamp format is YouTube link "
         + config.URL
         + " at specified timestamp. Each paragraph should begin with markdown bold notation on one line, "
-        + "and end with the timestamp in markdown italic on a new line. Then follow with two blank lines. "
+        + "and end with the timestamp in markdown italic on a new line. "
         + "Here is the transcript: "
     )
 
@@ -532,6 +532,9 @@ from flask_cors import CORS  # Add this import
 
 from threading import Thread
 
+# Add at the top of the file with other imports
+from functools import lru_cache
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 # CORS(app, resources={
@@ -546,6 +549,11 @@ CORS(app)  # Enable CORS for all routes
 def say_hello():
     return "Hello, Video Summary!"
 
+# Add before the Flask routes
+# In-memory cache for video summaries
+cacheEnabled = True
+video_summary_cache = {}
+
 @app.route('/', methods=['POST'])
 def get_video_summary():
     data = request.get_json()
@@ -556,12 +564,36 @@ def get_video_summary():
     if not video_url:
         return jsonify({"error": "No URL provided"}), 400
 
+    # Check if summary exists in cache
+    if cacheEnabled and (video_url in video_summary_cache):
+        print(f"Cache hit for URL: {video_url}")
+        return jsonify({
+            "url": video_url,
+            "summary": video_summary_cache[video_url],
+            "cached": True
+        })
+
+    # If not in cache, generate new summary
     result = video_summary(video_url)
+
+    # Store in cache
+    video_summary_cache[video_url] = result
 
     return jsonify({
         "url": video_url,
-        "summary": result
+        "summary": result,
+        "cached": False
     })
+
+@app.route('/reset', methods=['POST'])
+def clear_cache():
+    video_summary_cache.clear()
+
+    return jsonify({
+        "message": "Cache cleared successfully",
+        "cache_size": len(video_summary_cache)
+    })
+
 
 def run_flask():
     app.run(debug=False)

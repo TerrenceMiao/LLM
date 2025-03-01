@@ -338,12 +338,25 @@ def process_and_summarize(text):
         return f"Error during summarization: {str(e)}"
 
 
+# Add at the top of the file with other imports
+from functools import lru_cache
+
+# Add before the Flask routes
+# In-memory cache for video summaries
+cacheEnabled = True
+video_summary_cache = {}
+
 def video_summary(Link):
     if not Link or not Link.strip():
         return "Please provide a valid URL"
 
     config.URL = Link.strip()
     print("Video URL =", config.URL)
+
+    # Check if summary exists in cache
+    if cacheEnabled and (config.URL in video_summary_cache):
+        print(f"Cache hit for URL: {config.URL}")
+        return video_summary_cache[config.URL]
 
     video_id_match = re.search(regex, config.URL)
     if not video_id_match:
@@ -515,7 +528,10 @@ def video_summary(Link):
         with open(f"{config.video_id}_captions.md", "w", encoding="utf-8") as f:
             f.write(transcription_text)
 
-    return process_and_summarize(transcription_text)
+    # Store in cache
+    video_summary_cache[config.URL] = process_and_summarize(transcription_text)
+
+    return video_summary_cache[config.URL]
 
 
 import gradio as gr
@@ -526,14 +542,8 @@ iface = gr.Interface(
     outputs=gr.Markdown(label="Video Summary", line_breaks=True),
 )
 
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS  # Add this import
-
-from threading import Thread
-
-# Add at the top of the file with other imports
-from functools import lru_cache
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -549,11 +559,6 @@ CORS(app)  # Enable CORS for all routes
 def say_hello():
     return "Hello, Video Summary!"
 
-# Add before the Flask routes
-# In-memory cache for video summaries
-cacheEnabled = True
-video_summary_cache = {}
-
 @app.route('/', methods=['POST'])
 def get_video_summary():
     data = request.get_json()
@@ -564,25 +569,11 @@ def get_video_summary():
     if not video_url:
         return jsonify({"error": "No URL provided"}), 400
 
-    # Check if summary exists in cache
-    if cacheEnabled and (video_url in video_summary_cache):
-        print(f"Cache hit for URL: {video_url}")
-        return jsonify({
-            "url": video_url,
-            "summary": video_summary_cache[video_url],
-            "cached": True
-        })
-
-    # If not in cache, generate new summary
     result = video_summary(video_url)
-
-    # Store in cache
-    video_summary_cache[video_url] = result
 
     return jsonify({
         "url": video_url,
-        "summary": result,
-        "cached": False
+        "summary": result
     })
 
 @app.route('/reset', methods=['POST'])
@@ -594,6 +585,8 @@ def clear_cache():
         "cache_size": len(video_summary_cache)
     })
 
+
+from threading import Thread
 
 def run_flask():
     app.run(debug=False)

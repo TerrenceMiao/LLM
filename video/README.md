@@ -32,6 +32,7 @@ Here's the YouTube Video with Summary:
 
 ![Video Summary in YouTube](Video%20Summary%20in%20YouTube.png)
 
+![Video Summary Chrome Extension](Video%20Summary%20Chrome%20Extension.png)
 
 References
 ----------

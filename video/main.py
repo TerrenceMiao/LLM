@@ -269,7 +269,8 @@ def summarize(prompt):
         "Summarize the video transcript with timestamp. Timestamp format is YouTube link "
         + config.URL
         + " at specified timestamp. Each paragraph should begin with markdown bold notation on one line, "
-        + "and end with the timestamp in markdown italic on a new line. Here is the transcript: "
+        + "and end with the timestamp in markdown italic on a new line. Then follow with two blank lines. "
+        + "Here is the transcript: "
     )
 
     completion = config.client.chat.completions.create(

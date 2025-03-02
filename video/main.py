@@ -87,6 +87,8 @@ max_output_tokens = 4096
 import re
 import subprocess
 import os
+import platform
+is_apple_silicon = platform.processor() == 'arm'
 
 # import json
 
@@ -100,7 +102,10 @@ from dotenv import load_dotenv
 from youtube_transcript_api import YouTubeTranscriptApi
 
 if transcription_method == "Local Whisper":
-    import mlx_whisper
+    if is_apple_silicon:
+        import mlx_whisper
+    else:
+        import whisper
 else:
     from groq import Groq
 
@@ -478,20 +483,24 @@ def video_summary(Link):
         initial_prompt = ""
 
         for audio_file_path in audio_files:
+            # Local Whisper transcription
             if transcription_method == "Local Whisper":
-                # Local Whisper transcription
-                # transcription = whisper.transcribe(
-                #     audio_file_path,
-                #     beam_size=5,
-                #     language=None if language == "auto" else language,
-                #     task="translate",
-                #     initial_prompt=initial_prompt or None,
-                # )
-                transcription = mlx_whisper.transcribe(
-                    audio_file_path,
-                    initial_prompt=initial_prompt or None,
-                    word_timestamps=True,
-                )
+                if is_apple_silicon:
+                    transcription = mlx_whisper.transcribe(
+                        audio_file_path,
+                        initial_prompt=initial_prompt or None,
+                        word_timestamps=True,
+                    )
+                else:
+                    # Load whisper model first
+                    model_whisper = whisper.load_model("base")
+                    transcription = model_whisper.transcribe(
+                        audio_file_path,
+                        beam_size=5,
+                        language=None if language == "auto" else language,
+                        task="translate",
+                        initial_prompt=initial_prompt or None,
+                    )
 
                 for segment in transcription["segments"]:
                     start_time = seconds_to_time_format(segment["start"])

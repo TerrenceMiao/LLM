@@ -1,11 +1,12 @@
 python-dotenv
 youtube-transcript-api
+numpy<2.0.0
 openai-whisper
 groq
 pytubefix
 openai
 whisper
-mlx-whisper
+mlx-whisper; sys_platform == 'darwin' and platform_machine == 'arm64'
 gradio
 Flask
 flask_cors

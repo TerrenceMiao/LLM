@@ -4,7 +4,7 @@ Video Summary
 ![Video Summary](Video%20Summary.png)
 
 - Setup
-  - `Mac`, M Series
+  - `Mac`, Intel or M Series
   - `Ollama` with **llama3.3** model, to run in local environment
 
 ```

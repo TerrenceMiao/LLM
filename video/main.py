@@ -21,7 +21,7 @@ Type = Type_of_source
 # The summarization process uses the API key specified in `api_key` variable.
 # Ensure you have set the required environment variables or Colab secrets for your API keys.
 # @param ["Groq", "OpenAI", "Custom", "Local"]
-api_endpoint = "Local"
+api_endpoint = "Groq"
 
 # Define endpoints and models based on the selected API
 endpoints = {
@@ -122,6 +122,8 @@ import config
 
 # Function to get configuration value
 def get_api_key():
+    print("LLM Runtime Environment: " + api_endpoint)
+
     if api_endpoint == "Groq":
         return get_groq_api_key()
     try:

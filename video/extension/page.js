@@ -113,7 +113,7 @@ function GenerateVideoSummary() {
             // Create modal to display summary
             const modal = document.createElement('div');
             modal.style.cssText = `
-              background: black;
+              background: #0f0f0f;
               color: white;
               padding: 10px;
               border-radius: 8px;
@@ -129,26 +129,86 @@ function GenerateVideoSummary() {
             // modal.innerHTML = marked.parse(data.summary, { breaks: true });
 
             // Create chapter links
-            const chapters = [
-              { time: '0:00', content: 'Introduction' },
-              { time: '1:24', content: 'First Point' },
-              { time: '3:45', content: 'Second Point' }
-            ];
+            // Parse markdown format content into chapters, e.g.:
+            //
+            //   [00:00:00](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=0s)
+            //   **Introduction to Grock 3**
+            //   Just hours ago, a new large language model, Grock 3, was released, crushing existing benchmarks and reaching the number one spot on the LM Marina leaderboard. This model is unique in that it has direct access to the firehose of data from Twitter and is optimized for maximum truth-seeking, even if that comes at the expense of being politically correct.
+            //
+            //   [00:00:41](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=41s)
+            //   **AI Landscape and Competition**
+            //   The AI landscape is currently ruthless, with big players like Elon Musk and Mark Zuckerberg vying for dominance. Recently, Elon attempted to troll Open AI by offering to buy it out, but the offer was rejected. Meanwhile, Mark Zuckerberg faced a setback when it was revealed that he signed off on using 82 terabytes of pirated books to train his LLaMA models.
+
+            // Parse the markdown into chapter objects
+            const chapters = [];
+            
+            // Improved regex pattern that's more tolerant of whitespace variations
+            const chapterRegex = /\[(\d{2}:\d{2}:\d{2})\](?:.*?)(?:\n|\r\n?)\s*\*\*(.*?)\*\*\s*(?:\n|\r\n?)([\s\S]*?)(?=\[\d{2}:\d{2}:\d{2}\]|$)/g;
+
+            let match;
+            while ((match = chapterRegex.exec(data.summary)) !== null) {
+              chapters.push({
+                time: match[1],
+                title: match[2].trim(),
+                content: match[3].trim()
+              });
+            }
+
+            // Fallback if no chapters were parsed
+            // if (chapters.length === 0) {
+            //   console.warn('Failed to parse chapters from markdown, using fallback method');
+
+            //   // Split by timestamp markers as a fallback
+            //   const sections = data.summary.split(/\[\d{2}:\d{2}:\d{2}\]/);
+            //   const timestamps = data.summary.match(/\[\d{2}:\d{2}:\d{2}\]/g) || [];
+
+            //   // Skip the first section if it's empty (before first timestamp)
+            //   for (let i = 1; i < sections.length; i++) {
+            //     const section = sections[i].trim();
+            //     const titleMatch = section.match(/\*\*(.*?)\*\*/);
+            //     const title = titleMatch ? titleMatch[1].trim() : 'Section ' + i;
+
+            //     // Get content after the title
+            //     let content = section;
+            //     if (titleMatch) {
+            //       content = section.substring(section.indexOf(titleMatch[0]) + titleMatch[0].length).trim();
+            //     }
+
+            //     chapters.push({
+            //       time: timestamps[i - 1].replace(/[\[\]]/g, ''),
+            //       title: title,
+            //       content: content
+            //     });
+            //   }
+            // }
+
+            console.log('Parsed chapters:', chapters);
 
             chapters.forEach(chapter => {
               // Create a container for each chapter entry
               const chapterContainer = document.createElement('div');
-              chapterContainer.style.cssText = 'display: flex; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px;';
+              chapterContainer.style.cssText = 'margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px;';
+
+              // Create header container for timestamp and title
+              const headerContainer = document.createElement('div');
+              headerContainer.style.cssText = 'display: flex; align-items: center;';
+              chapterContainer.appendChild(headerContainer);
 
               // Add YouTube Chapters like link
               const chapterLink = createChapterLink(videoId, chapter.time);
               chapterLink.style.cssText = 'color: #3ea6ff; text-decoration: none; padding: 0 8px; margin: 0; border-bottom: none;';
-              chapterContainer.appendChild(chapterLink);
+              headerContainer.appendChild(chapterLink);
 
-              // Add YouTube Chapters like content
+              // Add YouTube Chapters like title
+              const chapterTitle = document.createElement('div');
+              chapterTitle.textContent = chapter.title;
+              chapterTitle.style.cssText = 'color: white; padding-left: 8px; font-weight: 500; flex: 1;';
+              headerContainer.appendChild(chapterTitle);
+
+              // Add YouTube Chapters like content on a new line
               const chapterContent = document.createElement('div');
               chapterContent.textContent = chapter.content;
-              chapterContent.style.cssText = 'color: white; padding-left: 8px; flex: 1;';
+              chapterContent.style.cssText = 'color: white; padding: 0 8px; font-weight: 400; margin-top: 4px;';
               chapterContainer.appendChild(chapterContent);
 
               modal.appendChild(chapterContainer);

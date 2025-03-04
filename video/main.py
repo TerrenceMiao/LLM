@@ -273,10 +273,10 @@ def format_timestamp_link(timestamp):
 
 def summarize(prompt):
     summary_prompt = (
-        "Summarize the video transcript with timestamp. Timestamp format is YouTube link "
-        + config.URL
-        + " at specified timestamp. Each paragraph should begin with markdown bold notation on one line, "
-        + "and end with the timestamp in markdown italic on a new line. "
+        "Summarize the YouTube transcript with timestamp. "
+        + "Each paragraph should begin with a timestamp in the format HH:MM:SS which holds markdown link to "
+        + "YouTube URL " + config.URL + " at specified seconds, "
+        + "and markdown bold notation on a new line. "
         + "Here is the transcript: "
     )
 

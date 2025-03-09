@@ -76,7 +76,18 @@ function createChapterLink(videoId, timestamp) {
   return link;
 }
 
+var isSummaryOn = false;
+
+// Create modal to display summary
+var modal;
+
 function GenerateVideoSummary() {
+
+  if (isSummaryOn === true) {
+    modal.remove();
+    isSummaryOn = false;
+  }
+
   // Get the current played video's YouTube URL
   const youTubeURL = document.createElement("a");
   console.log("YouTube URL = " + youTubeURL.baseURI);
@@ -110,8 +121,8 @@ function GenerateVideoSummary() {
           // Handle the response data here
           if (data.summary) {
             console.log('Video Summary: ', data.summary);
-            // Create modal to display summary
-            const modal = document.createElement('div');
+
+            modal = document.createElement('div');
             modal.style.cssText = `
               background: #212121;
               color: white;
@@ -146,6 +157,7 @@ function GenerateVideoSummary() {
             headerButton.style.cssText = 'cursor: pointer; border-radius: 50%; width: 24px; height: 24px; padding: 8px;';
             headerButton.onclick = function() {
               modal.remove();
+              isSummaryOn = false;
             };
             // Add hover effect to change background color
             headerButton.addEventListener('mouseover', function() {
@@ -255,6 +267,8 @@ function GenerateVideoSummary() {
               // Fallback to body if target element not found
               document.body.appendChild(modal);
             }
+
+            isSummaryOn = true;
           }
         })
         .catch((error) => {

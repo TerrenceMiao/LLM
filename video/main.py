@@ -363,6 +363,12 @@ def video_summary(Link):
         # Filter out any parameter that starts with 't='
         parts = [p for p in parts if not p.startswith('t=')]
         Link = parts[0] + '&'.join([''] + parts[1:]) if len(parts) > 1 else parts[0]
+    # Remove channel parameter from YouTube URL if present
+    if '&ab_channel=' in Link:
+        parts = Link.split('&')
+        # Filter out any parameter that starts with 'ab_channel='
+        parts = [p for p in parts if not p.startswith('ab_channel=')]
+        Link = parts[0] + '&'.join([''] + parts[1:]) if len(parts) > 1 else parts[0]
     config.URL = Link.strip()
     print("Video URL =", config.URL)
 

@@ -357,6 +357,12 @@ def video_summary(Link):
     if not Link or not Link.strip():
         return "Please provide a valid URL"
 
+    # Remove timestamp parameter from YouTube URL if present
+    if '&t=' in Link:
+        parts = Link.split('&')
+        # Filter out any parameter that starts with 't='
+        parts = [p for p in parts if not p.startswith('t=')]
+        Link = parts[0] + '&'.join([''] + parts[1:]) if len(parts) > 1 else parts[0]
     config.URL = Link.strip()
     print("Video URL =", config.URL)
 

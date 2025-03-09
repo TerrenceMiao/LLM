@@ -113,9 +113,10 @@ function GenerateVideoSummary() {
             // Create modal to display summary
             const modal = document.createElement('div');
             modal.style.cssText = `
-              background: #0f0f0f;
+              background: #212121;
               color: white;
-              padding: 10px;
+              padding: 12px 12px 0 12px;
+              margin-bottom: 10px;
               border-radius: 8px;
               overflow-y: auto;
               z-index: 10000;
@@ -124,6 +125,38 @@ function GenerateVideoSummary() {
               font-size: 1.4rem;
               line-height: 2rem;
             `;
+
+            // Create a container for the header elements to display them in one line
+            const headerContainer = document.createElement('div');
+            headerContainer.style.cssText = 'display: flex; justify-content: space-between; align-items: center; margin: 0 0 16px 0;';
+
+            // Add YouTube Chapters like Summary title
+            const headerSummary = document.createElement('div');
+            headerSummary.textContent = 'Summary';
+            headerSummary.style.cssText = 'color: white; font-family: "YouTube Sans", Roboto, sans-serif; font-size: 2rem; font-weight: 700;';
+            headerContainer.appendChild(headerSummary);
+
+            // Add YouTube Chapters like Close Button
+            const headerButton = document.createElement('div');
+            headerButton.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                <path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z" fill="white"></path>
+              </svg>
+            `;
+            headerButton.style.cssText = 'cursor: pointer; border-radius: 50%; width: 24px; height: 24px; padding: 8px;';
+            headerButton.onclick = function() {
+              modal.remove();
+            };
+            // Add hover effect to change background color
+            headerButton.addEventListener('mouseover', function() {
+              this.style.backgroundColor = '#717171';
+            });
+            headerButton.addEventListener('mouseout', function() {
+              this.style.backgroundColor = '';
+            });
+            headerContainer.appendChild(headerButton);
+
+            modal.appendChild(headerContainer);
 
             // Convert Markdown to HTML using marked
             // modal.innerHTML = marked.parse(data.summary, { breaks: true });
@@ -141,7 +174,7 @@ function GenerateVideoSummary() {
 
             // Parse the markdown into chapter objects
             const chapters = [];
-            
+
             // Improved regex pattern that's more tolerant of whitespace variations
             const chapterRegex = /\[(\d{2}:\d{2}:\d{2})\](?:.*?)(?:\n|\r\n?)\s*\*\*(.*?)\*\*\s*(?:\n|\r\n?)([\s\S]*?)(?=\[\d{2}:\d{2}:\d{2}\]|$)/g;
 
@@ -187,7 +220,7 @@ function GenerateVideoSummary() {
             chapters.forEach(chapter => {
               // Create a container for each chapter entry
               const chapterContainer = document.createElement('div');
-              chapterContainer.style.cssText = 'margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px;';
+              chapterContainer.style.cssText = 'margin-bottom: 12px; padding-bottom: 8px;';
 
               // Create header container for timestamp and title
               const headerContainer = document.createElement('div');
@@ -196,7 +229,7 @@ function GenerateVideoSummary() {
 
               // Add YouTube Chapters like link
               const chapterLink = createChapterLink(videoId, chapter.time);
-              chapterLink.style.cssText = 'color: #3ea6ff; text-decoration: none; padding: 0 8px; margin: 0; border-bottom: none;';
+              chapterLink.style.cssText = 'color: #3ea6ff; background-color: #263850; text-decoration: none; padding: 0 4px; margin: 0; border-radius: 4px;';
               headerContainer.appendChild(chapterLink);
 
               // Add YouTube Chapters like title
@@ -208,7 +241,7 @@ function GenerateVideoSummary() {
               // Add YouTube Chapters like content on a new line
               const chapterContent = document.createElement('div');
               chapterContent.textContent = chapter.content;
-              chapterContent.style.cssText = 'color: white; padding: 0 8px; font-weight: 400; margin-top: 4px;';
+              chapterContent.style.cssText = 'color: white; font-weight: 400; margin-top: 4px;';
               chapterContainer.appendChild(chapterContent);
 
               modal.appendChild(chapterContainer);

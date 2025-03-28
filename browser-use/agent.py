@@ -5,6 +5,7 @@ from pydantic import SecretStr
 import os
 
 from dotenv import load_dotenv
+load_dotenv(".env.local")
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
@@ -17,7 +18,7 @@ llm = ChatGoogleGenerativeAI(model='gemini-2.5-pro-exp-03-25', api_key=SecretStr
 # Create agent with the model
 async def main():
     agent = Agent(
-        task="Compare the price of gpt-4o and DeepSeek-V3",
+        task="Get the price of M4 MacBook Air 15 inch",
         llm=llm,
     )
     result = await agent.run()

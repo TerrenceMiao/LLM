@@ -36,5 +36,6 @@ References
 ----------
 
 - MCP For Server Developers, _https://modelcontextprotocol.io/quickstart/server_
+- Building MCP Servers, _https://medium.com/@cstroliadavis/building-mcp-servers-536969d27809_
 - Google Maps MCP, _https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps_
 - MCP CLI, _https://github.com/wong2/mcp-cli_

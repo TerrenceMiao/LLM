@@ -35,5 +35,6 @@ Question _**Discover the top 3 best Vietnamese Pho spots located between Yarravi
 References
 ----------
 
+- MCP For Server Developers, _https://modelcontextprotocol.io/quickstart/server_
 - Google Maps MCP, _https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps_
 - MCP CLI, _https://github.com/wong2/mcp-cli_

@@ -31,6 +31,27 @@ Question _**Discover the top 3 best Vietnamese Pho spots located between Yarravi
 
 ![MCP - Google Maps in action](MCP%20-%20Google%20Maps%20in%20action.png)
 
+- Weather
+
+MCP Server - **Weather** configuration setup in `Claude Desktop` on Mac:
+
+![MCP - Weather](MCP%20-%20Weather.png)
+
+```
+{
+  "mcpServers": {
+    "weather": {
+      "command": "/Users/terrence/.local/bin/uv",
+      "args": [
+        "--directory",
+        "/Users/terrence/Projects/LLM/mcp",
+        "run",
+        "weather.py"
+      ]
+    }
+  }
+}
+```
 
 References
 ----------

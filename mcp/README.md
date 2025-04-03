@@ -52,6 +52,10 @@ MCP Server - **Weather** configuration setup in `Claude Desktop` on Mac:
   }
 }
 ```
+- Hello MCP
+
+![MCP - Hello MCP](MCP%20-%20Hello%20MCP.png)
+
 
 References
 ----------

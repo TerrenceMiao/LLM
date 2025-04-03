@@ -52,6 +52,12 @@ MCP Server - **Weather** configuration setup in `Claude Desktop` on Mac:
   }
 }
 ```
+![MCP - Weather MCP Tools](MCP%20-%20Weather%20MCP%20Tools.png)
+
+![MCP - Weather Allow MCP Tools](MCP%20-%20Weather%20Allow%20MCP%20Tools.png)
+
+![MCP - Weather in New York](MCP%20-%20Weather%20in%20New%20York.png)
+
 - Hello MCP
 
 ![MCP - Hello MCP](MCP%20-%20Hello%20MCP.png)

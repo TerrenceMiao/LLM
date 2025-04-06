@@ -51,6 +51,20 @@ $ python agent.py
 
 ![Browser Use - Cross Origin Error](Browser%20Use%20-%20Cross%20Origin%20Error.png)
 
+To work around this, you can:
+
+1. use standalone browser like `Chromium` or `Google Chrome`
+2. login with `Google` or `Microsoft` account
+3. export all cookies, JSON format, with `Cookie-Editor` _https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm_ extension
+4. replace **"sameSite": null** and **"sameSite": "no_restriction"** with **"sameSite": "None"**; **"sameSite": "lax"** with **"sameSite": "Lax"**; **"sameSite": "strict"** with **"sameSite": "Strict"**
+5. bind **cookies.json** file in the browser in **agent.py**
+
+![Browser Use - Cookie-Editor](Browser%20Use%20-%20Cookie-Editor.png)
+
+or, you can:
+
+1. use standalone browser like `Chromium` or `Google Chrome` in **agent.py**
+
 
 References
 ----------

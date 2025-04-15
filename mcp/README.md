@@ -64,7 +64,9 @@ in `Claude Desktop` configuration file at **~/Library/Application Support/Claude
 
 - Remote MCP Server
 
-For example from a worker runs in Cloudflare _https://remote-mcp-server.terrence-miao.workers.dev_. Input MCP Server URL _https://remote-mcp-server.terrence-miao.workers.dev/sse_ with Transport Type set to **SSE** (Server-Sent Events):
+Base on the blog **Build and deploy Remote Model Context Protocol (MCP) servers to Cloudflare** _https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp/_, a Remote MCP Server example, which is a worker runs in Cloudflare _https://remote-mcp-server.terrence-miao.workers.dev_.
+
+Input MCP Server URL _https://remote-mcp-server.terrence-miao.workers.dev/sse_ with Transport Type set to **SSE** (Server-Sent Events):
 
 ![MCP - Remote MCP Server](MCP%20-%20Remote%20MCP%20Server.png)
 

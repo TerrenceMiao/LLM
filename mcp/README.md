@@ -33,9 +33,9 @@ Question _**Discover the top 3 best Vietnamese Pho spots located between Yarravi
 
 - Weather
 
-MCP Server - **Weather** configuration setup in `Claude Desktop` on Mac:
-
 ![MCP - Weather](MCP%20-%20Weather.png)
+
+in `Claude Desktop` configuration file at **~/Library/Application Support/Claude/claude_desktop_config.json**, and logs under **~/Library/Logs/Claude**:
 
 ```
 {
@@ -62,6 +62,32 @@ MCP Server - **Weather** configuration setup in `Claude Desktop` on Mac:
 
 ![MCP - Hello MCP](MCP%20-%20Hello%20MCP.png)
 
+- Cloudflare AI Playground
+
+with Remote MCP Server e.g. _https://remote-mcp-server.terrence-miao.workers.dev_. Input MCP Server URL _ https://remote-mcp-server.terrence-miao.workers.dev/sse_ with Transport Type set to **SSE** (Server-Sent Events):
+
+![MCP - Remote MCP Server](MCP%20-%20Remote%20MCP%20Server.png)
+
+```
+{
+  "mcpServers": {
+    "weather": {
+      "command": "/usr/local/bin/npx",
+      "args": [
+        "mcp-remote",
+        "https://remote-mcp-server.terrence-miao.workers.dev/sse"
+      ]
+    }
+  }
+}
+```
+
+![MCP - Remote MCP Server math tool](MCP%20-%20Remote%20MCP%20Server%20math%20tool.png)
+
+![MCP - Remote MCP Server authorised](MCP%20-%20Remote%20MCP%20Server%20authorised.png)
+
+![MCP - Remote MCP Server in action](MCP%20-%20Remote%20MCP%20Server%20in%20action.png)
+
 
 References
 ----------
@@ -70,3 +96,5 @@ References
 - Building MCP Servers, _https://medium.com/@cstroliadavis/building-mcp-servers-536969d27809_
 - Google Maps MCP, _https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps_
 - MCP CLI, _https://github.com/wong2/mcp-cli_
+- MCP Inspector, _https://github.com/modelcontextprotocol/inspector_
+- Cloudflare AI Playground, _https://playground.ai.cloudflare.com/_

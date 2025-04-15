@@ -62,9 +62,9 @@ in `Claude Desktop` configuration file at **~/Library/Application Support/Claude
 
 ![MCP - Hello MCP](MCP%20-%20Hello%20MCP.png)
 
-- Cloudflare AI Playground
+- Remote MCP Server
 
-with Remote MCP Server e.g. _https://remote-mcp-server.terrence-miao.workers.dev_. Input MCP Server URL _ https://remote-mcp-server.terrence-miao.workers.dev/sse_ with Transport Type set to **SSE** (Server-Sent Events):
+For example from a worker runs in Cloudflare _https://remote-mcp-server.terrence-miao.workers.dev_. Input MCP Server URL _https://remote-mcp-server.terrence-miao.workers.dev/sse_ with Transport Type set to **SSE** (Server-Sent Events):
 
 ![MCP - Remote MCP Server](MCP%20-%20Remote%20MCP%20Server.png)
 

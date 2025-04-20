@@ -188,13 +188,13 @@ function GenerateVideoSummary() {
             const chapters = [];
 
             // Improved regex pattern that's more tolerant of whitespace variations
-            const chapterRegex = /\[(\d{2}:\d{2}:\d{2})\](?:.*?)(?:\n|\r\n?)\s*\*\*(.*?)\*\*\s*(?:\n|\r\n?)([\s\S]*?)(?=\[\d{2}:\d{2}:\d{2}\]|$)/g;
+            const chapterRegex = /\[(\d{2}:\d{2}:\d{2})\](?:.*?)(?:\n|\r\n?)\s*\*{1,2}(.*?)\*{1,2}\s*(?:\n|\r\n?)([\s\S]*?)(?=\[\d{2}:\d{2}:\d{2}\]|$)/g;
 
             let match;
             while ((match = chapterRegex.exec(data.summary)) !== null) {
               chapters.push({
                 time: match[1],
-                title: match[2].trim(),
+                title: match[2].trim() === '' ? '... ...' : match[2].trim(),
                 content: match[3].trim()
               });
             }

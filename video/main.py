@@ -21,7 +21,7 @@ Type = Type_of_source
 # The summarization process uses the API key specified in `api_key` variable.
 # Ensure you have set the required environment variables or Colab secrets for your API keys.
 # @param ["Groq", "OpenAI", "Custom", "Local", "OpenRouter"]
-api_endpoint = "OpenRouter"
+api_endpoint = "Groq"
 
 # Define endpoints and models based on the selected API
 endpoints = {
@@ -332,6 +332,9 @@ def process_and_summarize(text):
 
         summaries.sort()  # Ensure summaries are in the correct order
         final_summary = "\n\n".join([summary for _, summary in summaries])
+
+        # Clean up excessive newlines in the final summary
+        final_summary = re.sub(r'\n{3,}', '\n\n', final_summary)
 
         # Save the final summary
         final_name = (

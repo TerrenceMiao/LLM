@@ -188,14 +188,17 @@ function GenerateVideoSummary() {
             //   **
             //   Your 30s introduce a perfect storm of competing financial priorities, including family formation, home purchases, and career advancement. The median 30-something American earns around $53,000 but has less than $5,000 in savings while carrying over $5,500 in credit card debt. Meanwhile, the top 20% have already accumulated net worths exceeding $100,000.
             //
-            //   [00:12:17](https://www.youtube.com/watch?vv=b0XI-cbel1U&ab_channel=Fireship&t=737s)
+            //   [00:12:17](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=737s)
             //   **The psychological burden of retirement looms closer, creating anxiety despite higher income, but these decades offer powerful transformation opportunities, such as prioritizing aggressive debt elimination and maximizing catch-up retirement contributions.**
+            //
+            //   [00:16:53](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=1593s)
+            //   **Now there was a lot of finance jargon in that clip, but what Jaime is saying is essentially three things.** One, from his position as the CEO of America's largest bank, he is already seeing recessionary sentiment in CEO behavior. They're hitting the brakes on spending, hiring, and investment. And that's how slowdowns start. Then two, he thinks that this is to be expected, reminding us that recent growth and profits weren't all organic. They were supercharged by literally trillions in government stimulus, which is now fading.
 
             // Parse the markdown into chapter objects
             const chapters = [];
 
             // Improved regex pattern that's more tolerant of whitespace variations
-            const chapterRegex = /\[(\d{2}:\d{2}:\d{2})\](?:.*?)(?:\n|\r\n?)\s*\*{1,2}(.*?)\*{1,2}\s*(?:\n|\r\n?)([\s\S]*?)(?=\[\d{2}:\d{2}:\d{2}\]|$)/g;
+            const chapterRegex = /\[(\d{2}:\d{2}:\d{2})\](?:.*?)(?:\n|\r\n?)\s*\*{1,2}(.*?)\*{1,2}\s*(?:\n|\r\n?|\s)([\s\S]*?)(?=\[\d{2}:\d{2}:\d{2}\]|$)/g;
 
             let match;
             while ((match = chapterRegex.exec(data.summary)) !== null) {

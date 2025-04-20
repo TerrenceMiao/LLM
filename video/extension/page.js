@@ -183,6 +183,13 @@ function GenerateVideoSummary() {
             //   [00:00:41](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=41s)
             //   **AI Landscape and Competition**
             //   The AI landscape is currently ruthless, with big players like Elon Musk and Mark Zuckerberg vying for dominance. Recently, Elon attempted to troll Open AI by offering to buy it out, but the offer was rejected. Meanwhile, Mark Zuckerberg faced a setback when it was revealed that he signed off on using 82 terabytes of pirated books to train his LLaMA models.
+            //
+            //   [00:07:04](https://www.youtube.com/watch?v=b0XI-cbel1U&ab_channel=Fireship&t=424s)
+            //   **
+            //   Your 30s introduce a perfect storm of competing financial priorities, including family formation, home purchases, and career advancement. The median 30-something American earns around $53,000 but has less than $5,000 in savings while carrying over $5,500 in credit card debt. Meanwhile, the top 20% have already accumulated net worths exceeding $100,000.
+            //
+            //   [00:12:17](https://www.youtube.com/watch?vv=b0XI-cbel1U&ab_channel=Fireship&t=737s)
+            //   **The psychological burden of retirement looms closer, creating anxiety despite higher income, but these decades offer powerful transformation opportunities, such as prioritizing aggressive debt elimination and maximizing catch-up retirement contributions.**
 
             // Parse the markdown into chapter objects
             const chapters = [];
@@ -194,8 +201,8 @@ function GenerateVideoSummary() {
             while ((match = chapterRegex.exec(data.summary)) !== null) {
               chapters.push({
                 time: match[1],
-                title: match[2].trim() === '' ? '... ...' : match[2].trim(),
-                content: match[3].trim()
+                title: (match[2].trim() === '' || match[3].trim() === '') ? '... ...' : match[2].trim(),
+                content: match[3].trim() === '' ? match[2].trim() : match[3].trim()
               });
             }
 

@@ -36,6 +36,8 @@ Here's the YouTube Video Summary Chrome Extension in action:
 
 Install YouTube Video Summary Chrome Extension from `extension\` directory.
 
+![Video Summary in Chinese](Video%20Summary%20in%20Chinese.png)
+
 
 References
 ----------

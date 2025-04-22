@@ -9,7 +9,7 @@ Using CPython 3.11.5 interpreter at: /usr/local/anaconda3/bin/python3.11
 Creating virtual environment at: .venv
 Activate with: source .venv/bin/activate
 
-$ source.venv/bin/activate
+$ source .venv/bin/activate
 
 $ uv pip install browser-use
 
@@ -63,8 +63,11 @@ To work around this, you can:
 
 or, you can:
 
-1. use standalone browser like `Chromium` or `Google Chrome` in **agent.py**
+- use standalone browser like `Chromium` or `Google Chrome` in **agent.py**
 
+![Browser Use - Login Workaround](Browser%20Use%20-%20Login%20Workaround%201.png)
+
+![Browser Use - Login Workaround](Browser%20Use%20-%20Login%20Workaround%202.png)
 
 References
 ----------

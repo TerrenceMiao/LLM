@@ -287,6 +287,64 @@ Determine the minimum value of n for which Turbo has a strategy that guarantees 
 
 ![IMO 2024 Problem 5 by DeepSeek Prover V2](DeepSeek%20Prover%20V2.png)
 
+The correct answer of the minimum value of this problem is **3**.
+
+
+The factorial of $\frac{1}{2}$ 
+---
+
+![The factorial of one half](The%20factorial%20of%20one%20half.png)
+
+Calculating $\frac{1}{2}!$ (the factorial of $\frac{1}{2}$) is not straightforward because the factorial function is traditionally defined only for non-negative integers. However, we can extend the concept of factorials to non-integer values using the **Gamma function**, which is a generalization of the factorial.
+
+The Gamma function $\Gamma(z)$ is defined for all complex numbers except the non-positive integers. For positive integers, it satisfies:
+$$
+\Gamma(n) = (n-1)!
+$$
+For any positive real number $z$, the Gamma function is defined as:
+$$
+\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \, dt
+$$
+Therefore, we can express $z!$ as:
+$$
+z! = \Gamma(z+1)
+$$
+Thus, to compute $\left(\frac{1}{2}\right)!$, we can compute $\Gamma\left(\frac{1}{2} + 1\right) = \Gamma\left(\frac{3}{2}\right)$.
+
+### Step 1: Relate $\Gamma\left(\frac{3}{2}\right)$ to $\Gamma\left(\frac{1}{2}\right)$
+The Gamma function satisfies the recurrence relation:
+$$
+\Gamma(z+1) = z \Gamma(z)
+$$
+Therefore:
+$$
+\Gamma\left(\frac{3}{2}\right) = \frac{1}{2} \Gamma\left(\frac{1}{2}\right)
+$$
+
+### Step 2: Compute $\Gamma\left(\frac{1}{2}\right)$
+It is known that:
+$$
+\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}
+$$
+This can be derived from the integral definition of the Gamma function and the Gaussian integral.
+
+### Step 3: Compute $\Gamma\left(\frac{3}{2}\right)$
+Using the result from Step 1 and Step 2:
+$$
+\Gamma\left(\frac{3}{2}\right) = \frac{1}{2} \Gamma\left(\frac{1}{2}\right) = \frac{1}{2} \sqrt{\pi}
+$$
+
+### Step 4: Conclude $\left(\frac{1}{2}\right)!$
+Since $\left(\frac{1}{2}\right)! = \Gamma\left(\frac{3}{2}\right)$, we have:
+$$
+\left(\frac{1}{2}\right)! = \frac{\sqrt{\pi}}{2}
+$$
+
+### Final Answer
+$$
+\boxed{\dfrac{\sqrt{\pi}}{2}}
+$$
+
 
 References
 ----------

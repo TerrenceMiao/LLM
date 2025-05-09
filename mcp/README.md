@@ -90,6 +90,48 @@ Input MCP Server URL _https://remote-mcp-server.terrence-miao.workers.dev/sse_ w
 
 ![MCP - Remote MCP Server in action](MCP%20-%20Remote%20MCP%20Server%20in%20action.png)
 
+- Playwright MCP
+
+Login an authentication required site with username and password.
+
+```
+{
+  "mcpServers": {
+    "github.com/executeautomation/mcp-playwright": {
+      "command": "/usr/local/bin/npx",
+      "args": [
+        "-y",
+        "@executeautomation/playwright-mcp-server"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+Input:
+
+```
+- Navigate to `https://portal.microsoft.com/`
+- Login with username `me@paradise.org` and password `blahblahblah`
+- Take a screenshot after successfully login
+- Logout
+```
+![MCP - Playwright CLINE](MCP%20-%20Playwright%20CLINE.png)
+
+![MCP - Playwright Sign in](MCP%20-%20Playwright%20Sign%20in.png)
+
+![MCP - Playwright Enter your password](MCP%20-%20Playwright%20Password%20input.png)
+
+![MCP - Playwright Stay signed in](MCP%20-%20Playwright%20Stay%20in.png)
+
+![MCP - Playwright Home](MCP%20-%20Playwright%20Home.png)
+
+![MCP - Playwright Sign out](MCP%20-%20Playwright%20Sign%20out.png)
+
+![MCP - Playwright Pick an account](MCP%20-%20Playwright%20Pick.png)
+
 
 References
 ----------
@@ -100,3 +142,4 @@ References
 - MCP CLI, _https://github.com/wong2/mcp-cli_
 - MCP Inspector, _https://github.com/modelcontextprotocol/inspector_
 - Cloudflare AI Playground, _https://playground.ai.cloudflare.com/_
+- Playwright MCP Server 🎭, _https://github.com/executeautomation/mcp-playwright_

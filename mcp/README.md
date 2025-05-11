@@ -98,26 +98,37 @@ Login an authentication required site with username and password.
 {
   "mcpServers": {
     "github.com/executeautomation/mcp-playwright": {
-      "command": "/usr/local/bin/npx",
-      "args": [
-        "-y",
-        "@executeautomation/playwright-mcp-server"
-      ],
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [
+        "start_codegen_session",
+        "playwright_navigate",
+        "clear_codegen_session",
+        "playwright_fill",
+        "playwright_click",
+        "playwright_screenshot",
+        "end_codegen_session",
+        "playwright_get_visible_html",
+        "playwright_press_key"
+      ]
     }
   }
 }
 ```
 
-Input:
+Input and invoke Playwright MCP Server:
 
 ```
 - Navigate to `https://portal.microsoft.com/`
-- Login with username `me@paradise.org` and password `blahblahblah`
-- Take a screenshot after successfully login
+- Login with username `me@paradise.org` and password `blah` then click `Next` button
+- Click `No` button when asked `Stay signed in?`
+- Take a screenshot after successfully land on `Home` page
 - Logout
+- Click on the username when asked `Pick an account`
+- Generate above steps into Playwright test code
 ```
+
 ![MCP - Playwright CLINE](MCP%20-%20Playwright%20CLINE.png)
 
 ![MCP - Playwright Sign in](MCP%20-%20Playwright%20Sign%20in.png)
@@ -132,6 +143,57 @@ Input:
 
 ![MCP - Playwright Pick an account](MCP%20-%20Playwright%20Pick.png)
 
+`Playwright` test code:
+
+```
+import { test } from '@playwright/test';
+import { expect } from '@playwright/test';
+
+test('Microsoft Portal Login', async ({ page, context }) => {
+
+    // Navigate to URL
+    await page.goto('https://portal.microsoft.com/');
+
+    // Fill input field for username
+    await page.fill('input[type="email"]', 'me@paradise.org');
+
+    // Click Next button
+    await page.click('input[type="submit"]');
+
+    // Add a small delay to help avoid "Too Many Requests" error
+    await page.waitForTimeout(5000); // Wait for a few seconds (adjust as needed)
+
+    // Fill input field for password using its ID
+    await page.locator('#passwordEntry').fill('blah');
+
+    // Click Next button for "Enter your password" using ARIA role and name
+    await page.getByRole('button', { name: 'Next' }).click();
+
+    // Click No button for "Stay signed in?" using data-testid
+    await page.waitForTimeout(10000);
+    await page.getByTestId('secondaryButton').click();
+
+    // Take screenshot of the Home page
+    await page.waitForTimeout(10000);
+    await page.screenshot({ path: 'Microsoft Portal Home Screenshot.png', fullPage: true });
+
+    // Click profile icon
+    await page.click('[aria-label*="profile"], [aria-label*="Account"]');
+
+    // Click Sign out link
+    await page.click('//a[normalize-space()="Sign out"]');
+
+    // Click username on "Pick an account" page
+    await page.click('//*[contains(text(), "me@paradise.org")]');
+});
+```
+![MCP - Playwright Test](MCP%20-%20Playwright%20Test.png)
+
+To run the test:
+
+```
+$ npx playwright test test.spec.ts --headed
+```
 
 References
 ----------

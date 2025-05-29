@@ -13,3 +13,11 @@ model_list:
       model: github/gpt-4o-mini
       # GitHub Personal Access Token
       api_key: os.environ/GITHUB_API_KEY
+  - model_name: github-copilot-claude-3.5-sonnet
+    litellm_params:
+      model: github_copilot/claude-3.5-sonnet
+      extra_headers:
+        {
+          "Editor-Version": "vscode/1.100.2",
+          "Copilot-Integration-Id": "vscode-chat",
+        }

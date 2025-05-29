@@ -1,0 +1,15 @@
+model_list:
+  - model_name: bedrock-claude-3.7-sonnet
+    litellm_params:
+      # The AWS ID or ARN of an inference profile that contains this model
+      model: us.anthropic.claude-3-7-sonnet-20250219-v1:0
+      aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_session_token: os.environ/AWS_SESSION_TOKEN
+      aws_region_name: us-east-1
+  - model_name: github-gpt-4o-mini
+    litellm_params:
+      # ALL Github models, just set github/ as a prefix
+      model: github/gpt-4o-mini
+      # GitHub Personal Access Token
+      api_key: os.environ/GITHUB_API_KEY

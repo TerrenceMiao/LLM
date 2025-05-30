@@ -23,11 +23,6 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.0-flash-lite-preview-02-05
       api_key: os.environ/GEMINI_API_KEY
-    model_info:
-        input_cost_per_token: 0.000000
-        output_cost_per_token: 0.00000
-        cache_creation_input_token_cost: 0.00000
-        cache_read_input_token_cost: 0.00000
   - model_name: openrouter-deepseek-r1-0528
     litellm_params:
       model: openrouter/deepseek/deepseek-r1-0528:free

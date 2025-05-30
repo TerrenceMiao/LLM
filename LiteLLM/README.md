@@ -14,13 +14,15 @@ $ conda activate LiteLLM
 - Install
 
 ```
-# pip install 'litellm[proxy]'
-$ pip install "git+https://github.com/SmartManoj/litellm.git@litellm_dev_03_05_2025_contributor_prs#egg=litellm[proxy]"
+# pip install "litellm[proxy]"
+# pip install "git+https://github.com/BerriAI/litellm.git@litellm_dev_03_05_2025_contributor_prs#egg=litellm[proxy]"
+# On latest dev branch "litellm_dev_03_05_2025_contributor_pr", and run at the root directory:
+$ pip install ".[proxy]"
 
 $ pip list | grep litellm
-litellm                   1.70.2
-litellm-enterprise        0.1.5
-litellm-proxy-extras      0.1.21
+litellm                   1.69.3
+litellm-enterprise        0.1.2
+litellm-proxy-extras      0.1.20
 ```
 
 - Run
@@ -54,6 +56,13 @@ INFO:     Uvicorn running on http://0.0.0.0:4000 (Press CTRL+C to quit)
 - Test
 
 ```
+$ ls -al ~/.config/litellm/github_copilot
+total 16
+drwxr-xr-x  4 terrence  staff   128 30 May 02:05 .
+drwxr-xr-x  3 terrence  staff    96 30 May 02:04 ..
+-rw-r--r--  1 terrence  staff    40 30 May 02:05 access-token
+-rw-r--r--@ 1 terrence  staff  1200 30 May 09:32 api-key.json
+
 $ curl --location 'http://localhost:4000/v1/chat/completions?model=github-gpt-4o-mini' \
 --header 'Content-Type: application/json' \
 --data '{

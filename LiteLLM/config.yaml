@@ -21,3 +21,15 @@ model_list:
           "Editor-Version": "vscode/1.100.2",
           "Copilot-Integration-Id": "vscode-chat",
         }
+  - model_name: gemini-2.0-flash-lite-preview-02-05
+    litellm_params:
+      model: gemini/gemini-2.0-flash-lite-preview-02-05
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: openrouter-deepseek-r1-0528
+    litellm_params:
+      model: openrouter/deepseek/deepseek-r1-0528:free
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: groq-llama-3.3-70b
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY

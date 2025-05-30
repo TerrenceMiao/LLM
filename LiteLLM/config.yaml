@@ -7,12 +7,6 @@ model_list:
       aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
       aws_session_token: os.environ/AWS_SESSION_TOKEN
       aws_region_name: us-east-1
-  - model_name: github-gpt-4o-mini
-    litellm_params:
-      # ALL Github models, just set github/ as a prefix
-      model: github/gpt-4o-mini
-      # GitHub Personal Access Token
-      api_key: os.environ/GITHUB_API_KEY
   - model_name: github-copilot-claude-3.5-sonnet
     litellm_params:
       model: github_copilot/claude-3.5-sonnet
@@ -21,6 +15,10 @@ model_list:
           "Editor-Version": "vscode/1.100.2",
           "Copilot-Integration-Id": "vscode-chat",
         }
+  - model_name: github-gpt-4o-mini
+    litellm_params:
+      model: github/gpt-4o-mini
+      api_key: os.environ/GITHUB_API_KEY
   - model_name: gemini-2.0-flash-lite-preview-02-05
     litellm_params:
       model: gemini/gemini-2.0-flash-lite-preview-02-05

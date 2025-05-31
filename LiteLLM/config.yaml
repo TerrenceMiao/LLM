@@ -16,6 +16,14 @@ model_list:
           "Editor-Version": "vscode/1.100.2",
           "Copilot-Integration-Id": "vscode-chat",
         }
+  - model_name: github-copilot-o3-mini
+    litellm_params:
+      model: github_copilot/o3-mini
+      extra_headers:
+        {
+          "Editor-Version": "vscode/1.100.2",
+          "Copilot-Integration-Id": "vscode-chat",
+        }
 
   - model_name: github-gpt-4o-mini
     litellm_params:

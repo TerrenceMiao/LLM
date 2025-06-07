@@ -23,6 +23,10 @@ Type = Type_of_source
 # @param ["Groq", "OpenAI", "Custom", "Local", "OpenRouter"]
 api_endpoint = "Groq"
 
+# Debug mode - set to True to see detailed logs
+# @param {type:"boolean"}
+debug_mode = False
+
 # Define endpoints and models based on the selected API
 endpoints = {
     "Groq": "https://api.groq.com/openai/v1",
@@ -123,6 +127,12 @@ if Type == "Google Drive Video Link":
 import config
 
 
+# Helper function for debug printing
+def debug_print(message):
+    if debug_mode:
+        print(message)
+
+
 # Function to get configuration value
 def get_api_key():
     print("LLM Runtime Environment: " + api_endpoint)
@@ -208,22 +218,72 @@ def download_youtube_audio_only(url):
 
 def download_youtube_captions():
     try:
-        transcript_list = YouTubeTranscriptApi.list_transcripts(config.video_id)
+        """
+        For this video (b0XI-cbel1U) transcripts are available in the following languages:
+
+        (MANUALLY CREATED)
+        None
+
+        (GENERATED)
+        - en ("English (auto-generated)")[TRANSLATABLE]
+
+        (TRANSLATION LANGUAGES)
+        ...
+        - zh-Hans ("Chinese (Simplified)")
+        - zh-Hant ("Chinese (Traditional)")
+        ...
+         - zu ("Zulu")
+        """
+        print(f"Attempting to get captions for video ID: {config.video_id}")
+        
+        # First, verify if the video exists and is accessible
+        try:
+            if Type == "YouTube Video":
+                yt = YouTube(f"https://www.youtube.com/watch?v={config.video_id}")
+                print(f"Video title: {yt.title}")
+                print(f"Video author: {yt.author}")
+        except Exception as ve:
+            print(f"Error verifying video: {str(ve)}")
+            # Continue anyway, as the video might still be accessible via the transcript API
+        
+        try:
+            transcript_list = YouTubeTranscriptApi.list_transcripts(config.video_id)
+            debug_print(f"Transcript list: {transcript_list}")
+        except Exception as le:
+            print(f"Error listing transcripts: {str(le)}")
+            return ""
 
         # Try to get transcript in preferred language first
         try:
-            transcript = YouTubeTranscriptApi.get_transcript(
-                config.video_id, languages=[language]
-            )
-        except:
+            print(f"Trying to get transcript in preferred language: {language}")
+            try:
+                transcript = YouTubeTranscriptApi.get_transcript(
+                    config.video_id, languages=[language]
+                )
+                debug_print(f"Transcript: {transcript}")
+            except Exception as inner_e:
+                """
+                The specific "no element found: line 1, column 0" error suggests that the XML parser is receiving 
+                an empty response when trying to fetch the transcript data. This could indicate that YouTube is 
+                blocking the request or that the video doesn't have any transcripts available.
+                """
+                print(f"Inner exception type: {type(inner_e).__name__}")
+                print(f"Inner exception details: {str(inner_e)}")
+                raise  # Re-raise to be caught by outer exception handler
+        except Exception as e:
             # If preferred language not available, try to get any translatable transcript
+            print(f"Preferred language not available, trying to get the translatable transcript.")
             transcript = None
             for available_transcript in transcript_list:
                 if available_transcript.is_translatable:
-                    transcript = available_transcript.translate(language).fetch()
-                    break
+                    try:
+                        transcript = available_transcript.translate(language).fetch()
+                        break
+                    except Exception as e:
+                        print(f"Error translating transcript: {str(e)}")
 
             if not transcript:
+                print("No transcript available - couldn't get original or translated version")
                 return ""
 
         # Process transcript
@@ -231,6 +291,7 @@ def download_youtube_captions():
             f"{seconds_to_time_format(entry['start'])} {entry['text'].strip()}"
             for entry in transcript
         )
+        debug_print(f"Transcription text: {transcription_text}")
 
         # Save transcript
         with open(f"{config.video_id}_captions.md", "w", encoding="utf-8") as f:
@@ -239,7 +300,7 @@ def download_youtube_captions():
         return transcription_text
 
     except Exception as e:
-        print(f"No captions found or, error downloading captions")
+        print(f"No captions found or error downloading captions: {str(e)}")
         return ""
 
 
@@ -385,6 +446,8 @@ def video_summary(Link):
 
     video_id_match = re.search(regex, config.URL)
     if not video_id_match:
+        print(f"Invalid YouTube URL format: {config.URL}")
+        print(f"Regex pattern used: {regex}")
         return "Invalid YouTube URL format"
 
     config.video_id = video_id_match.group(1)

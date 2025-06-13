@@ -1,13 +1,101 @@
 model_list:
+  # The AWS ID or ARN of an inference profile that contains this model   
+  - model_name: bedrock-claude-4-sonnet
+    litellm_params:
+      model: us.anthropic.claude-sonnet-4-20250514-v1:0
+      aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_session_token: os.environ/AWS_SESSION_TOKEN
+      aws_region_name: us-east-1  
   - model_name: bedrock-claude-3.7-sonnet
     litellm_params:
-      # The AWS ID or ARN of an inference profile that contains this model
       model: us.anthropic.claude-3-7-sonnet-20250219-v1:0
       aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
       aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
       aws_session_token: os.environ/AWS_SESSION_TOKEN
       aws_region_name: us-east-1
+  - model_name: bedrock-claude-3.5-sonnet
+    litellm_params:
+      model: us.anthropic.claude-3-5-sonnet-20241022-v2:0
+      aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_session_token: os.environ/AWS_SESSION_TOKEN
+      aws_region_name: us-east-1
 
+  - model_name: claude-sonnet-4
+    litellm_params:
+      model: claude-sonnet-4-20250514
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3.7-sonnet
+    litellm_params:
+      model: claude-3-7-sonnet-latest
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3.5-sonnet
+    litellm_params:
+      model: claude-3-5-sonnet-latest
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3.5-haiku
+    litellm_params:
+      model: claude-3-5-haiku-latest
+      api_key: os.environ/ANTHROPIC_API_KEY  
+
+  # ℹ GitHub CopilotAvailable Models (2025.06.11)                                                                                                                                                                             8:53:12 am
+  # gpt-3.5-turbo
+  # gpt-3.5-turbo-0613
+  # gpt-4o-mini
+  # gpt-4o-mini-2024-07-18
+  # gpt-4
+  # gpt-4-0613
+  # gpt-4-0125-preview
+  # gpt-4o
+  # gpt-4o-2024-11-20
+  # gpt-4o-2024-05-13
+  # gpt-4-o-preview
+  # gpt-4o-2024-08-06
+  # o1
+  # o1-2024-12-17
+  # o3-mini
+  # o3-mini-2025-01-31
+  # o3-mini-paygo
+  # gpt-4o-copilot
+  # text-embedding-ada-002
+  # text-embedding-3-small
+  # text-embedding-3-small-inference
+  # claude-3.5-sonnet
+  # claude-3.7-sonnet
+  # claude-3.7-sonnet-thought
+  # claude-sonnet-4
+  # gemini-2.0-flash-001
+  # gemini-2.5-pro
+  # gemini-2.5-pro-preview-05-06
+  # o4-mini
+  # o4-mini-2025-04-16
+  # gpt-4.1
+  # gpt-4.1-2025-04-14
+  - model_name: github-copilot-claude-sonnet-4
+    litellm_params:
+      model: github_copilot/claude-sonnet-4
+      extra_headers:
+        {
+          "Editor-Version": "vscode/1.100.2",
+          "Copilot-Integration-Id": "vscode-chat",
+        }
+  - model_name: github-copilot-claude-3.7-sonnet-thought
+    litellm_params:
+      model: github_copilot/claude-3.7-sonnet-thought
+      extra_headers:
+        {
+          "Editor-Version": "vscode/1.100.2",
+          "Copilot-Integration-Id": "vscode-chat",
+        }        
+  - model_name: github-copilot-claude-3.7-sonnet
+    litellm_params:
+      model: github_copilot/claude-3.7-sonnet
+      extra_headers:
+        {
+          "Editor-Version": "vscode/1.100.2",
+          "Copilot-Integration-Id": "vscode-chat",
+        }
   - model_name: github-copilot-claude-3.5-sonnet
     litellm_params:
       model: github_copilot/claude-3.5-sonnet

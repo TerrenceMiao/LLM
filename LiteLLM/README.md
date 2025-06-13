@@ -83,3 +83,4 @@ References
 - GitHub Models, _https://github.com/marketplace/models_
 - GitHub Copilot Models, _https://docs.github.com/en/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat_
 - [Feature]: Add GitHub Copilot as model provider, _https://github.com/BerriAI/litellm/issues/6564_
+- Anthropic Models overview, _https://docs.anthropic.com/en/docs/about-claude/models/overview_

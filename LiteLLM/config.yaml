@@ -39,7 +39,7 @@ model_list:
       model: claude-3-5-haiku-latest
       api_key: os.environ/ANTHROPIC_API_KEY  
 
-  # ℹ GitHub CopilotAvailable Models (2025.06.11)                                                                                                                                                                             8:53:12 am
+  # GitHub Copilot Available Models (2025.06.11)
   # gpt-3.5-turbo
   # gpt-3.5-turbo-0613
   # gpt-4o-mini

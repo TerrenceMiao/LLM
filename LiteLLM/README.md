@@ -25,6 +25,12 @@ litellm-enterprise        0.1.2
 litellm-proxy-extras      0.1.20
 ```
 
+Install Google Gemini dependent Python lib:
+
+```
+$ pip install google-genai
+```
+
 - Run
 
 ```

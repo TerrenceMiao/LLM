@@ -78,48 +78,60 @@ model_list:
       model: github_copilot/claude-sonnet-4
       extra_headers:
         {
-          "Editor-Version": "vscode/1.100.2",
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
         }
   - model_name: github-copilot-claude-3.7-sonnet-thought
     litellm_params:
       model: github_copilot/claude-3.7-sonnet-thought
       extra_headers:
         {
-          "Editor-Version": "vscode/1.100.2",
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
         }        
   - model_name: github-copilot-claude-3.7-sonnet
     litellm_params:
       model: github_copilot/claude-3.7-sonnet
       extra_headers:
         {
-          "Editor-Version": "vscode/1.100.2",
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
         }
   - model_name: github-copilot-claude-3.5-sonnet
     litellm_params:
       model: github_copilot/claude-3.5-sonnet
       extra_headers:
         {
-          "Editor-Version": "vscode/1.100.2",
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
         }
   - model_name: github-copilot-o3-mini
     litellm_params:
       model: github_copilot/o3-mini
       extra_headers:
         {
-          "Editor-Version": "vscode/1.100.2",
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
         }
   - model_name: github-copilot-gemini-2.5-pro
     litellm_params:
       model: github_copilot/gemini-2.5-pro
       extra_headers:
         {
-          "Editor-Version": "vscode/1.100.2",
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
         }
 
   - model_name: github-gpt-4o-mini

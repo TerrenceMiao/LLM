@@ -14,15 +14,16 @@ $ conda activate LiteLLM
 - Install
 
 ```
+# Github Copilot support is based on the branch "litellm_dev_03_05_2025_contributor_pr"
 # pip install "litellm[proxy]"
 # pip install "git+https://github.com/BerriAI/litellm.git@litellm_dev_03_05_2025_contributor_prs#egg=litellm[proxy]"
-# On latest dev branch "litellm_dev_03_05_2025_contributor_pr", and run at the root directory:
+# On dev branch "litellm_dev_03_05_2025_contributor_pr", and run at the root directory:
 $ pip install ".[proxy]"
 
 $ pip list | grep litellm
-litellm                   1.69.3
-litellm-enterprise        0.1.2
-litellm-proxy-extras      0.1.20
+litellm                   1.73.7
+litellm-enterprise        0.1.11
+litellm-proxy-extras      0.2.6
 ```
 
 Install Google Gemini dependent Python lib:

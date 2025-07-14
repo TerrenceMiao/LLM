@@ -157,7 +157,11 @@ model_list:
     litellm_params:
       model: openrouter/qwen/qwen3-235b-a22b:free
       api_key: os.environ/OPENROUTER_API_KEY
-
+  - model_name: openrouter-kimi-k2
+    litellm_params:
+      model: openrouter/moonshotai/kimi-k2:free
+      api_key: os.environ/OPENROUTER_API_KEY
+      
   - model_name: groq-llama-3.3-70b
     litellm_params:
       model: groq/llama-3.3-70b-versatile

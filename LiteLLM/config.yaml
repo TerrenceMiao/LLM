@@ -163,9 +163,9 @@ model_list:
     litellm_params:
       model: openrouter/deepseek/deepseek-r1-0528:free
       api_key: os.environ/OPENROUTER_API_KEY
-  - model_name: openrouter-qwen3-235b-a22b-07-25
+  - model_name: openrouter-qwen3-235b-a22b
     litellm_params:
-      model: openrouter/qwen/qwen3-235b-a22b-07-25:free
+      model: openrouter/qwen/qwen3-235b-a22b:free
       api_key: os.environ/OPENROUTER_API_KEY
   - model_name: openrouter-qwen3-coder
     litellm_params:

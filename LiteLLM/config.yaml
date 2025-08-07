@@ -1,5 +1,12 @@
 model_list:
   # The AWS ID or ARN of an inference profile that contains this model   
+  - model_name: bedrock-claude-4.1-opus
+    litellm_params:
+      model: us.anthropic.claude-opus-4-1-20250805-v1:0
+      aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_session_token: os.environ/AWS_SESSION_TOKEN
+      aws_region_name: us-east-1    
   - model_name: bedrock-claude-4-sonnet
     litellm_params:
       model: us.anthropic.claude-sonnet-4-20250514-v1:0

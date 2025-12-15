@@ -87,6 +87,16 @@ model_list:
   # - o4-mini-2025-04-16
   # - gpt-4.1
   # - gpt-4.1-2025-04-14
+  - model_name: github-copilot-claude-sonnet-4.5
+    litellm_params:
+      model: github_copilot/claude-sonnet-4.5
+      extra_headers:
+        {
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
+          "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
+        }
   - model_name: github-copilot-claude-sonnet-4
     litellm_params:
       model: github_copilot/claude-sonnet-4
@@ -137,6 +147,16 @@ model_list:
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
         }
+  - model_name: github-copilot-gpt-5-codex
+    litellm_params:
+      model: github_copilot/gpt-5-codex
+      extra_headers:
+        {
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
+          "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
+        }          
   - model_name: github-copilot-gpt-5
     litellm_params:
       model: github_copilot/gpt-5
@@ -146,7 +166,17 @@ model_list:
           "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
-        }            
+        }          
+  - model_name: github-copilot-gpt-5-mini
+    litellm_params:
+      model: github_copilot/gpt-5-mini
+      extra_headers:
+        {
+          "editor-version": "vscode/1.85.1",
+          "editor-plugin-version": "copilot/1.155.0",
+          "Copilot-Integration-Id": "vscode-chat",
+          "user-agent": "GithubCopilot/1.155.0"
+        }                    
   - model_name: github-copilot-gpt-4.1
     litellm_params:
       model: github_copilot/gpt-4.1

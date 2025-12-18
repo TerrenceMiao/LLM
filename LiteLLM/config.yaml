@@ -238,3 +238,8 @@ model_list:
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
+
+litellm_settings:
+  # [Bug]: self-signed certificate error depending on the reques https://github.com/BerriAI/litellm/issues/10717
+  ssl_verify: /Users/miaot/security/PaloAltoGlobalConnect.crt
+  drop_params: true

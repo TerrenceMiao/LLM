@@ -35,6 +35,14 @@ Install Google Gemini dependent Python lib:
 $ pip install google-genai
 ```
 
+- Self-signed Cerfiticate
+
+For exmaple, in Palo Alto Global Protect VPN:
+
+```
+$ export SSL_CERT_FILE=/Users/miaot/security/PaloAltoGlobalConnect.crt
+```
+
 - Run
 
 ```

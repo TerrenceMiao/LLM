@@ -152,7 +152,7 @@ model_list:
       model: github_copilot/gpt-5-codex
       extra_headers:
         {
-          "editor-version": "vscode/1.85.1",
+          "editor-version": "vscode/1.104.1",
           "editor-plugin-version": "copilot/1.155.0",
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"

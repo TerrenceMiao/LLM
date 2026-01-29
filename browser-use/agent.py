@@ -1,9 +1,5 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
-
-from browser_use import Agent, Browser, BrowserConfig
-from browser_use.browser.context import BrowserContextConfig
-
-from pydantic import SecretStr
+from browser_use import Agent, Browser
+from browser_use.llm import ChatGoogle, ChatOllama, ChatOpenAI, ChatGroq
 
 import os
 
@@ -15,23 +11,31 @@ load_dotenv()
 import asyncio
 
 # Basic configuration
-browser_context_config = BrowserContextConfig(
-    cookies_file="cookies.json",
+# browser = Browser(
+#     storage_state="cookies.json",
+#     executable_path="/Users/terrence/Library/Caches/ms-playwright/chromium-1200/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+# )
+browser = Browser(
+    # cdp_url='http://localhost:9222'
 )
-browser_config = BrowserConfig(
-    # new_context_config=browser_context_config,
-    chrome_instance_path="/Applications/Chromium.app/Contents/MacOS/Chromium",
-)
-browser = Browser(config=browser_config)
 
 # Initialize the model
-llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash-lite-001", api_key=SecretStr(os.getenv("GEMINI_API_KEY"))
+# llm = ChatGoogle(
+#     model="gemini-flash-lite-latest",
+#     api_key=os.getenv("GEMINI_API_KEY")
+# )
+# llm = ChatOpenAI(
+#     model="gemini-2.5-flash",
+#     api_key="sk-",
+#     base_url="http://localhost:10000",
+# )
+# llm = ChatOllama(
+#     model="glm-4.7-flash",
+# )
+llm = ChatGroq(
+    model="meta-llama/llama-4-scout-17b-16e-instruct",
+    api_key=os.getenv("GROQ_API_KEY"),
 )
-
-task = """
-    Compare the price of gpt-4o and DeepSeek-V3
-"""
 
 task = """
     Go to https://entra.microsoft.com/ and login as user terrence.miao@gmail.com.
@@ -49,6 +53,9 @@ task = """
     Click on 'Properties' button
 """
 
+task = """
+    Compare the price of gpt-4o and DeepSeek-V3
+"""
 
 # Create agent with the model
 async def main():
@@ -58,7 +65,6 @@ async def main():
         llm=llm,
         use_vision=True,
         max_actions_per_step=20,
-        retry_delay=5,
     )
     result = await agent.run()
     print(result)

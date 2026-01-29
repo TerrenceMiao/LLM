@@ -13,16 +13,19 @@ $ source .venv/bin/activate
 
 $ uv pip install browser-use
 
-$ playwright install
-I'll execute the 'playwright install' command to install the necessary browser binaries for Playwright automation. This command will download and set up browsers that Playwright needs to run tests and automate browser interactions.
-npx playwright install
-...
-Playwright browsers have been successfully installed! The installation included:
-•  Chromium 134.0.6998.35
-•  Chromium Headless Shell 134.0.6998.35
-•  Firefox 135.0
-•  Webkit 18.4
-•  FFMPEG build v1011
+$ uv pip install playwright
+
+$ uv run playwright install chromium
+Downloading Chromium 143.0.7499.4 (playwright build v1200) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1200/chromium-mac-arm64.zip
+(node:38756) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+159.6 MiB [====================] 100% 0.0s
+Chromium 143.0.7499.4 (playwright build v1200) downloaded to /Users/terrence/Library/Caches/ms-playwright/chromium-1200
+Downloading Chromium Headless Shell 143.0.7499.4 (playwright build v1200) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1200/chromium-headless-shell-mac-arm64.zip
+(node:38818) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+89.7 MiB [====================] 100% 0.0s
+Chromium Headless Shell 143.0.7499.4 (playwright build v1200) downloaded to /Users/terrence/Library/Caches/ms-playwright/chromium_headless_shell-1200
 
 $ uv pip install -r requirements.txt
 ```

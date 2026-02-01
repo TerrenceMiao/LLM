@@ -65,8 +65,8 @@ INFO:     Waiting for application startup.
 
 #------------------------------------------------------------#
 #                                                            #
-#         'The worst thing about this product is...'          #
-#        https://github.com/BerriAI/litellm/issues/new        #
+#         'The worst thing about this product is...'         #
+#        https://github.com/BerriAI/litellm/issues/new       #
 #                                                            #
 #------------------------------------------------------------#
 

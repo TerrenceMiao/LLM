@@ -93,16 +93,6 @@ model_list:
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
         }
-  - model_name: github-copilot-o3-mini
-    litellm_params:
-      model: github_copilot/o3-mini
-      extra_headers:
-        {
-          "editor-version": "vscode/1.85.1",
-          "editor-plugin-version": "copilot/1.155.0",
-          "Copilot-Integration-Id": "vscode-chat",
-          "user-agent": "GithubCopilot/1.155.0"
-        }
   - model_name: github-copilot-gpt-5.2-codex
     litellm_params:
       model: github_copilot/gpt-5.2-codex

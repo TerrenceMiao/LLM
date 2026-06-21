@@ -1,32 +1,240 @@
 LiteLLM
 =======
 
-LiteLLM is a lightweight proxy, running on local environment, for interacting with LLMs.
+`LiteLLM` is a lightweight proxy, running on local environment, for interacting with LLMs.
 
 - Setup
 
 ```
-$ conda create -n LiteLLM python=3.11
+$ conda create -n LiteLLM python=3.13
 
 $ conda activate LiteLLM
 ```
 
 - Install
 
-```
-# Github Copilot support is based on the branch "litellm_dev_03_05_2025_contributor_pr"
-# pip install "litellm[proxy]"
-# pip install "git+https://github.com/BerriAI/litellm.git@litellm_dev_03_05_2025_contributor_prs#egg=litellm[proxy]"
-# On dev branch "litellm_dev_03_05_2025_contributor_pr", and run at the root directory:
-# pip install ".[proxy]"
+Download the latest release from Github:
 
-# Latest litellm has added support for Github Copilot
-$ pip install "litellm[proxy]"
+```
+$ wget -O litellm-1.89.3.tar.gz https://github.com/BerriAI/litellm/archive/refs/tags/v1.89.3.tar.gz
+$ tar xvfz litellm-1.89.3.tar.gz
+$ ln -s litellm-1.89.3 litellm
+```
+
+Install PostgreSQL for `LiteLLM Proxy`:
+
+```
+$ sudo apt update
+$ sudo apt install postgresql postgresql-contrib
+
+$ sudo systemctl enable postgresql
+
+$ sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; enabled; preset: enabled)
+     Active: active (exited) since Sun 2026-06-21 20:26:55 AEST; 55s ago
+ Invocation: 6fda767deef04a34b17374ba4a383514
+   Main PID: 9656 (code=exited, status=0/SUCCESS)
+   Mem peak: 2.2M
+        CPU: 2ms
+
+Jun 21 20:26:55 Aorus systemd[1]: Starting postgresql.service - PostgreSQL RDBMS...
+Jun 21 20:26:55 Aorus systemd[1]: Finished postgresql.service - PostgreSQL RDBMS.
+(LiteLLM)
+```
+
+Setup `LiteLLM` database and user:
+
+```
+$ sudo -u postgres psql
+
+psql (18.4 (Ubuntu 18.4-0ubuntu0.26.04.1))
+Type "help" for help.
+
+postgres=# CREATE DATABASE litellm;
+CREATE DATABASE
+postgres=# CREATE USER litellm WITH PASSWORD 'Welcome1';
+CREATE ROLE
+```
+
+Switch to **litellm** database:
+
+```
+$ sudo -u postgres psql -d litellm
+litellm=# GRANT ALL ON SCHEMA public TO litellm;
+GRANT
+litellm=# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO litellm;
+GRANT
+litellm=# GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO litellm;
+GRANT
+litellm=# -- so future tables/sequences also get access automatically
+litellm=# ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO litellm;
+ALTER DEFAULT PRIVILEGES
+litellm=# ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO litellm;
+ALTER DEFAULT PRIVILEGES
+
+postgres=# \dn+ public
+                                       List of schemas
+  Name  |       Owner       |           Access privileges            |      Description
+--------+-------------------+----------------------------------------+------------------------
+ public | pg_database_owner | pg_database_owner=UC/pg_database_owner+| standard public schema
+        |                   | =U/pg_database_owner                  +|
+        |                   | litellm=UC/pg_database_owner           |
+(1 row)
+```
+
+Login with `LiteLLM` user **litellm**:
+
+```
+$ ls -al .pgpass
+-rw------- 1 terrence terrence 40 Jun 21 20:46 .pgpass
+
+$ cat .pgpass
+localhost:5432:litellm:litellm:Welcome1
+
+$ psql -h localhost -d litellm -U litellm
+
+psql (18.4 (Ubuntu 18.4-0ubuntu0.26.04.1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off, ALPN: postgresql)
+Type "help" for help.
+
+litellm=>
+```
+
+Create `LiteLLM` schema in PostgreSQL database:
+
+```
+$ export DATABASE_URL=postgresql://litellm:Welcome1@localhost:5432/litellm
+
+$ pip install 'litellm[proxy]' with prisma
+
+$ which litellm
+/home/terrence/miniconda3/envs/LiteLLM/bin/litellm
+$ which litellm-proxy
+/home/terrence/miniconda3/envs/LiteLLM/bin/litellm-proxy
+$ which prisma
+/home/terrence/miniconda3/envs/LiteLLM/bin/prisma
 
 $ pip list | grep litellm
-litellm                   1.80.10
-litellm-enterprise        0.1.25
-litellm-proxy-extras      0.4.14
+litellm                   1.89.2
+litellm-enterprise        0.1.42
+litellm-proxy-extras      0.4.74
+...
+```
+
+```
+$ cd litellm
+
+$ prisma generate
+Prisma schema loaded from schema.prisma
+
+Some types are disabled by default due to being incompatible with Mypy, it is highly recommended
+to use Pyright instead and configure Prisma Python to use recursive types. To re-enable certain types:
+
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = -1
+}
+
+If you need to use Mypy, you can also disable this message by explicitly setting the default value:
+
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+For more information see: https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/#default-type-limitations
+
+
+Warning: The binaryTargets option is not officially supported by Prisma Client Python.
+
+✔ Generated Prisma Client Python (v0.15.0) to ./../../.local/share/uv/tools/prisma/lib/python3.13/site-packages/prisma in 340ms
+
+$ prisma db push 
+```
+
+Setup `LiteLLM` and its proxy:
+
+```
+$ litellm --setup
+
+
+  ██╗     ██╗████████╗███████╗██╗     ██╗     ███╗   ███╗
+  ██║     ██║╚══██╔══╝██╔════╝██║     ██║     ████╗ ████║
+  ██║     ██║   ██║   █████╗  ██║     ██║     ██╔████╔██║
+  ██║     ██║   ██║   ██╔══╝  ██║     ██║     ██║╚██╔╝██║
+  ███████╗██║   ██║   ███████╗███████╗███████╗██║ ╚═╝ ██║
+  ╚══════╝╚═╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝
+  Welcome to LiteLLM v1.89.3
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Lets get started.
+
+
+  Add your first model
+  ↑↓ to navigate · Space to select · Enter to confirm
+
+    ○ OpenAI  GPT-4o, GPT-4o-mini, o3-mini
+    ○ Anthropic  Claude Fable 5, Opus 4.8, Opus 4.7, Opus 4.6, Sonnet 4.6, Haiku 4.5
+    ○ Google Gemini  Gemini 2.0 Flash, Gemini 2.5 Pro
+    ○ Azure OpenAI  GPT-4o via Azure
+    ○ AWS Bedrock  Claude 3.5, Llama 3 via AWS
+  ❯ ○ Ollama  Local models (llama3.2, mistral, etc.)
+
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Enter your API keys
+  Keys are stored only in the generated config file.
+  Tip: add litellm_config.yaml to .gitignore to avoid committing secrets.
+
+  Ollama: no key needed (uses local Ollama)
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Proxy settings
+
+  ❯ Port [4000]:
+  ❯ Master key [auto-generate]: Welcome1
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ✔ Config saved → /home/terrence/litellm_config.yaml
+
+  To start your proxy:
+
+    $ litellm --config /home/terrence/litellm_config.yaml --port 4000
+
+  Then set your client:
+
+    export OPENAI_BASE_URL=http://localhost:4000
+    export OPENAI_API_KEY=Welcome1
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ❯ Start the proxy now? (Y/n):
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Proxy is starting on http://localhost:4000
+
+  Your proxy is OpenAI-compatible. Point any OpenAI SDK at it:
+
+    export OPENAI_BASE_URL=http://localhost:4000
+    export OPENAI_API_KEY=Welcome1
+
+  Quick test (in another terminal):
+
+    curl http://localhost:4000/health
+
+  Dashboard:
+
+    http://localhost:4000/ui  (login with your master key)
+
+  ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ✔ Starting…  (Ctrl+C to stop)
 ```
 
 Install Google Gemini dependent Python lib:
@@ -71,7 +279,6 @@ INFO:     Waiting for application startup.
 #------------------------------------------------------------#
 
  Thank you for using LiteLLM! - Krrish & Ishaan
-
 
 
 Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new

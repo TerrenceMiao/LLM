@@ -454,6 +454,23 @@ $ curl --location 'http://localhost:10000/v1/chat/completions?model=github-gpt-4
 }
 ```
 
+Switch `Codex` to local LLM, by adding the following into **~/.codex/config.toml** file:
+
+```
+#model = "gpt-5.5"
+model_reasoning_effort = "low"
+model = "llama.cpp-Qwen3.6-35B-A3B-UD-Q4"
+model_provider = "llamacpp"
+
+[model_providers.llamacpp]
+name = "llama.cpp via LiteLLM"
+base_url = "http://Aorus.local:4000/v1"
+experimental_bearer_token = "Welcome1"  # ← experimental_bearer_token must match "general_settings:" "master_key:" in LiteLLM configuration exactly
+...
+```
+
+![Codex with local LLM](Codex.png)
+
 
 References
 ----------

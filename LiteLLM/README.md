@@ -106,7 +106,7 @@ Create `LiteLLM` schema in PostgreSQL database:
 ```
 $ export DATABASE_URL=postgresql://litellm:Welcome1@localhost:5432/litellm
 
-$ pip install 'litellm[proxy]' with prisma
+$ pip install 'litellm[proxy]' with prisma opentelemetry-api opentelemetry-sdk
 
 $ which litellm
 /home/terrence/miniconda3/envs/LiteLLM/bin/litellm
@@ -151,6 +151,33 @@ Warning: The binaryTargets option is not officially supported by Prisma Client P
 ✔ Generated Prisma Client Python (v0.15.0) to ./../../.local/share/uv/tools/prisma/lib/python3.13/site-packages/prisma in 340ms
 
 $ prisma db push 
+```
+
+Open `PostgreSQL` database to the local network:
+
+```
+$ sudo pg_lsclusters
+Ver Cluster Port Status Owner    Data directory              Log file
+18  main    5432 online postgres /var/lib/postgresql/18/main /var/log/postgresql/postgresql-18-main.log
+
+$ sudo grep listen_addresses /etc/postgresql/18/main/postgresql.conf
+listen_addresses = '*'
+
+$ sudo grep ^host /etc/postgresql/18/main/pg_hba.conf
+host    all             all             127.0.0.1/32            scram-sha-256
+host    all             all             ::1/128                 scram-sha-256
+host    replication     all             127.0.0.1/32            scram-sha-256
+host    replication     all             ::1/128                 scram-sha-256
+host    all             all             192.168.2.0/24          scram-sha-256
+host    all             all             192.168.68.0/24         scram-sha-256
+
+$ sudo ufw allow 5432/tcp
+
+$ sudo systemctl restart postgresql
+
+$ ss -tlnp | grep 5432
+LISTEN 0      200          0.0.0.0:5432       0.0.0.0:*
+LISTEN 0      200             [::]:5432          [::]:*
 ```
 
 Setup `LiteLLM` and its proxy:

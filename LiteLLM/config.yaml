@@ -164,3 +164,18 @@ model_list:
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
+
+  - model_name: llama.cpp-Qwen3.6-35B-A3B-UD-Q4
+    litellm_params:
+      model: openai/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf # "openai/" prefix = treat as OpenAI-compatible
+      api_base: http://localhost:8080/v1
+      api_key: "sk-" # llama.cpp ignores this, but LiteLLM requires it      
+
+  - model_name: ollama-qwen3.6:27b-coding
+    litellm_params:
+      model: ollama/qwen3.6:27b-coding-mxfp8
+      api_base: "http://localhost:11434"      
+  - model_name: ollama-qwen3.6:35b-a3b-coding
+    litellm_params:
+      model: ollama/qwen3.6:35b-a3b-coding-mxfp8
+      api_base: "http://localhost:11434"            

@@ -1,81 +1,73 @@
 model_list:
   # The AWS ID or ARN of an inference profile that contains this model   
-  - model_name: bedrock-claude-4.1-opus
+  - model_name: bedrock-claude-4.8-opus
     litellm_params:
-      model: us.anthropic.claude-opus-4-1-20250805-v1:0
+      model: us.anthropic.claude-opus-4-8
       aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
       aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
       aws_session_token: os.environ/AWS_SESSION_TOKEN
       aws_region_name: us-east-1
-  - model_name: bedrock-claude-4.5-sonnet
+  - model_name: bedrock-claude-4.6-sonnet
     litellm_params:
-      model: us.anthropic.claude-sonnet-4-5-20250929-v1:0
+      model: us.anthropic.claude-sonnet-4-6
       aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
       aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
       aws_session_token: os.environ/AWS_SESSION_TOKEN
       aws_region_name: us-east-1        
-  - model_name: bedrock-claude-4-sonnet
+  - model_name: bedrock-claude-4.5-haiku
     litellm_params:
-      model: us.anthropic.claude-sonnet-4-20250514-v1:0
+      model: us.anthropic.claude-haiku-4-5-20251001-v1:0
       aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
       aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
       aws_session_token: os.environ/AWS_SESSION_TOKEN
       aws_region_name: us-east-1  
 
-  - model_name: claude-sonnet-4
+  - model_name: claude-sonnet-4.6
     litellm_params:
-      model: claude-sonnet-4-20250514
+      model: claude-sonnet-4-6
       api_key: os.environ/ANTHROPIC_API_KEY
-  - model_name: claude-3.7-sonnet
+  - model_name: claude-haiku-4.5
     litellm_params:
-      model: claude-3-7-sonnet-latest
-      api_key: os.environ/ANTHROPIC_API_KEY
-  - model_name: claude-3.5-sonnet
-    litellm_params:
-      model: claude-3-5-sonnet-latest
-      api_key: os.environ/ANTHROPIC_API_KEY
-  - model_name: claude-3.5-haiku
-    litellm_params:
-      model: claude-3-5-haiku-latest
+      model: claude-haiku-4-5-20251001
       api_key: os.environ/ANTHROPIC_API_KEY  
 
-  # GitHub Copilot Available Models (2025.06.19)
-  # - gpt-3.5-turbo
-  # - gpt-3.5-turbo-0613
-  # - gpt-4o-mini
-  # - gpt-4o-mini-2024-07-18
-  # - gpt-4
-  # - gpt-4-0613
-  # - gpt-4-0125-preview
-  # - gpt-4o
-  # - gpt-4o-2024-11-20
-  # - gpt-4o-2024-05-13
-  # - gpt-4-o-preview
-  # - gpt-4o-2024-08-06
-  # - o1
-  # - o1-2024-12-17
-  # - o3-mini
-  # - o3-mini-2025-01-31
-  # - o3-mini-paygo
-  # - gpt-4o-copilot
-  # - text-embedding-ada-002
-  # - text-embedding-3-small
-  # - text-embedding-3-small-inference
-  # - claude-3.5-sonnet
-  # - claude-3.7-sonnet
-  # - claude-3.7-sonnet-thought
-  # - claude-sonnet-4
-  # - gemini-2.0-flash-001
-  # - gemini-2.5-pro
-  # - gemini-2.5-pro-preview-05-06
-  # - gemini-2.5-pro-preview-06-05
-  # - o4-mini
-  # - o4-mini-2025-04-16
-  # - gpt-4.1
-  # - gpt-4.1-2025-04-14
-  - model_name: github-copilot-claude-opus-4.5
+  # GitHub Copilot Available Models (2026.06.26)
+  # Using VSCode version: 1.126.0
+  # by running `npx copilot-api@latest start` in terminal
+  # Available models:
+  # claude-opus-4.6
+  # claude-sonnet-4.6
+  # gemini-3.5-flash
+  # gpt-5.3-codex
+  # gpt-5.4-mini
+  # gpt-5.4
+  # trajectory-compaction
+  # gpt-5-mini
+  # gpt-4o-mini-2024-07-18
+  # gpt-4o-2024-11-20
+  # gpt-4o-2024-08-06
+  # text-embedding-3-small
+  # text-embedding-3-small-inference
+  # claude-sonnet-4.5
+  # claude-opus-4.5
+  # claude-haiku-4.5
+  # gemini-2.5-pro
+  # gpt-4.1-2025-04-14
+  # gpt-41-copilot
+  # gpt-3.5-turbo-0613
+  # gpt-4
+  # gpt-4-0613
+  # gpt-4-0125-preview
+  # gpt-4o-2024-05-13
+  # gpt-4-o-preview
+  # gpt-4.1
+  # gpt-3.5-turbo
+  # gpt-4o-mini
+  # gpt-4o
+  # text-embedding-ada-002
+  - model_name: github-copilot-claude-opus-4.6
     litellm_params:
-      model: github_copilot/claude-opus-4.5
+      model: github_copilot/claude-opus-4.6
       extra_headers:
         {
           "editor-version": "vscode/1.85.1",
@@ -83,9 +75,9 @@ model_list:
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
         }  
-  - model_name: github-copilot-claude-sonnet-4.5
+  - model_name: github-copilot-claude-sonnet-4.6
     litellm_params:
-      model: github_copilot/claude-sonnet-4.5
+      model: github_copilot/claude-sonnet-4.6
       extra_headers:
         {
           "editor-version": "vscode/1.85.1",
@@ -93,9 +85,9 @@ model_list:
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
         }
-  - model_name: github-copilot-gpt-5.2-codex
+  - model_name: github-copilot-gpt-5.3-codex
     litellm_params:
-      model: github_copilot/gpt-5.2-codex
+      model: github_copilot/gpt-5.3-codex
       extra_headers:
         {
           "editor-version": "vscode/1.104.1",
@@ -103,9 +95,9 @@ model_list:
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
         }          
-  - model_name: github-copilot-gpt-5.2 
+  - model_name: github-copilot-gpt-5.4 
     litellm_params:
-      model: github_copilot/gpt-5.2
+      model: github_copilot/gpt-5.4
       extra_headers:
         {
           "editor-version": "vscode/1.85.1",
@@ -113,16 +105,6 @@ model_list:
           "Copilot-Integration-Id": "vscode-chat",
           "user-agent": "GithubCopilot/1.155.0"
         }          
-  - model_name: github-copilot-gpt-5-mini
-    litellm_params:
-      model: github_copilot/gpt-5-mini
-      extra_headers:
-        {
-          "editor-version": "vscode/1.85.1",
-          "editor-plugin-version": "copilot/1.155.0",
-          "Copilot-Integration-Id": "vscode-chat",
-          "user-agent": "GithubCopilot/1.155.0"
-        }                    
   - model_name: github-copilot-gemini-2.5-pro
     litellm_params:
       model: github_copilot/gemini-2.5-pro
@@ -149,32 +131,36 @@ model_list:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY  
 
-  - model_name: openrouter-deepseek-r1-0528
+  - model_name: openrouter-google-gemma-4-31b-it
     litellm_params:
-      model: openrouter/deepseek/deepseek-r1-0528:free
+      model: openrouter/google/gemma-4-31b-it:free
       api_key: os.environ/OPENROUTER_API_KEY
-  - model_name: openrouter-qwen3-235b-a22b
+  - model_name: openrouter-google-gemma-4-26b-a4b-it
     litellm_params:
-      model: openrouter/qwen/qwen3-235b-a22b:free
+      model: openrouter/google/gemma-4-26b-a4b-it:free
+      api_key: os.environ/OPENROUTER_API_KEY      
+  - model_name: openrouter-qwen3-next-80b-a3b-instruct
+    litellm_params:
+      model: openrouter/qwen/qwen3-next-80b-a3b-instruct:free
       api_key: os.environ/OPENROUTER_API_KEY
   - model_name: openrouter-qwen3-coder
     litellm_params:
       model: openrouter/qwen/qwen3-coder:free
       api_key: os.environ/OPENROUTER_API_KEY      
-  - model_name: openrouter-kimi-k2
-    litellm_params:
-      model: openrouter/moonshotai/kimi-k2:free
-      api_key: os.environ/OPENROUTER_API_KEY
-  - model_name: openrouter-glm-4.5-air
-    litellm_params:
-      model: openrouter/z-ai/glm-4.5-air:free
-      api_key: os.environ/OPENROUTER_API_KEY
 
+  - model_name: groq-qwen3-32b
+    litellm_params:
+      model: groq/qwen/qwen3-32b
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-qwen3.6-27b
+    litellm_params:
+      model: groq/qwen/qwen3.6-27b
+      api_key: os.environ/GROQ_API_KEY
   - model_name: groq-llama-4-scout-17b-16e-instruct
     litellm_params:
       model: groq/meta-llama/llama-4-scout-17b-16e-instruct
       api_key: os.environ/GROQ_API_KEY
-  - model_name: groq-llama-3.3-70b
+  - model_name: groq-llama-3.3-70b-versatile
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY

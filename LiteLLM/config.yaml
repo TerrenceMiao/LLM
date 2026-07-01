@@ -179,6 +179,11 @@ model_list:
       model: openai/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf # "openai/" prefix = treat as OpenAI-compatible
       api_base: http://localhost:8080/v1
       api_key: "sk-" # llama.cpp ignores this, but LiteLLM requires it    
-
+  - model_name: llama.cpp-Ornith-1.0-35B-GGUF
+    litellm_params:
+      model: openai/ornith-1.0-35b-Q4_K_M.gguf # "openai/" prefix = treat as OpenAI-compatible
+      api_base: http://localhost:8080/v1
+      api_key: "sk-" # llama.cpp ignores this, but LiteLLM requires it
+      
 general_settings:
   master_key: "Welcome1"      
